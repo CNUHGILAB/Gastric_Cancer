@@ -1,0 +1,16 @@
+SELECT 
+    환자번호 as ID,
+    의무기록작성일 as DM_Date,
+    `의무기록 환자진료과코드` as DM_MD_1,
+    `의무기록 환자진료과` as DM_MD_2,
+    case
+    when
+    진료서식구성원소ID = '{0}'
+    then 의무기록내용
+    end as DM_Medication
+
+
+FROM 
+    outpatient
+WHERE 
+    진료서식구성원소ID = '{0}'
