@@ -1,0 +1,48 @@
+from base_etl import BaseETL
+
+class REGStep05_00(BaseETL):
+
+    def run(
+        self,
+    ):
+
+        sql = '''
+            SELECT
+                cast(환자번호 as char) as 환자번호,
+                원무접수ID,
+                Hb,
+                검사시행일
+            FROM
+                (
+                    SELECT
+                        환자번호,
+                        원무접수ID,
+                        case
+                            when 검사코드 = 'B1010E'
+                            or 검사코드 = 'B1010'
+                            or 검사코드 = 'C38160P' then 검사결과
+                        end as Hb,
+                        STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') as 검사시행일
+                    FROM
+                        gc_raw.blood_test
+                    WHERE
+                        환자번호 in (
+                            SELECT
+                                distinct 환자번호
+                            FROM
+                                gc_raw.operation_record
+                        )
+                ) c
+            WHERE
+                Hb IS NOT NULL
+        '''
+
+        df = self.df_from_sql(db_name="gc_protocol", sql=sql) 
+        df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/REG_Hb.xlsx')
+        print(df)
+        self.insert(df, db_name="gc_protocol", tb_name="regstep05_00")
+
+    
+if __name__ == "__main__":
+    obj = REGStep05_00()
+    obj.run()
