@@ -1,5 +1,5 @@
+import os
 import sys
-#import subprocess
 import pandas as pd
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
@@ -25,7 +25,7 @@ class IndividualExecuteFile(QDialog, QWidget, form_class):
         self.Run_btn.clicked.connect(self.RunProgram)
         
     def Back(self):
-        self.Back_btn.back()
+        self.close()
         
     def SelectExecuteName(self):
         print("Select Name: ", self.comboSelect.currentText())
@@ -40,22 +40,24 @@ class IndividualExecuteFile(QDialog, QWidget, form_class):
         self.winLabel.setText(text)
     
     def RunProgram(self):
-
+        
         engine = create_engine("mysql+mysqldb://SC:cnuh12345!@127.0.0.1:3306/patient_test", encoding = 'utf-8')
         conn = engine.connect()
-        self.winLabel.setText("DB에 연결 되었습니다.\n")
-
+        self.winLabel.setText("DB에 연결 되었습니다.")
+        
+        from Patient_Test.ETL_Patient import ETLPatient
         
         if text == "patient":
-            exec(open("Patient_Test/ETL_Patient.py").read())
+            #exec(open("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py").read())
+            #os.system("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py")
+            ETLPatient()
             self.winLabel.setText("Patient File을 실행하였습니다.")
-            #subprocess.call("ETL_Patient.py", shell = True)
-        
+            
         '''
         sql = "SELECT DISTINCT * FROM patient_test.{0}".format(text)
         df = pd.read_sql(sql, engine)
         df.to_sql(name = text, con = engine, if_exists = 'replace', index = False)
         '''
         
-        self.new_lbl.setText("DB에 파일이 업로드 되었습니다")
+        self.winLabel.setText("DB에 파일이 업로드 되었습니다.")
         conn.close
