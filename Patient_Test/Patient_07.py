@@ -1,7 +1,7 @@
 import pandas as pd
 from Base_ETL import BaseETL
 
-class PatientStep07(BaseETL):
+class Patient07(BaseETL):
 
     def run(self):
         
@@ -48,5 +48,5 @@ class PatientStep07(BaseETL):
         self.insert(df, db_name = "patient_test", tb_name = "patient_07") 
     
 if __name__ == "__main__":
-    obj = PatientStep07()
+    obj = Patient07()
     obj.run()
