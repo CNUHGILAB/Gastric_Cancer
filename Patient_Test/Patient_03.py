@@ -10,16 +10,16 @@ class Patient03(BaseETL):
                 a.환자번호 AS ID,
                 a.원무접수ID AS CHKID,
                 # patient_01
-                HEIGHT1,
-                WEIGHT1,
+                Height1,
+                Weight1,
                 성별,
-                AGE,
+                Age,
                 입원일,
                 퇴원일,
                 `주소(시,도)`,
                 `주소(시,군,구)`,
                 # patient_02
-                OP_DATE
+                OP_Date
             FROM
                 patient_02 a
                 LEFT JOIN patient_01 b ON (

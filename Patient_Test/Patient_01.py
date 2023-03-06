@@ -9,13 +9,13 @@ class Patient01(BaseETL):
                 환자번호,
                 원무접수ID,
                 성별,
-                REPLACE(수진당시나이, 'yrs', '') AS AGE,
+                REPLACE(수진당시나이, 'yrs', '') AS Age,
                 입원일,
                 퇴원일,
                 `주소(시,도)`,
                 `주소(시,군,구)`,
-                `신장(cm)` AS HEIGHT1,
-                `체중(kg)` AS WEIGHT1
+                `신장(cm)` AS Height1,
+                `체중(kg)` AS Weight1
             FROM patient
             # 환자번호로 정렬
             ORDER BY 환자번호

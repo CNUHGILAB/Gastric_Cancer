@@ -7,7 +7,7 @@ class Patient02(BaseETL):
             SELECT
                 DISTINCT 원무접수ID,
                 환자번호,
-                수술일자 AS OP_DATE
+                수술일자 AS OP_Date
             # Raw Data 중 operation 항목에서 원무접수ID, 환자번호, 수술일자(OP_DATE) 추출
             FROM operation
             # 원무접수ID는 Raw Data 중 operation_record 항목에서 추출

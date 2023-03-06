@@ -9,21 +9,21 @@ class Patient06(BaseETL):
                 # a : patient_04
                 a.ID,
                 a.CHKID,
-                a.DATE,
+                a.Date,
                 # patient_04
-                WEIGHT,
+                Weight,
                 # patient_05
-                HEIGHT
+                Height
             FROM
                 patient_04 a
                 LEFT JOIN patient_05 b ON (
                     a.ID = b.ID
                     AND a.CHKID = b.CHKID
-                    AND a.DATE = b.DATE
+                    AND a.Date = b.Date
                 )
             WHERE
-                NULLIF(HEIGHT, '') IS NOT NULL
-            ORDER BY ID, DATE DESC
+                NULLIF(Height, '') IS NOT NULL
+            ORDER BY ID, Date DESC
         '''
         
         df = self.df_from_sql(db_name = "patient_test", sql = sql)

@@ -16,7 +16,6 @@ class Patient08(BaseETL):
         
         self.insert(df, db_name = "patient_test", tb_name = "patient_08") 
 
-    
 if __name__ == "__main__":
     obj = Patient08()
     obj.run()

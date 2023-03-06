@@ -10,7 +10,7 @@ class Patient11(BaseETL) :
         
         #df.to_excel('D:/Gastric_Cancer/Excel_File/Patient.xlsx')
             
-        self.insert(df, db_name = "gc_protocol_test", tb_name = "patient") 
+        self.insert(df, db_name = "patient_test", tb_name = "patient") 
     
 if __name__ == "__main__":
     obj = Patient11()

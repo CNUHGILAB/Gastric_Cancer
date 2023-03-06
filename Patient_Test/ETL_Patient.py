@@ -15,7 +15,7 @@ class ETLPatient():
     """
     def run(self):
         Patient01().run()                         # 환자번호, 원무접수ID, 성별, 나이, 입원일, 퇴원일, 주소
-        Patient02().run()                         # gastric cancer surgery day(원무접수ID, 환자번호, 수술일)
+        Patient02().run()                         # Gastric Cancer Surgery Day(원무접수ID, 환자번호, 수술일)
         Patient03().run()                         # Patient information during gastric cancer surgery
         Patient04().run()                         # Weight
         Patient05().run()                         # Height

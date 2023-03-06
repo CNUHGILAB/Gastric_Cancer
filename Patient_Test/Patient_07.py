@@ -11,36 +11,36 @@ class Patient07(BaseETL):
                 a.ID,
                 a.CHKID,
                 성별,
-                AGE,
-                # WEIGHT가 NULL 값이면 WEIGHT1 대체
+                Age,
+                # Weight가 NULL 값이면 Weight1 대체
                 CASE
-                    WHEN WEIGHT IS NULL
-                    THEN WEIGHT1
-                    ELSE WEIGHT
-                END AS WEIGHT,
-                # HEIGHT가 NULL 값이면 HEIGHT1 대체
+                    WHEN Weight IS NULL
+                    THEN Weight1
+                    ELSE Weight
+                END AS Weight,
+                # Height가 NULL 값이면 Height1 대체
                 CASE
-                    WHEN HEIGHT IS NULL
-                    THEN HEIGHT1
-                    ELSE HEIGHT
-                END AS HEIGHT,
+                    WHEN Height IS NULL
+                    THEN Height1
+                    ELSE Height
+                END AS Height,
                 # BMI 반올림
                 ROUND(
-                    (WEIGHT / ((HEIGHT * 0.01) * (HEIGHT * 0.01))), 1
+                    (Weight / ((Height * 0.01) * (Height * 0.01))), 1
                 ) AS BMI,
                 입원일,
                 퇴원일,
                 `주소(시,도)`,
                 `주소(시,군,구)`,
-                OP_DATE,
-                `DATE`
+                OP_Date,
+                `Date`
             FROM
                 patient_03 a
                 LEFT JOIN patient_06 b ON (a.ID = b.ID) 
             # -- WHERE
-            #     -- Date(`Date`) BETWEEN DATE_SUB(OP_DATE, INTERVAL 30 DAY) AND OP_DATE
-            GROUP BY a.ID, OP_DATE
-            ORDER BY ID, OP_DATE
+            #     -- Date(`Date`) BETWEEN DATE_SUB(OP_Date, INTERVAL 30 DAY) AND OP_Date
+            GROUP BY a.ID, OP_Date
+            ORDER BY ID, OP_Date
         '''
         
         df = self.df_from_sql(db_name = "patient_test", sql = sql)

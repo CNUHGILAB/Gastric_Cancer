@@ -8,10 +8,10 @@ class Patient10(BaseETL) :
             SELECT
                 a. ID,
                 CHKID,
-                성별 AS SEX,
-                AGE AS OP_AGE,
-                HEIGHT AS HT,
-                WEIGHT AS WT,
+                성별 AS Sex,
+                Age AS OP_Age,
+                Height AS HT,
+                Weight AS WT,
                 BMI,
                 `주소(시,도)` AS ADR_1,
                 `주소(시,군,구)` AS ADR_2,
@@ -22,12 +22,12 @@ class Patient10(BaseETL) :
                 ) AS FP,
                 입원일 AS OP_ADM,
                 퇴원일 AS OP_DISC,
-                OP_DATE
+                OP_Date
             FROM
                 patient_07 a
                 LEFT JOIN patient_08 b ON (a.ID = b.환자번호)
                 LEFT JOIN patient_09 c ON (a.ID = c.환자번호)
-            ORDER BY ID, OP_DATE
+            ORDER BY ID, OP_Date
         '''
         
         df = self.df_from_sql(db_name = "patient_test", sql = sql)
