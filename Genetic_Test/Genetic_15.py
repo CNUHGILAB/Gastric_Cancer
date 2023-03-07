@@ -47,7 +47,7 @@ class Genetic15(BaseETL):
         self.insert(Data_Giemsa, db_name = 'gc_protocol_test', tb_name = 'genetic_15')
         
         # Path/KI_67.sql = KI_67.sql
-        f = open('Genetic_Test/Giemsa.sql', 'rt', encoding = 'UTF8')
+        f = open('Genetic_Test/Genetic_15(Giemsa).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         

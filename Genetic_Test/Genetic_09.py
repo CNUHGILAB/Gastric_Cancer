@@ -49,7 +49,7 @@ class Genetic09(BaseETL):
         self.insert(Data_PKC_Theta, db_name = 'gc_protocol_test', tb_name = 'genetic_09')
         
         # Path/KI_67.sql = KI_67.sql
-        f = open('Genetic_Test/PKC_Theta.sql', 'rt', encoding = 'UTF8')
+        f = open('Genetic_Test/Genetic_09(PKC_Theta).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         

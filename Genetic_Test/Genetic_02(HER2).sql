@@ -37,21 +37,21 @@ FROM(
         FROM (
             SELECT
                 원무접수ID,
-                REPLACE (
-                    REPLACE (
-                        REPLACE (
-                            REPLACE (
-                                REPLACE (
+                REPLACE(
+                    REPLACE(
+                        REPLACE(
+                            REPLACE(
+                                REPLACE(
                                         HER2, 'positive', '(+)' -- HER2 Column의 데이터 중 'positive'를 '(+)'로 변환
-                                        ),
-                                    'negative', '(-)' -- HER2 Column의 데이터 중 'negative'를 '(-)'로 변환
                                     ),
-                                '3+', '(+++)' -- HER2 Column의 데이터 중 '3+'를 '(+++)'로 변환
+                                'negative', '(-)' -- HER2 Column의 데이터 중 'negative'를 '(-)'로 변환
                                 ),
-                            '2+', '(++)' -- HER2 Column의 데이터 중 '2+'를 '(++)'로 변환
+                            '3+', '(+++)' -- HER2 Column의 데이터 중 '3+'를 '(+++)'로 변환
                             ),
-                        '1+', '(+)' -- HER2 Column의 데이터 중 '1+'를 '(+)'로 변환
-                    ) AS HER2
+                        '2+', '(++)' -- HER2 Column의 데이터 중 '2+'를 '(++)'로 변환
+                        ),
+                    '1+', '(+)' -- HER2 Column의 데이터 중 '1+'를 '(+)'로 변환
+                ) AS HER2
             FROM genetic_02
         ) genetic
     ) genetic
