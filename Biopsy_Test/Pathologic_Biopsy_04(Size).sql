@@ -53,21 +53,21 @@ FROM(
         CASE
             WHEN NULLIF(Size, '') IS NULL
             THEN NULL
-            WHEN REGEXP_INSTR(BINARY Size, '[0-9]+[.]?[0-9]?[0-9]?[ ]?[x][ ]?[0-9]+[.]?[0-9]?[0-9]?') != 0 
+            WHEN REGEXP_INSTR(BINARY `Size`, '[0-9]+[.]?[0-9]?[0-9]?[ ]?[x][ ]?[0-9]+[.]?[0-9]?[0-9]?') != 0 
             THEN CONVERT(
                 SUBSTRING_INDEX(
                     REGEXP_SUBSTR(
-                        BINARY Size, '[0-9]+[.]?[0-9]?[0-9]?[ ]?[x][ ]?[0-9]+[.]?[0-9]?[0-9]?'
-                    ), 'x',1
+                        BINARY `Size`, '[0-9]+[.]?[0-9]?[0-9]?[ ]?[x][ ]?[0-9]+[.]?[0-9]?[0-9]?'
+                    ), 'x', 1
                 ), DECIMAL(5, 2)
             )
-            WHEN INSTR(BINARY Size, 'x') != 0
+            WHEN INSTR(BINARY `Size`, 'x') != 0
             THEN CONVERT(
                 REPLACE (
                     REGEXP_REPLACE(
                         REGEXP_REPLACE(
                             SUBSTRING_INDEX(
-                                BINARY Size, 'x', 1
+                                BINARY `Size`, 'x', 1
                             ), '[a-z]', ''
                         ), '[가-힣]', ''
                     ), ')', ''
@@ -75,24 +75,24 @@ FROM(
             )
             END AS Tumor_Size_Maj,
             CASE
-                WHEN NULLIF(Size, '') IS NULL
+                WHEN NULLIF(`Size`, '') IS NULL
                 THEN NULL
-                WHEN REGEXP_INSTR(Size, '[0-9]+[.]?[0-9]?[0-9]?[ ]?[x][ ]?[0-9]+[.]?[0-9]?[0-9]?') != 0
+                WHEN REGEXP_INSTR(`Size`, '[0-9]+[.]?[0-9]?[0-9]?[ ]?[x][ ]?[0-9]+[.]?[0-9]?[0-9]?') != 0
                 THEN CONVERT(
                     SUBSTRING_INDEX(
                         REGEXP_SUBSTR(
-                            BINARY Size, '[0-9]+[.]?[0-9]?[0-9]?[ ]?[x][ ]?[0-9]+[.]?[0-9]?[0-9]?'
+                            BINARY `Size`, '[0-9]+[.]?[0-9]?[0-9]?[ ]?[x][ ]?[0-9]+[.]?[0-9]?[0-9]?'
                         ), 'x', -1
                     ), DECIMAL(5, 2)
                 )
-                WHEN INSTR(Size, 'x') != 0
+                WHEN INSTR(`Size`, 'x') != 0
                 THEN CONVERT(
                     REPLACE (
                         REGEXP_REPLACE(
                             REGEXP_REPLACE(
                                 SUBSTRING_INDEX(
                                     SUBSTRING_INDEX(
-                                        BINARY Size, 'x', 2
+                                        BINARY `Size`, 'x', 2
                                     ), 'x', -1
                                 ), '[a-z]', ''
                             ), '[가-힣]', ''
@@ -109,18 +109,18 @@ FROM(
                 REGEXP_REPLACE(
                     REPLACE(
                         TRIM(
-                            TRAILING SUBSTR(Size, INSTR(Size, '\n'))
-                            FROM Size
+                            TRAILING SUBSTR(`Size`, INSTR(`Size`, '\n'))
+                            FROM `Size`
                             ), 'size', ''
                         ), '[(|;|:|-|)]', ''
-                ) AS Size
+                ) AS `Size`
             FROM(
                 SELECT
                     원무접수ID,
                     환자번호,
                     검사시행일,
                     병리진단,
-                    SUBSTR(병리진단, INSTR(병리진단, 'size')) AS Size
+                    SUBSTR(병리진단, INSTR(병리진단, 'size')) AS `Size`
                 FROM pathologic_biopsy_01
             ) biopsy
         ) biopsy

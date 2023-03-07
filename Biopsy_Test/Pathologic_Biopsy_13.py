@@ -5,7 +5,7 @@ class Pathologic_Biopsy13(BaseETL):
     def run(self):
         
         # Biopsy_Step_13(clear_resection_margin).sql = Clear_Resection_Margin.sql
-        f = open('Biopsy/Clear_Resection_Margin.sql', 'rt', encoding = 'UTF8')
+        f = open('Biopsy_Test/Pathologic_Biopsy_13(Clear_Resection_Margin).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         

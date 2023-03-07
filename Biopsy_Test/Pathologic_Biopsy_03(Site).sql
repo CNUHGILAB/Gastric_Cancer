@@ -13,10 +13,10 @@ SELECT
                         Upper_Body, ',',
                         Mid_Body, ',',
                         Lower_Body, ',',
-                        BODY, ',',
+                        `BODY`, ',',
                         Pylorus, ',',
                         Antrum
-                    ), '0,', ''
+                    ), '0,', '' 
                 ), ',0', ''
             ), '0', ''
         ), ''
@@ -41,20 +41,20 @@ SELECT
         ), ''
     ) AS Tumor_Circumference,
     CASE
-        WHEN (NULLIF(Cardia, '0') IS NULL AND NULLIF(Fundus, '0') IS NULL AND NULLIF(Upper_Body, '0') IS NULL AND NULLIF(Mid_Body, '0') IS NULL AND NULLIF(Lower_Body, '0') IS NULL AND NULLIF(Pylorus, '0') IS NULL AND NULLIF(Antrum, '0') IS NULL AND NULLIF(Anterior, '0') IS NULL AND NULLIF(Posterior, '0') IS NULL AND NULLIF(Greater, '0') IS NULL AND NULLIF(Lesser, '0') IS NULL AND NULLIF(Anastomosis_Site, '0') IS NULL AND NULLIF(Body, '0') IS NULL AND Site_Path IS NOT NULL)
+        WHEN (NULLIF(Cardia, '0') IS NULL AND NULLIF(Fundus, '0') IS NULL AND NULLIF(Upper_Body, '0') IS NULL AND NULLIF(Mid_Body, '0') IS NULL AND NULLIF(Lower_Body, '0') IS NULL AND NULLIF(Pylorus, '0') IS NULL AND NULLIF(Antrum, '0') IS NULL AND NULLIF(Anterior, '0') IS NULL AND NULLIF(Posterior, '0') IS NULL AND NULLIF(Greater, '0') IS NULL AND NULLIF(Lesser, '0') IS NULL AND NULLIF(Anastomosis_Site, '0') IS NULL AND NULLIF(`Body`, '0') IS NULL AND Site_Path IS NOT NULL)
         THEN Site_Path
     END AS Location_ETC,
     CASE
-        WHEN (NULLIF(Cardia, '0') IS NULL AND NULLIF(Fundus, '0') IS NULL AND NULLIF(Upper_Body, '0') IS NULL AND NULLIF(Mid_Body, '0') IS NULL AND NULLIF(Lower_Body, '0') IS NULL AND NULLIF(Pylorus, '0') IS NULL AND NULLIF(Antrum, '0') IS NULL AND NULLIF(Anterior, '0') IS NULL AND NULLIF(Posterior, '0') IS NULL AND NULLIF(Greater, '0') IS NULL AND NULLIF(Lesser, '0') IS NULL AND NULLIF(Anastomosis_Site, '0') IS NULL AND NULLIF(Body, '0') IS NULL)
+        WHEN (NULLIF(Cardia, '0') IS NULL AND NULLIF(Fundus, '0') IS NULL AND NULLIF(Upper_Body, '0') IS NULL AND NULLIF(Mid_Body, '0') IS NULL AND NULLIF(Lower_Body, '0') IS NULL AND NULLIF(Pylorus, '0') IS NULL AND NULLIF(Antrum, '0') IS NULL AND NULLIF(Anterior, '0') IS NULL AND NULLIF(Posterior, '0') IS NULL AND NULLIF(Greater, '0') IS NULL AND NULLIF(Lesser, '0') IS NULL AND NULLIF(Anastomosis_Site, '0') IS NULL AND NULLIF(`Body`, '0') IS NULL)
         THEN 병리진단
     END AS Undecided
-FROM (
+FROM(
     SELECT *,
         CASE
             WHEN (NULLIF(Upper_Body, '0') IS NULL AND NULLIF(Mid_Body, '0') IS NULL AND NULLIF(Lower_Body, '0') IS NULL AND INSTR(Site_Path, 'body') != 0)
             THEN 'Body'
             ELSE 0
-        END AS Body
+        END AS `Body`
     FROM(
         SELECT
             원무접수ID,
@@ -62,7 +62,7 @@ FROM (
             검사시행일,
             육안소견,
             병리진단,
-            SITE_Num,
+            Site_Num,
             Site_Path,
             CASE
                 WHEN INSTR(Site_Path, 'cardia') != 0
@@ -160,7 +160,8 @@ FROM (
                 ELSE 0
             END AS Antrum,
             CASE
-                WHEN INSTR(Site_Path, 'anterior') != 0 THEN 'Anterior wall'
+                WHEN INSTR(Site_Path, 'anterior') != 0
+                THEN 'Anterior wall'
                 ELSE 0
             END AS Anterior,
             CASE
@@ -174,7 +175,7 @@ FROM (
                 WHEN INSTR(Site_Path, 'greater') != 0
                 THEN 'Greater curvature'
                 ELSE 0
-            END AS greater,
+            END AS Greater,
             CASE
                 WHEN INSTR(Site_Path, 'lesser') != 0
                 THEN 'Lesser curvature'

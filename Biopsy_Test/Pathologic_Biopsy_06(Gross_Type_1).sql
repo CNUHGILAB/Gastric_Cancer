@@ -43,9 +43,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         TRIM(
-                                                                            TRAILING SUBSTR(
-                                                                                BINARY Gross_Type, INSTR(BINARY Gross_Type, '3)')
-                                                                            )
+                                                                            TRAILING SUBSTR(BINARY Gross_Type, INSTR(BINARY Gross_Type, '3)'))
                                                                             FROM BINARY Gross_Type
                                                                         ), 'Gross type', ''
                                                                     ), '\n', ''
@@ -57,9 +55,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         TRIM(
-                                                                            TRAILING SUBSTR(
-                                                                                BINARY Gross_Type, INSTR(BINARY Gross_Type, '\n')
-                                                                            )
+                                                                            TRAILING SUBSTR(BINARY Gross_Type, INSTR(BINARY Gross_Type, '\n'))
                                                                             FROM BINARY Gross_Type
                                                                         ), 'gross type', ''
                                                                     ), 'Gross type', ''
@@ -88,9 +84,7 @@ FROM(
                                     REPLACE(
                                         REGEXP_REPLACE(
                                             TRIM(
-                                                TRAILING SUBSTR(
-                                                    BINARY Early_Gastric_Cancer, INSTR(BINARY Early_Gastric_Cancer, '\n')
-                                                )
+                                                TRAILING SUBSTR(BINARY Early_Gastric_Cancer, INSTR(BINARY Early_Gastric_Cancer, '\n'))
                                                 FROM BINARY Early_Gastric_Cancer
                                             ), '[.|;|:]', ''
                                         ), 'Type', ''

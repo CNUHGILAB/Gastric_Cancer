@@ -4,8 +4,8 @@ SELECT
     검사시행일,
     판독의,
     Lymph_Node,
-    (Slash_01 + Slash_02 + Slash_03 + Slash_04 + Slash_05 + Slash_06 + Slash_07 + Slash_08 + Slash_09 + Slash_10 + Slash_11 + Slash_12 + Slash_13) AS MET_LN,
-    (Slash2_01 + Slash2_02 + Slash2_03 + Slash2_04 + Slash2_05 + Slash2_06 + Slash2_07 + Slash2_08 + Slash2_09 + Slash2_10 + Slash2_11 + Slash2_12 + Slash2_13) AS HARV_LN
+    (Slash_01 + Slash_02 + Slash_03 + Slash_04 + Slash_05 + Slash_06 + Slash_07 + Slash_08 + Slash_09 + Slash_10 + Slash_11 + Slash_12 + Slash_13) AS metLN,
+    (Slash2_01 + Slash2_02 + Slash2_03 + Slash2_04 + Slash2_05 + Slash2_06 + Slash2_07 + Slash2_08 + Slash2_09 + Slash2_10 + Slash2_11 + Slash2_12 + Slash2_13) AS harvLN
 FROM(
     SELECT *, 
     IFNULL(

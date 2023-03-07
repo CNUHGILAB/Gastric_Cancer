@@ -147,7 +147,7 @@ FROM (
             TRIM(
                 TRAILING SUBSTR(
                     CASE
-                        WHEN (INSTR(Test, '%%') = 0)
+                        WHEN INSTR(Test, '%%') = 0
                         THEN ''
                         ELSE Test
                     END, INSTR(Test, '%%')
@@ -162,11 +162,9 @@ FROM (
             환자번호,
             검사시행일,
             CASE
-                WHEN (NULLIF(Differentiation, '') IS NULL)
+                WHEN NULLIF(Differentiation, '') IS NULL
                 THEN Differentiation_2
-                ELSE TRIM(
-                    BOTH FROM Differentiation
-                )
+                ELSE TRIM(BOTH FROM Differentiation)
             END AS Differentiation,
             Test,
             Differentiated,

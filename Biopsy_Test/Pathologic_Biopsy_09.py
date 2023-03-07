@@ -6,7 +6,7 @@ class Pathologic_Biopsy09(BaseETL):
         
         # Biopsy_Step_09(Histologic_Type_2).sql = 2.sql
         # 2.sql = Histologic_Type_2.sql
-        f = open('Biopsy/Histologic_Type_2.sql', 'rt', encoding = 'UTF8')
+        f = open('Biopsy_Test/Pathologic_Biopsy_09(Histologic_Type_2).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         

@@ -59,9 +59,7 @@ FROM(
                     REPLACE(
                         REPLACE(
                             TRIM(
-                                TRAILING SUBSTR(
-                                    Histologic_Type_2, INSTR(Histologic_Type_2, 'Tumor Site')
-                                )
+                                TRAILING SUBSTR(Histologic_Type_2, INSTR(Histologic_Type_2, 'Tumor Site'))
                                 FROM Histologic_Type_2
                             ), 'WHO clASsification', ''
                         ), '(Histologic Type)', ''

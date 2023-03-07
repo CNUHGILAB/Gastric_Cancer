@@ -2,7 +2,140 @@ SELECT
     원무접수ID,
     환자번호,
     검사시행일,
-    COALESCE(Histologic_Type_1, Histologic_Type_5) AS Histologic_Type
+    REPLACE(
+        CONCAT(
+            Histologic_Type1, Histologic_Type2, '/ ', Histologic_Type3, Histologic_Type4, '/ ', Histologic_Type5, Histologic_Type6
+        ), '/ /', ''
+    ) AS Histologic_Type,
+    Histologic_Type7 AS Histologic_Type_etc
+    #COALESCE(Histologic_Type_1, Histologic_Type_5) AS Histologic_Type
+FROM(
+    SELECT
+        원무접수ID,
+        환자번호,
+        검사시행일,
+        Histologic_Type,
+        CASE
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 2
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 2
+                ), '|', -1
+            )
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 1
+            THEN SUBSTRING_INDEX(Histologic_Type, '|', 1)
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 0
+            THEN Histologic_Type
+            ELSE ''
+        END AS Histologic_Type1,
+        CASE
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 3
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 3
+                ), '|', -1
+            )
+            ELSE ''
+        END AS Histologic_Type2,
+        CASE
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 4
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 4
+                ), '|', -1
+            )
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 3
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 4
+                ), '|', -1
+            )
+            ELSE ''
+        END AS Histologic_Type3,
+        CASE
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 5
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 5
+                ), '|', -1
+            )
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 4
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 5
+                ), '|', -1
+            )
+            ELSE ''
+        END AS Histologic_Type4,
+        CASE
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 6
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 6
+                ), '|', -1
+            )
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 5
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 6
+                ), '|', -1
+            )
+            ELSE ''
+        END AS Histologic_Type5,
+        CASE
+            WHEN (
+                    CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))
+            ) >= 7 THEN  (
+                    SUBSTRING_INDEX(Histologic_Type, '|', 7),
+                    '|',
+                    -1
+            )
+            WHEN (
+                    CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))
+            ) >= 6 THEN SUBSTRING_INDEX(
+                    SUBSTRING_INDEX(Histologic_Type, '|', 7),
+                    '|',
+                    -1
+            )
+            ELSE ''
+        END AS Histologic_Type6,
+        CASE
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 2
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 2
+                ), '|', + 1
+            )
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 2
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 3
+                ), '|', -1
+            )
+            ELSE ''
+        END AS Histologic_Type7
+    FROM(
+        SELECT
+            원무접수ID,
+            환자번호,
+            검사시행일,
+            CASE
+                WHEN INSTR(Histologic_Type, 'with') != 0 OR INSTR(Histologic_Type, 'and') != 0 OR INSTR(Histologic_Type, 'including') != 0 OR INSTR(Histologic_Type, '+') != 0
+                THEN REPLACE(
+                    REPLACE(
+                        REPLACE(
+                            REPLACE(
+                                Histologic_Type, 'with', ''
+                            ), 'and', ''
+                        ), 'including', ''
+                    ), '+', ''
+                )
+                ELSE Histologic_Type
+            END AS Histologic_Type
+        FROM biopsy_step_08
+    ) biopsy
+) biopsy
+/*
 FROM(
     SELECT
         원무접수ID,
@@ -240,3 +373,4 @@ FROM(
         ) biopsy
     ) biopsy
 ) biopsy
+*/

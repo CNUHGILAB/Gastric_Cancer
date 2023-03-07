@@ -5,7 +5,7 @@ class Pathologic_Biopsy03(BaseETL):
     def run(self):
         
         # Biopsy_Step_03(Site).sql = Site.sql
-        f = open('Biopsy/Site.sql', 'rt', encoding = 'UTF8')
+        f = open('Biopsy_Test/Pathologic_Biopsy_03(Site).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         

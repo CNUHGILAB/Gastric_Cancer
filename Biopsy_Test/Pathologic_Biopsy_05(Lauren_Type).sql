@@ -6,7 +6,7 @@ SELECT
         REPLACE(
             REPLACE(
                 CONCAT(
-                    INTESTINAL, ',', Diffuse, ',', MIXED, ',', Lauren_Type_None
+                    INTESTINAL, ',', Diffuse, ',', `Mixed`, ',', Lauren_Type_None
                 ), '0,', ''
             ), ',0', ''
         ), '0', ''
@@ -34,7 +34,7 @@ FROM(
             WHEN INSTR(Lauren_Type, 'mixed') != 0
             THEN 'Mixed'
             ELSE 0
-        END AS MIXED,
+        END AS `Mixed`,
         CASE 
             WHEN nullif(Lauren_Type, '') IS NULL
             THEN 'None'
@@ -48,9 +48,7 @@ FROM(
             CASE 
                 WHEN NULLIF(Lauren_Classification, '') IS NULL
                 THEN Lauren_Type_2
-                ELSE REPLACE(
-                    Lauren_Classification, 'type', ''
-                )
+                ELSE REPLACE(Lauren_Classification, 'type', '')
             END AS Lauren_Type
         FROM(
             SELECT
@@ -59,10 +57,10 @@ FROM(
                 검사시행일,
                 Lauren_Classification,
                 REPLACE(
-                    CASE 
+                    CASE
                         WHEN (CHAR_LENGTH(Early_Gastric_Cancer) - CHAR_LENGTH(REPLACE(Early_Gastric_Cancer, ')', ''))) >= 2
                         THEN (
-                            CASE 
+                            CASE
                                 WHEN (
                                     CHAR_LENGTH(
                                         SUBSTRING_INDEX(
@@ -98,18 +96,14 @@ FROM(
                     REGEXP_REPLACE(
                         REPLACE(
                             TRIM(
-                                TRAILING SUBSTR(
-                                    Lauren_Classification, INSTR(Lauren_Classification, '\n')
-                                )
+                                TRAILING SUBSTR(Lauren_Classification, INSTR(Lauren_Classification, '\n'))
                                 FROM Lauren_Classification
                             ), 'Lauren classification:', ''
                         ), '[(|.|;|:]', ''
                     ) AS Lauren_Classification,
                     REGEXP_REPLACE(
                         TRIM(
-                            TRAILING SUBSTR(
-                                Early_Gastric_Cancer, INSTR(Early_Gastric_Cancer, '\n')
-                            )
+                            TRAILING SUBSTR(Early_Gastric_Cancer, INSTR(Early_Gastric_Cancer, '\n'))
                             FROM Early_Gastric_Cancer
                         ), '[.|;|:]', ''
                     ) AS Early_Gastric_Cancer
