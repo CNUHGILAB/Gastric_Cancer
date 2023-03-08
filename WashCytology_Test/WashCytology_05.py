@@ -4,7 +4,7 @@ class WashCytology05(BaseETL):
 
     def run(self):
         
-        f = open("Washcytology_Test/WashCytology.sql", 'rt', encoding = 'UTF8')
+        f = open("Washcytology_Test/WashCytology_05(Washcytology).sql", 'rt', encoding = 'UTF8')
         
         sql= ''
         
