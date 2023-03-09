@@ -5,51 +5,38 @@ class Endoscope02(BaseETL):
 
     def run(self):
         
-        sql = "SELECT * FROM endoscope01"
+        df = pd.DataFrame()
         
-        data_df = self.df_from_sql(db_name = "gc_protocol", sql = sql)
-        #print(data_df)
+        o_ID= [
+                "E7630B:100460234",
+                "E7630B:100460240",
+                "E7630L:100460234"
+        ]
         
-        data_df_list = list(data_df['검사결과'])
-        data_list = []
-        ID_list = []
-        CHKID_list = []
-        date_list = []
-        
-        for x in data_df_list:
+        for x in o_ID:
             
-            list1 = []
-            # print(data_df_list.index(x))
-            # print(x)
+            sql = '''
+                SELECT * FROM(
+                    SELECT
+                        환자번호,
+                        원무접수ID,
+                        검사시행일,
+                        검사결과 AS Esophagus_Esophagitis_LA분류 
+                    FROM endoscope
+                    WHERE 검사서식세부항목ID = "{0}"
+                ) a
+                WHERE Esophagus_Esophagitis_LA분류 IS NOT NULL
+            '''.format(x)
             
-            y = x.split("->")
+            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
+            df = pd.concat([df, data], axis = 0, sort = False)
             
-            for z in y:
-                
-                if "EGC" in z:
-                    i = data_df_list.index(x)
-                    list1.append(z)
-                elif "AGC" in z:
-                    i = data_df_list.index(x)
-                    list1.append(z)
-                    # print(i)
-                    
-                data_list.append(" ".join(list1))
-                ID_list.append(data_df['환자번호'].loc[i])
-                CHKID_list.append(data_df['원무접수ID'].loc[i])
-                date_list.append(data_df['검사시행일'].loc[i])
-                    
-        df = pd.DataFrame(ID_list,columns=['ID'])
-        df['CHKID'] = pd.DataFrame(CHKID_list)
-        df['Date'] = pd.DataFrame(date_list)
-        df["검사결과"] = pd.DataFrame(data_list)
-        df = df.drop_duplicates()
+        df = df.sort_values(['환자번호', '검사시행일'])
+        df = df.reset_index(drop = True)
         #print(df)
-        #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/endoscope.xlsx')
         
         self.insert(df, db_name = "gc_protocol", tb_name = "endoscope_02") 
         
-
 if __name__ == "__main__":
     obj = Endoscope02()
     obj.run()
