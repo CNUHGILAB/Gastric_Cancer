@@ -8,8 +8,6 @@ from sqlalchemy import create_engine
 import pymysql
 pymysql.install_as_MySQLdb()
 
-
-
 form_class = uic.loadUiType("IE/AddWindow.ui")[0]
 
 class AddWindow(QDialog, QWidget, form_class):

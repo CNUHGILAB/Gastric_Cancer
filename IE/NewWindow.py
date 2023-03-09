@@ -5,6 +5,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 import pymysql
 import sqlalchemy
+import MySQLdb
 pymysql.install_as_MySQLdb()
 
 
@@ -101,7 +102,7 @@ class NewWindow(QDialog, QWidget, form_class):
     
     def RunProgram(self):
         
-        engine = create_engine("mysql+mysqldb://SC:cnuh12345!@127.0.0.1:3306/gc_raw", encoding='utf-8')
+        engine = create_engine("mysql+mysqldb://cnuh:cnuh12345!!@127.0.0.1:3306/raw_file", encoding = 'utf-8')
         conn = engine.connect()
         self.new_lbl.setText("DB에 연결됐습니다")
         
@@ -143,7 +144,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         if text == "diagnosis":
             for i,j in zip(frames.columns, frames.dtypes):    
@@ -167,7 +168,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         if text == "operation":
             for i,j in zip(frames.columns, frames.dtypes):    
@@ -211,7 +212,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         if text == "blood_test":
             for i,j in zip(frames.columns, frames.dtypes):    
@@ -237,7 +238,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         if text == "nursing_record":
             for i,j in zip(frames.columns, frames.dtypes):    
@@ -257,7 +258,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         if text == "biopsy":
             for i,j in zip(frames.columns, frames.dtypes):    
@@ -278,9 +279,10 @@ class NewWindow(QDialog, QWidget, form_class):
 
                 elif "float" in str(j):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
-                elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    
+                elif "int" in i:
+                #elif "int" in str(j):
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         if text == "anesthetic":
             for i,j in zip(frames.columns, frames.dtypes):    
@@ -303,7 +305,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         # if text == "microorganism":
         #     for i,j in zip(frames.columns, frames.dtypes):    
@@ -349,7 +351,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
                     
         
         if text == "operation_record":
@@ -376,7 +378,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
                     
         
         if text == "endoscope":
@@ -400,7 +402,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         
         # if text == "anticancer_drug":
@@ -448,7 +450,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
                     
         
         if text == "asa_score":
@@ -466,7 +468,7 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
 
                 elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INT()})
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         # outputdict = self.sqlcol(frames)
                 
