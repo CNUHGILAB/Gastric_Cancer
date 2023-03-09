@@ -31,7 +31,8 @@ class PathologyMerge06(BaseETL):
                 LEFT JOIN pathology_11 st1 ON (
                     st0.환자번호 = st1.환자번호
                     AND st0.원무접수ID = st1.원무접수ID
-                    AND st0.검사시행일 = st1.검사시행일)
+                    AND st0.검사시행일 = st1.검사시행일
+                )
         '''
         
         df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
