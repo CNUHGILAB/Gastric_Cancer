@@ -8,7 +8,6 @@ import sqlalchemy
 import MySQLdb
 pymysql.install_as_MySQLdb()
 
-
 form_class = uic.loadUiType("IE/NewWindow.ui")[0]
 
 class NewWindow(QDialog, QWidget, form_class):
@@ -33,7 +32,6 @@ class NewWindow(QDialog, QWidget, form_class):
         
         self.new_startbtn.clicked.connect(self.RunProgram)
         
-        
     def Home(self):
         self.close()
         
@@ -51,7 +49,7 @@ class NewWindow(QDialog, QWidget, form_class):
             
             global frames
             if self.new_com1.currentText() == "sheet1":
-                frames = pd.read_excel(files,skiprows=[0],sheet_name=0)
+                frames = pd.read_excel(files, skiprows = [0], sheet_name = 0)
             elif self.new_com1.currentText() == "sheet2":
                 frames = pd.read_excel(files,sheet_name=1)
                 
@@ -92,14 +90,11 @@ class NewWindow(QDialog, QWidget, form_class):
         elif self.new_com2.currentText() == "ASA":
             self.new_lineEdit2.setText("asa_score")
             
-
     def saveFileName(self):
         global text
         text = self.new_lineEdit2.text()
         self.new_lbl.setText(text)
         
-    
-    
     def RunProgram(self):
         
         engine = create_engine("mysql+mysqldb://cnuh:cnuh12345!!@127.0.0.1:3306/raw_file", encoding = 'utf-8')
@@ -279,10 +274,10 @@ class NewWindow(QDialog, QWidget, form_class):
 
                 elif "float" in str(j):
                     dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-                    
-                elif "int" in i:
-                #elif "int" in str(j):
+                
+                elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
+                
         
         if text == "anesthetic":
             for i,j in zip(frames.columns, frames.dtypes):    
@@ -472,7 +467,7 @@ class NewWindow(QDialog, QWidget, form_class):
         
         # outputdict = self.sqlcol(frames)
                 
-        frames.to_sql(name=text, con = engine, if_exists='replace',index=False, dtype=dtypedict) 
+        frames.to_sql(name=text, con = engine, if_exists = 'replace', index = False, dtype = dtypedict) 
         self.new_lbl.setText("DB에 파일이 업로드 되었습니다")
         conn.close
     
