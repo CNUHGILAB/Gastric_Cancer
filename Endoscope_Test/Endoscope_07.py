@@ -7,8 +7,7 @@ class Endoscope07(BaseETL):
         
         df = pd.DataFrame()
         
-        o_ID= [
-                "E7630B:100026291",
+        o_ID= ["E7630B:100026291",
                 "E7630B:100026293",
         ]
         

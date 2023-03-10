@@ -1,15 +1,16 @@
 import pandas as pd
 from Base_ETL import BaseETL
 
-class Endoscope02(BaseETL):
+class Endoscope23(BaseETL):
 
     def run(self):
         
         df = pd.DataFrame()
         
-        o_ID= ["E7630B:100460234",
-                "E7630B:100460240",
-                "E7630L:100460234"
+        o_ID= ["E7630B:100373460",
+                "E7630B:100026427",
+                "E7630L:100373460",
+                "E7630L:100026427"
         ]
         
         for x in o_ID:
@@ -20,11 +21,11 @@ class Endoscope02(BaseETL):
                         환자번호,
                         원무접수ID,
                         검사시행일,
-                        검사결과 AS Esophagus_Esophagitis_LA분류 
+                        검사결과 AS Stomach_Ulcer_BGU
                     FROM endoscope
                     WHERE 검사서식세부항목ID = "{0}"
                 ) a
-                WHERE Esophagus_Esophagitis_LA분류 IS NOT NULL
+                WHERE Stomach_Ulcer_BGU IS NOT NULL
             '''.format(x)
             
             data = self.df_from_sql(db_name = "gc_raw", sql = sql)
@@ -34,8 +35,8 @@ class Endoscope02(BaseETL):
         df = df.reset_index(drop = True)
         #print(df)
         
-        self.insert(df, db_name = "gc_protocol", tb_name = "endoscope_02") 
+        self.insert(df, db_name = "gc_protocol", tb_name = "endoscope_23") 
         
 if __name__ == "__main__":
-    obj = Endoscope02()
+    obj = Endoscope23()
     obj.run()
