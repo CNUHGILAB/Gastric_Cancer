@@ -10,8 +10,12 @@ import pymysql
 import sqlalchemy
 pymysql.install_as_MySQLdb()
 
-from ETL_Patient import ETLPatient
-#from ETL_Biopsy import ETLBiopsy
+from Execute_Biopsy import ExeBiopsy
+from Execute_Comorbidity import ExeComorbidity
+from Execute_Endoscope import ExeEndoscope
+from Execute_Patient import ExePatient
+from Execute_WashCytology import ExeWashCytology
+
 form_class = uic.loadUiType("Pathological_Total_Test/IndividualExecuteFile.ui")[0]
 
 class IndividualExecuteFile(QDialog, QWidget, form_class):
@@ -54,59 +58,46 @@ class IndividualExecuteFile(QDialog, QWidget, form_class):
     
     def RunProgram(self):
         
-        '''
         if text == "Biopsy":
             #exec(open("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py").read())
             #os.system("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py")
             #subprocess.run(['Pathological_Total_Test/ETL_Patient.py'], shell = True)
-            ETLBiopsy.run(self)
+            ExeBiopsy.run(self)
             
             self.winLabel.setText("Biopsy File을 실행하였습니다.")
-        '''
-        '''
-        if text == "Biopsy":
+            
+        if text == "Comorbidity":
             #exec(open("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py").read())
             #os.system("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py")
             #subprocess.run(['Pathological_Total_Test/ETL_Patient.py'], shell = True)
-            ETLBiopsy.run(self)
+            ExeComorbidity.run(self)
             
             self.winLabel.setText("Biopsy File을 실행하였습니다.")
-        '''
-        '''
-        if text == "Biopsy":
+            
+        if text == "Endoscope":
             #exec(open("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py").read())
             #os.system("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py")
             #subprocess.run(['Pathological_Total_Test/ETL_Patient.py'], shell = True)
-            ETLBiopsy.run(self)
+            ExeEndoscope.run(self)
             
             self.winLabel.setText("Biopsy File을 실행하였습니다.")
-        '''
-        '''
-        if text == "Biopsy":
-            #exec(open("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py").read())
-            #os.system("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py")
-            #subprocess.run(['Pathological_Total_Test/ETL_Patient.py'], shell = True)
-            ETLBiopsy.run(self)
             
-            self.winLabel.setText("Biopsy File을 실행하였습니다.")
-        '''
-        '''
-        if text == "Biopsy":
-            #exec(open("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py").read())
-            #os.system("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py")
-            #subprocess.run(['Pathological_Total_Test/ETL_Patient.py'], shell = True)
-            ETLBiopsy.run(self)
-            
-            self.winLabel.setText("Biopsy File을 실행하였습니다.")
-        '''
         if text == "Patient":
             #exec(open("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py").read())
             #os.system("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py")
             #subprocess.run(['Pathological_Total_Test/ETL_Patient.py'], shell = True)
-            ETLPatient.run(self)
+            ExePatient.run(self)
             
             self.winLabel.setText("Patient File을 실행하였습니다.")
-
+            
+        if text == "WashCytology":
+            #exec(open("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py").read())
+            #os.system("D:/Gastric_Cancer/Patient_Test/ETL_Patient.py")
+            #subprocess.run(['Pathological_Total_Test/ETL_Patient.py'], shell = True)
+            ExeWashCytology.run(self)
+            
+            self.winLabel.setText("Biopsy File을 실행하였습니다.")
+            
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     # app.setStyle('Fusion')
