@@ -130,7 +130,7 @@ class Endoscope_ColumnMerge(BaseETL):
                 Polypectomy,
                 Esophagealdilatationandstent,
                 결과
-            FROM endoscope98;
+            FROM endoscope_file_merge;
         '''
         
         df01 = self.df_from_sql(db_name = "gc_protocol", sql = sql01)
