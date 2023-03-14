@@ -1,0 +1,19 @@
+SELECT 
+    원무접수ID,
+    환자번호,
+    의무기록작성일,
+    진료서식ID,
+    `{0}`
+FROM(
+    SELECT 
+        DISTINCT 원무접수ID,
+        환자번호,
+        의무기록작성일,
+        진료서식ID,
+        CASE
+            WHEN 진료서식구성원소ID = '{0}'
+            THEN 의무기록내용
+        END AS `{0}`
+    FROM  operation_record
+) operation_record
+WHERE `{0}` IS NOT NULL
