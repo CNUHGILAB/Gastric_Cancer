@@ -49,7 +49,7 @@ class Genetic03(BaseETL):
         self.insert(Data_E_Cadherin, db_name = 'gc_protocol_test', tb_name = 'genetic_03')
         
         # Genetic_Step_03(E_Cadherin).sql = E_Cadherin.sql
-        f = open('Genetic_Test/E_Cadherin.sql', 'rt', encoding = 'UTF8')
+        f = open('Genetic_Test/Genetic_03(E_Cadherin).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         

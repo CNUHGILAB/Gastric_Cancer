@@ -54,7 +54,7 @@ class Genetic02(BaseETL):
         self.insert(Data_HER, db_name = 'gc_protocol_test', tb_name = 'genetic_02')
         
         # Genetic_Step_02(HER2).sql = HER2.sql
-        f = open('Genetic_Test/HER2.sql', 'rt', encoding = 'UTF8')
+        f = open('Genetic_Test/Genetic_02(HER2).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         

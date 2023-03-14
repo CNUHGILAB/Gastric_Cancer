@@ -9,7 +9,9 @@ FROM(
         원무접수ID,
         REGEXP_REPLACE(
             REPLACE(
-                REPLACE(p53, 'p53', ''), '-', '-,'
+                REPLACE(
+                    p53, 'p53', ''
+                ), '-', '-,'
             ), '[(|)|.|:|;|/|!]', ''
         ) AS p53
     FROM(
@@ -38,29 +40,29 @@ FROM(
                     WHEN(INSTR(p53, 'p53 labeling index') != 0) -- p53 Column에서 데이터 중 'p53 labeling index'의 인덱스가 0이 아니면(= 'p53 labeling index'가 있으면)
                     -- '!'를 합친 문자열과 추출된 문자열을 합침
                     THEN CONCAT(
-                            -- 추출한 값에 '!'를 합침
-                            CONCAT(
-                                -- p53 Column에서의 데이터를 인덱스 위치에서부터 글자 수(18)만큼 추출
-                                SUBSTR(
-                                    p53,
-                                    INSTR(p53, 'p53 labeling index'), -- p53 Column에서 데이터 중 'p53 labeling index'의 인덱스
-                                    LENGTH('p53 labeling index') -- 'p53 labeling index'의 글자 수 = 18
-                                ), '!'
-                            ),
+                        -- 추출한 값에 '!'를 합침
+                        CONCAT(
+                            -- p53 Column에서의 데이터를 인덱스 위치에서부터 글자 수(18)만큼 추출
+                            SUBSTR(
+                                p53,
+                                INSTR(p53, 'p53 labeling index'), -- p53 Column에서 데이터 중 'p53 labeling index'의 인덱스
+                                LENGTH('p53 labeling index') -- 'p53 labeling index'의 글자 수 = 18
+                            ), '!'
+                        ),
                         -- p53 Column에서 데이터 중 'p53 labeling index'의 인덱스와 'p53 labeling index'의 글자 수(18)와 인덱스 1을 더한 값에서부터 추출
                         SUBSTR(p53, INSTR(p53, 'p53 labeling index') + LENGTH('p53 labeling index') + 1)
                     )
                     ELSE CONCAT(
-                            -- 추출한 값에 '!'를 합침
-                            CONCAT(
-                                -- p53 Column에서의 데이터를 인덱스 위치에서부터 글자 수(3)만큼 추출
-                                SUBSTR(
-                                    p53,
-                                    INSTR(p53, 'p53'), -- p53 Column에서 데이터 중 'p53'의 인덱스
-                                    LENGTH('p53')
-                                ), '!' -- 'p53'의 글자 수 = 3
-                            ),
-                        SUBSTR(p53, INSTR(p53, 'p53') + LENGTH('p53') + 1) -- p53 Column에서 데이터 중 'p53'의 인덱스와 'p53'의 글자 수(3)와 1을 더한 값
+                        -- 추출한 값에 '!'를 합침
+                        CONCAT(
+                            -- p53 Column에서의 데이터를 인덱스 위치에서부터 글자 수(3)만큼 추출
+                            SUBSTR(
+                                p53,
+                                INSTR(p53, 'p53'), -- p53 Column에서 데이터 중 'p53'의 인덱스
+                                LENGTH('p53')
+                            ), '!' -- 'p53'의 글자 수 = 3
+                        ),
+                        SUBSTR(p53, INSTR(p53, 'p53') + LENGTH('p53') + 1) -- p53 Column에서 데이터 중 'p53'의 인덱스와 'p53'의 글자 수(3)와 1을 더한 값만큼 글자 가져오기
                     )
                 END AS p53
             FROM(

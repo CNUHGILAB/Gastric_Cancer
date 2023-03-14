@@ -47,7 +47,7 @@ class Genetic12(BaseETL):
         self.insert(Data_CK, db_name = 'gc_protocol_test', tb_name = 'genetic_12')
         
         # Path/KI_67.sql = KI_67.sql
-        f = open('Genetic_Test/CK.sql', 'rt', encoding = 'UTF8')
+        f = open('Genetic_Test/Genetic_12(CK).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         

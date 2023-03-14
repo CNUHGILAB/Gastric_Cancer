@@ -47,7 +47,7 @@ class Genetic13(BaseETL):
         self.insert(Data_Chromogranin, db_name = 'gc_protocol_test', tb_name = 'genetic_13')
         
         # Path/KI_67.sql = KI_67.sql
-        f = open('Genetic_Test/Chromogranin.sql', 'rt', encoding = 'UTF8')
+        f = open('Genetic_Test/Genetic_13(Chromogranin).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         
