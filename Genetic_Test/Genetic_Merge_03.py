@@ -1,11 +1,10 @@
 import pandas as pd
-from base_etl import BaseETL
+from Base_ETL import BaseETL
 
-class GeneticMergeStep03(BaseETL):
+class GeneticMerge03(BaseETL):
 
-    def run(
-        self,
-    ):
+    def run(self):
+        
         sql = '''
             SELECT
                 st0.원무접수ID,
@@ -17,12 +16,13 @@ class GeneticMergeStep03(BaseETL):
                 Ki_67,
                 ki_67_p
             FROM
-                genetic_merge_step_02 st0
-                left join genetic_step_06 st1 on st0.원무접수ID = st1.원무접수ID
+                genetic_merge_02 st0
+                LEFT JOIN genetic_06 st1 ON st0.원무접수ID = st1.원무접수ID
         '''
-        df = self.df_from_sql(db_name="gc_protocol", sql=sql)
-        self.insert(df, db_name="gc_protocol", tb_name="genetic_merge_step_03") 
+        
+        df = self.df_from_sql(db_name = "gc_protocol_test", sql = sql)
+        self.insert(df, db_name = "gc_protocol", tb_name = "genetic_merge_03") 
 
 if __name__ == "__main__":
-    obj = GeneticMergeStep03()
+    obj = GeneticMerge03()
     obj.run()

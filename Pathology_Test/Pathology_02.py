@@ -1,6 +1,6 @@
 from Base_ETL import BaseETL
 
-class Pathology_02(BaseETL):
+class Pathology02(BaseETL):
     
     def Run(self):
         
@@ -14,8 +14,8 @@ class Pathology_02(BaseETL):
                     REGEXP_REPLACE(
                         REPLACE(
                             TRIM(
-                                TRAILING SUBSTR(`site`, INSTR(`site`, '\n'))
-                                FROM `site`
+                                TRAILING SUBSTR(`Site`, INSTR(`Site`, '\n'))
+                                FROM `Site`
                             ), 'site:', ''
                         ), '[(|.|:|;|)]', ''
                     ), ','
@@ -37,5 +37,5 @@ class Pathology_02(BaseETL):
         self.insert(df, db_name = 'gc_protocol_test', tb_name = 'pathology_02')
         
 if __name__ == '__main__':
-    obj = Pathology_02()
+    obj = Pathology02()
     obj.Run()

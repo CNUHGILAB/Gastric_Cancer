@@ -1,6 +1,6 @@
 from Base_ETL import BaseETL
 
-class Pathology_08(BaseETL):
+class Pathology08(BaseETL):
     
     def Run(self):
         
@@ -25,5 +25,5 @@ class Pathology_08(BaseETL):
         self.insert(df, db_name = 'gc_protocol_test', tb_name = 'pathology_08')
         
 if __name__ == '__main__':
-    obj = Pathology_08()
+    obj = Pathology08()
     obj.Run()

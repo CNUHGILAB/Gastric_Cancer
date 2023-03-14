@@ -12,8 +12,8 @@ class GeneticMerge01(BaseETL):
                 E_Cadherin_1,
                 E_Cadherin_2
             FROM
-                genetic_step_03 st0
-                left join genetic_step_04 st1 on st0.원무접수ID = st1.원무접수ID
+                genetic_03 st0
+                LEFT JOIN genetic_04 st1 ON st0.원무접수ID = st1.원무접수ID
         '''
         
         df = self.df_from_sql(db_name = "gc_protocol_test", sql = sql)
