@@ -1,0 +1,22 @@
+SELECT 
+    환자번호 AS ID,
+    의무기록작성일 AS COPD_Date,
+    `의무기록 환자진료과코드` AS COPD_MD_1,
+    `의무기록 환자진료과` AS COPD_MD_2,
+    CASE
+        WHEN 진료서식구성원소ID = '{0}'
+        THEN(
+            CASE
+                WHEN (INSTR(의무기록내용,'+')) != 0
+                THEN '+'
+                WHEN (INSTR(의무기록내용,'-')) != 0
+                THEN '-'
+                WHEN (INSTR(의무기록내용,'1')) != 0
+                THEN '+'
+                WHEN 의무기록내용 IS NOT NULL
+                THEN '+'
+            END
+        )
+    END AS COPD
+FROM outpatient
+WHERE 진료서식구성원소ID = '{0}'
