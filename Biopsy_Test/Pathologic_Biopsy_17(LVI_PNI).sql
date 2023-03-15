@@ -4,11 +4,11 @@ SELECT
     환자번호,
     검사시행일,
     CASE
-            WHEN NULLIF(LVI_1, '') IS NULL
-            THEN 'No'
-            WHEN INSTR(LVI_1, 'absent') != 0
-            THEN 'No'
-            ELSE 'Yes'
+        WHEN NULLIF(LVI_1, '') IS NULL
+        THEN 'No'
+        WHEN INSTR(LVI_1, 'absent') != 0
+        THEN 'No'
+        ELSE 'Yes'
     END AS LVI,
     LVI_2,
     CASE
@@ -34,13 +34,11 @@ FROM(
             환자번호,
             검사시행일,
             REPLACE(
+                REPLACE(
                     REPLACE(
-                            REPLACE(Lymphovascular_Invasion, 'pending', 'pending,'),
-                            'present',
-                            'present,'
-                    ),
-                    'absent',
-                    'absent,'
+                        Lymphovascular_Invasion, 'pending', 'pending,'
+                    ), 'present', 'present,'
+                ), 'absent', 'absent,'
             ) AS LVI,
             Perineural_Invasion AS PNI
         FROM(
@@ -49,23 +47,19 @@ FROM(
                 환자번호,
                 검사시행일,
                 REGEXP_REPLACE(
+                    REPLACE(
                         REPLACE(
-                            REPLACE(
-                                TRIM(
-                                    TRAILING SUBSTR(
-                                        Lymphovascular_Invasion, INSTR(Lymphovascular_Invasion, '\n')
-                                    )
-                                    FROM Lymphovascular_Invasion
-                                ), 'lymphovascular invasion', ''
-                            ), 'Lymphovascular invasion', ''
-                        ), '[(|.|;|:|)]', ''
+                            TRIM(
+                                TRAILING SUBSTR(Lymphovascular_Invasion, INSTR(Lymphovascular_Invasion, '\n'))
+                                FROM Lymphovascular_Invasion
+                            ), 'lymphovascular invasion', ''
+                        ), 'Lymphovascular invasion', ''
+                    ), '[(|.|;|:|)]', ''
                 ) AS Lymphovascular_Invasion,
                 REGEXP_REPLACE(
                     REPLACE(
                         TRIM(
-                            TRAILING SUBSTR(
-                                Perineural_Invasion, INSTR(Perineural_Invasion, '\n')
-                            )
+                            TRAILING SUBSTR(Perineural_Invasion, INSTR(Perineural_Invasion, '\n'))
                             FROM Perineural_Invasion
                         ), 'perineural invasion', ''
                     ), '[(|.|;|:|)]', ''

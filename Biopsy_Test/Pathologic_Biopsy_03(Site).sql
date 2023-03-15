@@ -8,14 +8,7 @@ SELECT
             REPLACE(
                 REPLACE(
                     CONCAT(
-                        Cardia, ',',
-                        Fundus, ',',
-                        Upper_Body, ',',
-                        Mid_Body, ',',
-                        Lower_Body, ',',
-                        `BODY`, ',',
-                        Pylorus, ',',
-                        Antrum
+                        Cardia, ',', Fundus, ',', Upper_Body, ',', Mid_Body, ',', Lower_Body, ',', `Body`, ',', Pylorus, ',', Antrum
                     ), '0,', '' 
                 ), ',0', ''
             ), '0', ''
@@ -26,17 +19,9 @@ SELECT
             REPLACE(
                 REPLACE(
                     CONCAT(
-                        Anterior,
-                        ',',
-                        Posterior,
-                        ',',
-                        Greater,
-                        ',',
-                        Lesser,
-                        ',',
-                        Anastomosis_Site
-                        ), '0,', ''
-                    ), ',0', ''
+                        Anterior, ',', Posterior, ',', Greater, ',', Lesser, ',', Anastomosis_Site
+                    ), '0,', ''
+                ), ',0', ''
             ), '0', ''
         ), ''
     ) AS Tumor_Circumference,

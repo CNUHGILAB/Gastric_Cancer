@@ -16,7 +16,7 @@ class Pathologic_Biopsy01(BaseETL):
                         SUBSTRING_INDEX(검사결과, '병 리 진 단', 1), '육 안 소 견', -1) AS 육안소견,
                     SUBSTR(검사결과, INSTR(검사결과, '병 리 진 단')) AS 병리진단
                 FROM(
-                    SELECT * FROM gc_raw_test.biopsy
+                    SELECT * FROM gc_raw.biopsy
                     WHERE
                         검사코드 = 'C5502'
                         OR 검사코드 = 'C5503'
@@ -38,20 +38,20 @@ class Pathologic_Biopsy01(BaseETL):
                     INSTR(검사결과, 'Tubular adenocarcinoma, well / moderately / poorly differentiated (          ), with') = 0
                     AND NULLIF(검사결과, '') IS NOT NULL
                     AND INSTR(검사결과, 'endoscopic biopsy') = 0
-                    AND(INSTR(검사결과, 'mucosectomized tissue') = 0
-                    OR (INSTR(검사결과, 'fragment') = 0
-                    AND INSTR(검사결과, 'mucosectomized') = 0))
+                    AND (INSTR(검사결과, 'mucosectomized tissue') = 0
+                        OR (INSTR(검사결과, 'fragment') = 0
+                        AND INSTR(검사결과, 'mucosectomized') = 0)
+                    )
                 )
             ) a
-            WHERE
-                INSTR(육안소견, 'stomach') != 0 OR INSTR(병리진단, 'Stomach') != 0 
+            WHERE(INSTR(육안소견, 'stomach') != 0 OR INSTR(병리진단, 'Stomach') != 0)
         '''
         
-        df = self.df_from_sql(db_name = 'gc_raw_test', sql = sql)
-        
+        df = self.df_from_sql(db_name = 'gc_raw', sql = sql)
         #df.to_excel('D:/Gastric_Cancer/Excel_File/Biopsy_Raw.xlsx')
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'pathologic_biopsy_01') 
+        self.insert(df, db_name = 'biopsy_protocol', tb_name = 'pathologic_biopsy_01') 
+
 
 if __name__ == "__main__":
     obj = Pathologic_Biopsy01()

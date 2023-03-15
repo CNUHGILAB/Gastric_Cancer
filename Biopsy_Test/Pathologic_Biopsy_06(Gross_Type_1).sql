@@ -3,21 +3,23 @@ SELECT
     환자번호,
     검사시행일,
     CASE 
-        WHEN (LENGTH(Gross_Type) - LENGTH(REPLACE(Gross_Type, 'type', '')) / LENGTH('type') = 1)
+        WHEN (LENGTH(Gross_Type) - LENGTH(REPLACE(Gross_Type, 'type', ''))) / LENGTH('type') = 1
         THEN SUBSTRING_INDEX(Gross_Type, 'type', 1)
     END AS Gross_Type_1,
     CASE 
-        WHEN (LENGTH(Gross_Type) - LENGTH(REPLACE(Gross_Type, 'type', '')) / LENGTH('type') = 1)
+        WHEN (LENGTH(Gross_Type) - LENGTH(REPLACE(Gross_Type, 'type', ''))) / LENGTH('type') = 1
         THEN SUBSTRING_INDEX(Gross_Type, 'type', -1)
     END AS Gross_Type_Int_1,
     CASE 
-        WHEN (LENGTH(Gross_Type) - LENGTH(REPLACE(Gross_Type, 'type', '')) / LENGTH('type') = 0)
+        WHEN (LENGTH(Gross_Type) - LENGTH(REPLACE(Gross_Type, 'type', ''))) / LENGTH('type') = 0
         THEN Gross_Type
     END AS Gross_Type_O,
     SUBSTRING_INDEX(Early_Gastric_Cancer_1, 'type', 1) AS Gross_Type_2,
     REPLACE(
         SUBSTRING_INDEX(
-            SUBSTRING_INDEX(Early_Gastric_Cancer_1, '(', 1), 'type', -1
+            SUBSTRING_INDEX(
+                Early_Gastric_Cancer_1, '(', 1
+            ), 'type', -1
         ), ',', ''
     ) AS Gross_Type_Int_2
 FROM(

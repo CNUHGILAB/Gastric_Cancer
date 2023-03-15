@@ -21,17 +21,17 @@ class Pathologic_Biopsy20(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'biopsy_protocol', sql = sql)
         
-        df = df.sort_values(['환자번호','검사시행일'])
+        df = df.sort_values(['환자번호', '검사시행일'])
         
         df = df.reset_index(drop = True)
         
         df = df.drop_duplicates()
-        
         #df.to_excel('D:/Gastric_Cancer/Excel_File/Biopsy_Merge.xlsx')
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'pathologic_biopsy') 
+        self.insert(df, db_name = 'biopsy_protocol', tb_name = 'pathologic_biopsy') 
+
 
 if __name__ == "__main__":
     obj = Pathologic_Biopsy20()

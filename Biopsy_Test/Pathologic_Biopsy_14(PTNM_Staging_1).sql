@@ -124,20 +124,20 @@ FROM(
             TRAILING SUBSTR(pT_1, INSTR(pT_1, '\n'))
             FROM pT_1
         ), INSTR(pT_1, 'by'), 19
-    ) as pTNM_VER
+    ) AS pTNM_VER
     FROM(
         SELECT
             원무접수ID,
             환자번호,
             검사시행일,
-            SUBSTR(병리진단, INSTR(병리진단, 'pTNM stage')) as pT_1,
-            SUBSTR(병리진단, INSTR(병리진단, '(pT')) as pT_2,
-            SUBSTR(병리진단, INSTR(병리진단, '(pN')) as pT_3,
-            SUBSTR(병리진단, INSTR(병리진단, 'Primary Tumor (pT)')) as pT_4,
-            SUBSTR(병리진단, INSTR(병리진단, 'Lymph Nodes (pN)')) as pT_5,
-            SUBSTR(병리진단, INSTR(병리진단, 'Distant Metastasis (pM)')) as pT_6,
-            SUBSTR(병리진단, INSTR(병리진단, 'Pathologic Staging (pTNM)')) as pT_7,
-            SUBSTR(병리진단, INSTR(병리진단, 'Comment')) as `Comment`
+            SUBSTR(병리진단, INSTR(병리진단, 'pTNM stage')) AS pT_1,
+            SUBSTR(병리진단, INSTR(병리진단, '(pT')) AS pT_2,
+            SUBSTR(병리진단, INSTR(병리진단, '(pN')) AS pT_3,
+            SUBSTR(병리진단, INSTR(병리진단, 'Primary Tumor (pT)')) AS pT_4,
+            SUBSTR(병리진단, INSTR(병리진단, 'Lymph Nodes (pN)')) AS pT_5,
+            SUBSTR(병리진단, INSTR(병리진단, 'Distant Metastasis (pM)')) AS pT_6,
+            SUBSTR(병리진단, INSTR(병리진단, 'Pathologic Staging (pTNM)')) AS pT_7,
+            SUBSTR(병리진단, INSTR(병리진단, 'Comment')) AS `Comment`
         FROM pathologic_biopsy_01 
     ) biopsy
 ) biopsy

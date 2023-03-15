@@ -21,11 +21,11 @@ class Pathologic_Biopsy19(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
-        
+        df = self.df_from_sql(db_name = 'biopsy_protocol', sql = sql)
         # df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/path_Inspection_items.xlsx')
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'pathologic_biopsy_19') 
+        self.insert(df, db_name = 'biopsy_protocol', tb_name = 'pathologic_biopsy_19') 
+
 
 if __name__ == "__main__":
     obj = Pathologic_Biopsy19()

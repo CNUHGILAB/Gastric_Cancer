@@ -8,12 +8,12 @@ SELECT
     (Slash2_01 + Slash2_02 + Slash2_03 + Slash2_04 + Slash2_05 + Slash2_06 + Slash2_07 + Slash2_08 + Slash2_09 + Slash2_10 + Slash2_11 + Slash2_12 + Slash2_13) AS harvLN
 FROM(
     SELECT *, 
-    IFNULL(
-        REPLACE(
-            REGEXP_SUBSTR(
-                Lymph_Node, '[0-9]+[/]', 1, 1), '/', ''
-            ), '0'
-        ) AS Slash_01,
+        IFNULL(
+            REPLACE(
+                REGEXP_SUBSTR(
+                    Lymph_Node, '[0-9]+[/]', 1, 1), '/', ''
+                ), '0'
+            ) AS Slash_01,
         IFNULL(
             REPLACE(
                 REGEXP_SUBSTR(
@@ -193,10 +193,9 @@ FROM(
         SELECT *,
             SUBSTRING_INDEX(
                 SUBSTR(
-                    병리진단, REGEXP_INSTR(병리진단, '[(][0-9]+[/][0-9]+.'
-                )
-            ), ')', 1
-        ) AS Lymph_Node
+                    병리진단, REGEXP_INSTR(병리진단, '[(][0-9]+[/][0-9]+.')
+                ), ')', 1
+            ) AS Lymph_Node
         FROM pathologic_biopsy_01
     ) a
 ) a

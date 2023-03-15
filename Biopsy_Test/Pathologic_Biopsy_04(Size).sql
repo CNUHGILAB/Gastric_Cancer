@@ -42,7 +42,7 @@ FROM(
         환자번호,
         검사시행일,
         병리진단,
-        Size,
+        `Size`,
         REPLACE(
             REPLACE(
                 REGEXP_REPLACE(

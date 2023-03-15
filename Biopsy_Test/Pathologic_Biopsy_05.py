@@ -21,9 +21,10 @@ class Pathologic_Biopsy05(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'biopsy_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'pathologic_biopsy_05') 
+        self.insert(df, db_name = 'biopsy_protocol', tb_name = 'pathologic_biopsy_05') 
+
 
 if __name__ == "__main__":
     obj = Pathologic_Biopsy05()

@@ -75,48 +75,48 @@ SELECT
             )
             WHEN (100 - Test) <= Test
             THEN (CASE
-                WHEN INSTR(SUBSTR(Differentiation, INSTR(Differentiation, 'to')), 'poorly') != 0
-                THEN 'poorly'
-                WHEN INSTR(SUBSTR(Differentiation, INSTR(Differentiation, 'to')), 'moderately') != 0
-                THEN 'moderately'
-                WHEN INSTR(SUBSTR(Differentiation, INSTR(Differentiation, 'to')), 'well') != 0
-                THEN 'well'
+                    WHEN INSTR(SUBSTR(Differentiation, INSTR(Differentiation, 'to')), 'poorly') != 0
+                    THEN 'poorly'
+                    WHEN INSTR(SUBSTR(Differentiation, INSTR(Differentiation, 'to')), 'moderately') != 0
+                    THEN 'moderately'
+                    WHEN INSTR(SUBSTR(Differentiation, INSTR(Differentiation, 'to')), 'well') != 0
+                    THEN 'well'
                 END
             )
             END
         )
         WHEN (Diff_Num = 2 AND Differentiated IS NOT NULL)
         THEN (CASE
-            WHEN INSTR(
-                TRIM(
-                    TRAILING SUBSTR(Differentiated, INSTR(Differentiated, 'to'))
-                    FROM Differentiated
-                ), 'poorly'
-            ) != 0
-            THEN 'poorly'
-            WHEN INSTR(
-                TRIM(
-                    TRAILING SUBSTR(Differentiated,INSTR(Differentiated, 'to'))
-                    FROM Differentiated
-                ),'moderately'
-            ) != 0
-            THEN 'moderately'
-            WHEN INSTR(
-                TRIM(
-                    TRAILING SUBSTR(Differentiated, INSTR(Differentiated, 'to'))
-                    FROM Differentiated
-                ), 'well'
-            ) != 0
-            THEN 'well'
+                WHEN INSTR(
+                    TRIM(
+                        TRAILING SUBSTR(Differentiated, INSTR(Differentiated, 'to'))
+                        FROM Differentiated
+                    ), 'poorly'
+                ) != 0
+                THEN 'poorly'
+                WHEN INSTR(
+                    TRIM(
+                        TRAILING SUBSTR(Differentiated,INSTR(Differentiated, 'to'))
+                        FROM Differentiated
+                    ),'moderately'
+                ) != 0
+                THEN 'moderately'
+                WHEN INSTR(
+                    TRIM(
+                        TRAILING SUBSTR(Differentiated, INSTR(Differentiated, 'to'))
+                        FROM Differentiated
+                    ), 'well'
+                ) != 0
+                THEN 'well'
             END
         )
         ELSE (CASE
-            WHEN INSTR(Differentiation, 'poorly') != 0
-            THEN 'poorly'
-            WHEN INSTR(Differentiation, 'moderately') != 0
-            THEN 'moderately'
-            WHEN INSTR(Differentiation, 'well') != 0
-            THEN 'well'
+                WHEN INSTR(Differentiation, 'poorly') != 0
+                THEN 'poorly'
+                WHEN INSTR(Differentiation, 'moderately') != 0
+                THEN 'moderately'
+                WHEN INSTR(Differentiation, 'well') != 0
+                THEN 'well'
             END
         )
     END AS Diff_Maj,
@@ -185,19 +185,19 @@ FROM (
                 Differentiation,
                 REPLACE(
                     CASE
-                        WHEN ((CHAR_LENGTH(Early_Gastric_Cancer) - CHAR_LENGTH(REPLACE(Early_Gastric_Cancer, ')', ''))) >= 1)
+                        WHEN (CHAR_LENGTH(Early_Gastric_Cancer) - CHAR_LENGTH(REPLACE(Early_Gastric_Cancer, ')', ''))) >= 1
                         THEN (CASE
-                            WHEN ((CHAR_LENGTH(SUBSTRING_INDEX(SUBSTRING_INDEX(Early_Gastric_Cancer, ')', 1), '(', -1)) - CHAR_LENGTH(REPLACE(SUBSTRING_INDEX(SUBSTRING_INDEX(Early_Gastric_Cancer, ')', 1), '(', -1), 'Differentiated', ''))) >= 1)
-                            THEN SUBSTRING_INDEX(
-                                    SUBSTRING_INDEX(
+                                WHEN ((CHAR_LENGTH(SUBSTRING_INDEX(SUBSTRING_INDEX(Early_Gastric_Cancer, ')', 1), '(', -1)) - CHAR_LENGTH(REPLACE(SUBSTRING_INDEX(SUBSTRING_INDEX(Early_Gastric_Cancer, ')', 1), '(', -1), 'Differentiated', ''))) >= 1)
+                                THEN SUBSTRING_INDEX(
                                         SUBSTRING_INDEX(
-                                            SUBSTRING_INDEX(Early_Gastric_Cancer, ')', 1), '(', -1
-                                        ), ',', 2
-                                ), ',', -1
-                            )
+                                            SUBSTRING_INDEX(
+                                                SUBSTRING_INDEX(Early_Gastric_Cancer, ')', 1), '(', -1
+                                            ), ',', 2
+                                    ), ',', -1
+                                )
                             END
                         ) 
-                        END, 'Differentiated', ''
+                    END, 'Differentiated', ''
                 ) AS Differentiation_2,
                 REGEXP_REPLACE(Differentiation, '[^0-9%%]', '') AS Test,
                 Differentiated,

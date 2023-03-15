@@ -83,19 +83,17 @@ FROM(
             ELSE ''
         END AS Histologic_Type5,
         CASE
-            WHEN (
-                    CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))
-            ) >= 7 THEN  (
-                    SUBSTRING_INDEX(Histologic_Type, '|', 7),
-                    '|',
-                    -1
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 7
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 7
+                ), '|', -1
             )
-            WHEN (
-                    CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))
-            ) >= 6 THEN SUBSTRING_INDEX(
-                    SUBSTRING_INDEX(Histologic_Type, '|', 7),
-                    '|',
-                    -1
+            WHEN (CHAR_LENGTH(Histologic_Type) - CHAR_LENGTH(REPLACE(Histologic_Type, '|', ''))) >= 6
+            THEN SUBSTRING_INDEX(
+                SUBSTRING_INDEX(
+                    Histologic_Type, '|', 7
+                ), '|', -1
             )
             ELSE ''
         END AS Histologic_Type6,
@@ -120,7 +118,7 @@ FROM(
             환자번호,
             검사시행일,
             CASE
-                WHEN INSTR(Histologic_Type, 'with') != 0 OR INSTR(Histologic_Type, 'and') != 0 OR INSTR(Histologic_Type, 'including') != 0 OR INSTR(Histologic_Type, '+') != 0
+                WHEN (INSTR(Histologic_Type, 'with') != 0 OR INSTR(Histologic_Type, 'and') != 0 OR INSTR(Histologic_Type, 'including') != 0 OR INSTR(Histologic_Type, '+') != 0)
                 THEN REPLACE(
                     REPLACE(
                         REPLACE(

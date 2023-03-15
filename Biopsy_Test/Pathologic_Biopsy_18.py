@@ -12,8 +12,10 @@ class Pathologic_Biopsy18(BaseETL):
                 REPLACE(
                     REPLACE(
                         REPLACE(
-                            CONCAT(Dysplasia_1, ',', Dysplasia_2), '0,', ''
-                            ), ',0', ''
+                            CONCAT(
+                                Dysplasia_1, ',', Dysplasia_2
+                            ), '0,', ''
+                        ), ',0', ''
                     ), '0', ''
                 ) AS Dysplasia,
                 Adenoma,
@@ -57,9 +59,10 @@ class Pathologic_Biopsy18(BaseETL):
             ) biopsy
         '''
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'biopsy_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'pathologic_biopsy_18') 
+        self.insert(df, db_name = 'biopsy_protocol', tb_name = 'pathologic_biopsy_18') 
+
 
 if __name__ == "__main__":
     obj = Pathologic_Biopsy18()
