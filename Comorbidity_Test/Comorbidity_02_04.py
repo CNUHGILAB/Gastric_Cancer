@@ -29,11 +29,12 @@ class Comorbidity02_04(BaseETL):
                 )
         '''
         
-        df = self.df_from_sql(db_name = "gc_protocol_test", sql = sql) 
+        df = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql) 
         #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_DM_Merge.xlsx')
         #print(df)
         
-        self.insert(df, db_name = "gc_protocol_test", tb_name = "comorbidity_02_04") # tb_name = "tb_tmp_comorbidity_02_03"
+        self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_02_04") # tb_name = "tb_tmp_comorbidity_02_03"
+
 
 if __name__ == "__main__":
     obj = Comorbidity02_04()

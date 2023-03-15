@@ -5,9 +5,9 @@ class Comorbidity16(BaseETL):
 
     def run(self):
         
-        sql = "SELECT ID FROM gc_protocol_test.comorbidity_15;"
+        sql = "SELECT ID FROM comorbidity_protocol.comorbidity_15;"
         
-        df = self.df_from_sql(db_name = "gc_protocol_test", sql = sql) 
+        df = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql) 
 
         df2 = pd.DataFrame()
         
@@ -34,10 +34,10 @@ class Comorbidity16(BaseETL):
                         SELECT *,
                             COUNT(IF(CVA = '-', CVA, NULL)) AS Mdate,
                             COUNT(IF(CVA = '+', CVA, NULL)) AS Pdate
-                        FROM gc_protocol_test.comorbidity_15
+                        FROM comorbidity_protocol.comorbidity_15
                         WHERE ID = '{0}'
                     ) a, (
-                        SELECT * FROM gc_protocol_test.comorbidity_15
+                        SELECT * FROM comorbidity_protocol.comorbidity_15
                         WHERE ID = '{0}'
                     ) b
                 ) c
@@ -46,14 +46,15 @@ class Comorbidity16(BaseETL):
                 GROUP BY CVA
             '''.format(y)
             
-            data2 = self.df_from_sql(db_name = "gc_raw_test", sql = sql)
+            data2 = self.df_from_sql(db_name = "gc_raw", sql = sql)
             
             df2 = pd.concat([df2, data2], axis = 0, sort = False) 
             
         #df2.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_CVA_2.xlsx')
         
-        self.insert(df2, db_name = "gc_protocol_test", tb_name = "comorbidity_16") # tb_name = "tb_tmp_comorbidity_16"
-        
+        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_16") # tb_name = "tb_tmp_comorbidity_16"
+
+
 if __name__ == "__main__":
     obj = Comorbidity16()
     obj.run()

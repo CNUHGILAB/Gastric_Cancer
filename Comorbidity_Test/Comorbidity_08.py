@@ -7,10 +7,8 @@ class Comorbidity08(BaseETL):
         
         df = pd.DataFrame()
     
-        o_ID= [100494461,
-                100040685,
-                100037107
-        ]
+        o_ID= [100494461, 100040685, 100037107]
+        
         for x in o_ID:
             
             f = open("Comorbidity_Test/Comorbidity_08(TBC).txt", 'rt', encoding = 'UTF8')
@@ -32,14 +30,15 @@ class Comorbidity08(BaseETL):
             
             f.close()
             
-            data = self.df_from_sql(db_name = "gc_raw_test", sql = sql)
+            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
             
             df = pd.concat([df, data], axis = 0, sort = False)
             
         df = df.sort_values(['ID', 'TBC_Date'])
         #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_TBC_1.xlsx')
         
-        self.insert(df, db_name = "gc_protocol_test", tb_name = "comorbidity_08")
+        self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_08")
+
 
 if __name__ == "__main__":
     obj = Comorbidity08()

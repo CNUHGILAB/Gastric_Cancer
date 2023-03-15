@@ -27,10 +27,10 @@ from Comorbidity_16 import Comorbidity16
 from Comorbidity_17 import Comorbidity17
 from Comorbidity_18 import Comorbidity18
 
-
 class ETLComorbidity():
-    """ Data Pipeline for creating Comorbidity score
-    """
+    '''
+    Data Pipeline for creating Comorbidity
+    '''
     def run(self):
         
         Comorbidity01().run()          # 환자기본정보(ID, Op_Date)
@@ -61,6 +61,7 @@ class ETLComorbidity():
         Comorbidity16().run()          # 진료과 = 외과(GS)인 경우 외과 의무기록 내용 적용 // 아닌 경우 다수결로 CVA 여부 결정
         Comorbidity17().run()          # Merge_1
         Comorbidity18().run()          # Merge_2(Final)       
+
 
 if __name__ == "__main__":
     obj = ETLComorbidity()

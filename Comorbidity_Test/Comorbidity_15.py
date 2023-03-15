@@ -17,22 +17,19 @@ class Comorbidity15(BaseETL):
                     WHEN 진료서식구성원소ID = '100095805'
                     THEN REPLACE(의무기록내용, '1', '-')
                 END AS CVA
-            FROM gc_raw_test.outpatient
-            WHERE 진료서식구성원소ID = '100095806' OR 진료서식구성원소ID = '100095805'
+            FROM gc_raw.outpatient
+            WHERE(진료서식구성원소ID = '100095806' OR 진료서식구성원소ID = '100095805')
         '''
         
-        df = self.df_from_sql(db_name = "gc_protocol_test", sql = sql) 
+        df = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql) 
 
         df1 = pd.DataFrame()
         
-        o_ID= [100630881,
-                100739422,
-                100313500
-        ]
+        o_ID= [100630881, 100739422, 100313500]
         
         for x in o_ID:
             
-            f = open("Comorbidity_Test/CVA.txt", 'rt', encoding = 'UTF8')
+            f = open("Comorbidity_Test/Comorbidity_15(CVA).txt", 'rt', encoding = 'UTF8')
             
             sql= ''
             
@@ -51,7 +48,7 @@ class Comorbidity15(BaseETL):
             
             f.close()
             
-            data = self.df_from_sql(db_name = "gc_raw_test", sql = sql)
+            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
             
             df1 = pd.concat([df1, data], axis = 0, sort = False) 
         
@@ -60,7 +57,8 @@ class Comorbidity15(BaseETL):
         #df2.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_CVA_1.xlsx')
         #print(df2)
         
-        self.insert(df2, db_name = "gc_protocol_test", tb_name = "comorbidity_15") # tb_name = "tb_tmp_comorbidity_15"
+        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_15") # tb_name = "tb_tmp_comorbidity_15"
+
 
 if __name__ == "__main__":
     obj = Comorbidity15()

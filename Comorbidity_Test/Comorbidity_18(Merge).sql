@@ -1,6 +1,6 @@
 SELECT 
     DISTINCT st0.`ID`,
-    st0.OpDate,
+    st0.Op_Date,
     st1.DM,
     st1_1.DM_Duration,
     st2.HTN,

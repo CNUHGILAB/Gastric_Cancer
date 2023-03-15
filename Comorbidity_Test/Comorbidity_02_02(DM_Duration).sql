@@ -10,13 +10,13 @@ SELECT
                 DM_Date, '%%Y-%%m-%%d'
             ), INTERVAL DM_Duration month
         )
-        WHEN char_length(DM_Duration) <= 2
+        WHEN CHAR_LENGTH(DM_Duration) <= 2
         THEN DATE_SUB(
             STR_TO_DATE(
                 DM_Date, '%%Y-%%m-%%d'
             ), INTERVAL DM_Duration year
         )
-        WHEN char_length(DM_Duration) = 4
+        WHEN CHAR_LENGTH(DM_Duration) = 4
         THEN DM_Duration
     END AS DM_Duration
 FROM(
@@ -39,11 +39,10 @@ FROM(
             )
         ) AS DM_Duration,
         CASE
-            WHEN 진료서식구성원소ID = '{0}'
-            and INSTR(의무기록내용, 'Month') != 0
+            WHEN (진료서식구성원소ID = '{0}' AND INSTR(의무기록내용, 'Month') != 0)
             THEN 'M'
         END AS DM_Duration_2
-    FROM gc_raw_test.outpatient
+    FROM gc_raw.outpatient
     WHERE 진료서식구성원소ID = '{0}'
     ORDER BY `ID` ASC
 ) a

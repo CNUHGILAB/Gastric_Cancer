@@ -76,7 +76,8 @@ class Comorbidity04_01(BaseETL):
         df = df.reset_index(drop = True)
         #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_HTN_1.xlsx')
         
-        self.insert(df, db_name = "gc_protocol_test", tb_name = "comorbidity_04_01") #tb_name = "tb_tmp_comorbidity_04_00"
+        self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_04_01") #tb_name = "tb_tmp_comorbidity_04_00"
+
 
 if __name__ == "__main__":
     obj = Comorbidity04_01()

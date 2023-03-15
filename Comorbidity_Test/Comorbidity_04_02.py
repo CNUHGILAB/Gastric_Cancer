@@ -39,7 +39,7 @@ class Comorbidity04_02(BaseETL):
             
             f.close()
             
-            data = self.df_from_sql(db_name = "gc_raw_test", sql = sql)
+            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
             
             df = pd.concat([df, data], axis = 0, sort = False)
             
@@ -48,7 +48,8 @@ class Comorbidity04_02(BaseETL):
         df = df.reset_index(drop = True)
         #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_HTN_Duration.xlsx')
         
-        self.insert(df, db_name = "gc_protocol_test", tb_name = "comorbidity_04_02") 
+        self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_04_02") 
+
 
 if __name__ == "__main__":
     obj = Comorbidity04_02()

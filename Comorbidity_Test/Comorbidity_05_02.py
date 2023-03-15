@@ -5,9 +5,9 @@ class Comorbidity05_02(BaseETL):
 
     def run(self):
         
-        sql = "SELECT ID FROM gc_protocol_test.comorbidity_04_02;"
+        sql = "SELECT ID FROM comorbidity_protocol.comorbidity_04_02;"
         
-        df = self.df_from_sql(db_name = "gc_protocol_test", sql = sql) 
+        df = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql) 
 
         df2 = pd.DataFrame()
         
@@ -19,8 +19,8 @@ class Comorbidity05_02(BaseETL):
             #print(y)
             
             sql =''' 
-                SELECT * FROM gc_protocol_test.comorbidity_04_02
-                WHERE ID = '{0}' AND INSTR(HTN_MD_1, 'IM') != 0
+                SELECT * FROM comorbidity_protocol.comorbidity_04_02
+                WHERE(ID = '{0}' AND INSTR(HTN_MD_1, 'IM') != 0)
                 ORDER BY
                     CASE
                         WHEN HTN_MD_1 = 'IM4'
@@ -43,13 +43,13 @@ class Comorbidity05_02(BaseETL):
                 LIMIT 1
             ''' .format(y)
 
-            data2 = self.df_from_sql(db_name = "gc_protocol_test", sql = sql)
+            data2 = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql)
 
             if data2.empty == True:
                 
                 sql = '''
-                    SELECT * FROM gc_protocol_test.comorbidity_04_02
-                    WHERE ID = '{0}' AND INSTR(HTN_MD_1, 'IM') = 0
+                    SELECT * FROM comorbidity_protocol.comorbidity_04_02
+                    WHERE(ID = '{0}' AND INSTR(HTN_MD_1, 'IM') = 0)
                     ORDER BY
                         CASE
                             WHEN HTN_MD_1 = 'GS'
@@ -86,14 +86,15 @@ class Comorbidity05_02(BaseETL):
                     LIMIT 1
                 '''.format(y)
                 
-                data2 = self.df_from_sql(db_name = "gc_protocol_test", sql = sql)
+                data2 = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql)
                 
             df2 = pd.concat([df2, data2], axis = 0, sort = False)
         
         #df2.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_HTN_Duration_2.xlsx')
         #print(df2)
         
-        self.insert(df2, db_name = "gc_protocol_test", tb_name = "comorbidity_05_02") # tb_name = "tb_tmp_comorbidity_05_01"
+        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_05_02") # tb_name = "tb_tmp_comorbidity_05_01"
+
 
 if __name__ == "__main__":
     obj = Comorbidity05_02()

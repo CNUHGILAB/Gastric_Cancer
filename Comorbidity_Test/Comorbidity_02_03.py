@@ -32,14 +32,15 @@ class Comorbidity02_03(BaseETL):
             
             data = self.df_from_sql(db_name = "gc_raw_test", sql = sql)
             
-            df = pd.concat([df,data], axis = 0, sort = False)
+            df = pd.concat([df, data], axis = 0, sort = False)
             
         df = df.sort_values(['ID', 'DM_Date'])
         
         df = df.reset_index(drop = True)
         #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_DM_Medication.xlsx')
         
-        self.insert(df, db_name = "gc_protocol_test", tb_name = "comorbidity_02_03") # tb_name = "tb_tmp_comorbidity_02_02"
+        self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_02_03") # tb_name = "tb_tmp_comorbidity_02_02"
+
 
 if __name__ == "__main__":
     obj = Comorbidity02_03()
