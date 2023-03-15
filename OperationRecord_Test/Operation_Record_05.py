@@ -22,9 +22,10 @@ class OpRecord05(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = "gc_protocol", sql = sql)
+        df = self.df_from_sql(db_name = "operation_record_protocol", sql = sql)
         
-        self.insert(df, db_name = "gc_db", tb_name = "operation_record") 
+        self.insert(df, db_name = "gc_database", tb_name = "operation_record") 
+
 
 if __name__ == "__main__":
     obj = OpRecord05()

@@ -30,6 +30,3 @@ FROM(
     ) operation_record
 ) operation_record
 WHERE `{0}` IS NOT NULL
-
-
-    

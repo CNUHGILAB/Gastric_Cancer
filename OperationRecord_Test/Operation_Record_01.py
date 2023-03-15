@@ -87,7 +87,8 @@ class OpRecord01(BaseETL):
             df = pd.merge(df, data, how = 'left', on = ['원무접수ID', '의무기록작성일', '진료서식ID', '환자번호'])
             #print(df)
             
-        self.insert(df, db_name = "gc_protocol", tb_name = "operation_record_01") 
+        self.insert(df, db_name = "operation_record_protocol", tb_name = "operation_record_01") 
+
 
 if __name__ == "__main__":
     obj = OpRecord01()

@@ -7,7 +7,7 @@ class OpRecord03(BaseETL):
         
         sql = "SELECT * FROM operation_record_02;"
         
-        df = self.df_from_sql(db_name = "gc_protocol", sql = sql)
+        df = self.df_from_sql(db_name = "operation_record_protocol", sql = sql)
 
         one = [100471628, 100471631, 100471635, 100471645, 100471646, 
                 100471647, 100471648, 100471654, 100471710, 100471711,
@@ -43,7 +43,8 @@ class OpRecord03(BaseETL):
             df = pd.merge(df, data, how = 'left', on = ['원무접수ID', '의무기록작성일', '진료서식ID', '환자번호'])
             #print(df)
             
-        self.insert(df, db_name = "gc_protocol", tb_name = "operation_record_03") 
+        self.insert(df, db_name = "operation_record_protocol", tb_name = "operation_record_03") 
+
 
 if __name__ == "__main__":
     obj = OpRecord03()
