@@ -20,8 +20,10 @@ class WashCytology05(BaseETL):
             
         f.close()
 
-        df = self.df_from_sql(db_name = "gc_protocol", sql = sql) 
-        self.insert(df, db_name = "gc_db", tb_name = "washcytology")
+        df = self.df_from_sql(db_name = "wash_cytology_protocol", sql = sql) 
+        
+        self.insert(df, db_name = "gc_database", tb_name = "washcytology")
+
 
 if __name__ == "__main__":
     obj = WashCytology05()

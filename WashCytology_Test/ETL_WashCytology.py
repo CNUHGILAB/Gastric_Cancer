@@ -13,7 +13,8 @@ class ETLWashCytology():
         WashCytology03().run()    # WCStep01 + WCStep02 Merge
         WashCytology04().run()    # 원하는 단어 포함하고 있는 문장 찾아서 데이터프레임화
         WashCytology05().run()    # 원하는 형태로 변형 (최종)
-        
+
+
 if __name__ == "__main__":
     obj = ETLWashCytology()
     obj.run()

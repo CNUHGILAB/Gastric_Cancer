@@ -19,9 +19,9 @@ class WashCytology03(BaseETL):
             )
         '''
         
-        df = self.df_from_sql(db_name = "gc_protocol", sql = sql)
+        df = self.df_from_sql(db_name = "wash_cytology_protocol", sql = sql)
         #print(df)
-        self.insert(df, db_name = "gc_protocol", tb_name = "washcytology_03")
+        self.insert(df, db_name = "wash_cytology_protocol", tb_name = "washcytology_03")
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@ class WashCytology04(BaseETL):
         sql = '''
              SELECT * FROM washcytology_03;
         '''
-        df = self.df_from_sql(db_name = "gc_protocol", sql = sql)
+        df = self.df_from_sql(db_name = "wash_cytology_protocol", sql = sql)
         
         data = df['검사결과'].values.tolist()
         x = len(data)
@@ -87,7 +87,9 @@ class WashCytology04(BaseETL):
         df['SPECIMEN_ADEQUACY'] = pd.DataFrame(SPECIMEN_ADEQUACY)
         df['OTHERES'] = pd.DataFrame(OTHERES)
         #print(df)
-        self.insert(df, db_name = "gc_protocol", tb_name = "washcytology_04")
+        
+        self.insert(df, db_name = "wash_cytology_protocol", tb_name = "washcytology_04")
+
 
 if __name__ == "__main__":
     obj = WashCytology04()

@@ -14,14 +14,14 @@ class WashCytology01(BaseETL):
                 SELECT * FROM biopsy
                 WHERE(
                     검사코드 = 'C5622'
-                    or 검사코드 = 'C5625'
-                    or 검사코드 = 'CZ521'
+                    OR 검사코드 = 'C5625'
+                    OR 검사코드 = 'CZ521'
                 )
             ) a
         '''
-        df = self.df_from_sql(db_name="gc_raw", sql=sql)
+        df = self.df_from_sql(db_name = "gc_raw", sql = sql)
         print(df)
-        self.insert(df, db_name="gc_protocol", tb_name="washcytology_01")
+        self.insert(df, db_name = "wash_cytology_protocol", tb_name = "washcytology_01")
 
 
 if __name__ == "__main__":

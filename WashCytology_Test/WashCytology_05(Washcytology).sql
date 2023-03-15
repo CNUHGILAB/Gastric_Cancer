@@ -39,7 +39,8 @@ FROM(
             ELSE TRIM(Specimen_Adequacy)
         END AS Specimen_Adequacy,
         CASE
-            WHEN INSTR(`Others`, '◎ 병 리 진 단') != 0 THEN 'None'
+            WHEN INSTR(`Others`, '◎ 병 리 진 단') != 0
+            THEN 'None'
             ELSE TRIM(
                 REGEXP_REPLACE(
                     REPLACE(
