@@ -30,9 +30,11 @@ class Patient10(BaseETL) :
             ORDER BY ID, OP_Date
         '''
         
-        df = self.df_from_sql(db_name = "patient_test", sql = sql)
-        self.insert(df, db_name = "patient_test", tb_name = "patient_10") 
-    
+        df = self.df_from_sql(db_name = "patient_protocol", sql = sql)
+        
+        self.insert(df, db_name = "patient_protocol", tb_name = "patient_10") 
+
+
 if __name__ == "__main__":
     obj = Patient10()
     obj.run()

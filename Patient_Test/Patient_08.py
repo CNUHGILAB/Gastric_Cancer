@@ -12,9 +12,10 @@ class Patient08(BaseETL):
             GROUP BY 환자번호
         '''
         
-        df = self.df_from_sql(db_name = "gc_raw_test", sql=sql)
+        df = self.df_from_sql(db_name = "gc_raw", sql=sql)
         
-        self.insert(df, db_name = "patient_test", tb_name = "patient_08") 
+        self.insert(df, db_name = "patient_protocol", tb_name = "patient_08") 
+
 
 if __name__ == "__main__":
     obj = Patient08()

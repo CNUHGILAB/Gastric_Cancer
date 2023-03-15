@@ -28,9 +28,10 @@ class Patient03(BaseETL):
                 )
         '''
         
-        df = self.df_from_sql(db_name = "patient_test", sql = sql)
+        df = self.df_from_sql(db_name = "patient_protocol", sql = sql)
         
-        self.insert(df, db_name = "patient_test", tb_name = "patient_03") 
+        self.insert(df, db_name = "patient_protocol", tb_name = "patient_03") 
+
 
 if __name__ == "__main__":
     obj = Patient03()

@@ -25,9 +25,7 @@ class Patient07(BaseETL):
                     ELSE Height
                 END AS Height,
                 # BMI 반올림
-                ROUND(
-                    (Weight / ((Height * 0.01) * (Height * 0.01))), 1
-                ) AS BMI,
+                ROUND((Weight / ((Height * 0.01) * (Height * 0.01))), 1) AS BMI,
                 입원일,
                 퇴원일,
                 `주소(시,도)`,
@@ -37,16 +35,17 @@ class Patient07(BaseETL):
             FROM
                 patient_03 a
                 LEFT JOIN patient_06 b ON (a.ID = b.ID) 
-            # -- WHERE
-            #     -- Date(`Date`) BETWEEN DATE_SUB(OP_Date, INTERVAL 30 DAY) AND OP_Date
+            # WHERE
+                # Date(`Date`) BETWEEN DATE_SUB(OP_Date, INTERVAL 30 DAY) AND OP_Date
             GROUP BY a.ID, OP_Date
             ORDER BY ID, OP_Date
         '''
         
-        df = self.df_from_sql(db_name = "patient_test", sql = sql)
+        df = self.df_from_sql(db_name = "patient_protocol", sql = sql)
         
-        self.insert(df, db_name = "patient_test", tb_name = "patient_07") 
-    
+        self.insert(df, db_name = "patient_protocol", tb_name = "patient_07") 
+
+
 if __name__ == "__main__":
     obj = Patient07()
     obj.run()

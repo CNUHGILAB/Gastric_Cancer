@@ -8,15 +8,15 @@ class Patient04(BaseETL):
         df = pd.DataFrame()
         
         # 몸무게에 관련된 항목
-        O_ID = [
-            '10109:21093:210070'
-            ,'10109:21093:10002480'
-            ,'10109:21093:401'
-            ,'10109:21093:402'
-            ,'10109:21093:5444'
+        O_ID = ['10109:21093:210070',
+                '10109:21093:10002480',
+                '10109:21093:401',
+                '10109:21093:402',
+                '10109:21093:5444'
         ]
         
         for x in O_ID :
+            
             sql = '''
                 SELECT 
                     원무접수ID AS CHKID,
@@ -30,17 +30,17 @@ class Patient04(BaseETL):
                 WHERE `Ent:Atr:항목` = '{0}'
             '''.format(x)
             
-            data = self.df_from_sql(db_name = "gc_raw_test", sql = sql)
+            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
             
             df = pd.concat([df, data], axis = 0, sort = False) 
             
         df = df.sort_values(['ID', 'Date'])
         
         df = df.reset_index(drop = True)
-        
         #df.to_excel('D:/Gastric_Cancer/Excel_File/Patient_Weight.xlsx')
         
-        self.insert(df, db_name = "patient_test", tb_name = "patient_04") 
+        self.insert(df, db_name = "patient_protocol", tb_name = "patient_04") 
+
 
 if __name__ == "__main__":
     obj = Patient04()
