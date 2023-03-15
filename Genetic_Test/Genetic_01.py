@@ -12,7 +12,7 @@ class Genetic01(BaseETL):
                 TRIM(
                     TRAILING SUBSTR(병리진단, INSTR(병리진단, '검사항목'))
                     FROM 병리진단
-                    ) AS 병리진단
+                ) AS 병리진단
             FROM(
                 SELECT
                     원무접수ID,
@@ -22,7 +22,7 @@ class Genetic01(BaseETL):
                         원무접수ID,
                         SUBSTR(검사결과, INSTR(검사결과, '병 리 진 단')) AS 병리진단
                     FROM(
-                        SELECT * FROM gc_raw_test.biopsy
+                        SELECT * FROM gc_raw.biopsy
                         WHERE(
                             검사코드 = 'C5502'
                             OR 검사코드 = 'C5503'
@@ -52,10 +52,11 @@ class Genetic01(BaseETL):
             ) biopsy
         '''
         
-        df = self.df_from_sql(db_name = 'gc_raw_test', sql = sql)
+        df = self.df_from_sql(db_name = 'gc_raw', sql = sql)
         # df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/genetic_step_01.xlsx')
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'genetic_01') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_01')
+
 
 if __name__ == "__main__":
     obj = Genetic01()

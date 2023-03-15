@@ -1,7 +1,7 @@
 SELECT
     원무접수ID,
     SUBSTR(`Ki-67`, 1, INSTR(`Ki-67`, ',') - 1) AS `Ki-67`, -- Ki-67 Column에서 인덱스 1(처음)부터 ','의 인덱스에서 1을 뺀 인덱스까지 글자 가져오기
-    REPLACE(SUBSTR(`Ki-67`, INSTR(`Ki-67`, ',') + 1), ',', '') AS `Ki-67`_p -- Ki-67 Column에서 ','의 인덱스에서 1을 더한 인덱스부터 글자 가져오고 ','을 공백으로 바꿈
+    REPLACE(SUBSTR(`Ki-67`, INSTR(`Ki-67`, ',') + 1), ',', '') AS `Ki-67_p` -- Ki-67 Column에서 ','의 인덱스에서 1을 더한 인덱스부터 글자 가져오고 ','을 공백으로 바꿈
 FROM(
     SELECT
         원무접수ID,
@@ -75,7 +75,7 @@ FROM(
                                 ), '3+', '(+++,)'
                             ), '2+', '(++,)'
                         ), '1+', '(+,)'
-                    ) as `Ki-67`
+                    ) AS `Ki-67`
                 FROM genetic_05
             ) genetic
         ) genetic

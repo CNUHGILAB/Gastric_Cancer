@@ -3,8 +3,9 @@ SELECT
     -- REGEXP_REPLACE() : 정규식 패턴을 검색하여 대체 문자열로 바꿈
     REGEXP_REPLACE(
         REGEXP_REPLACE(
-            REGEXP_REPLACE(HER2, '[a-z]', '' -- 알파벳 소문자([a-z])에 해당하는 값을 공백('')으로 바꾸어 Return
-            ),'[(|)|.|:|;|/|!]', '' -- ( 또는 ) 또는 . 또는 : 또는 ; 또는 / 또는 !와 일치하면 공백('')으로 바꾸어 Return
+            REGEXP_REPLACE(
+                HER2, '[a-z]', '' -- 알파벳 소문자([a-z])에 해당하는 값을 공백('')으로 바꾸어 Return
+            ), '[(|)|.|:|;|/|!]', '' -- ( 또는 ) 또는 . 또는 : 또는 ; 또는 / 또는 !와 일치하면 공백('')으로 바꾸어 Return
         ), '[0-9]', '' -- 숫자([0-9])에 해당하는 값(0부터 9까지)을 공백('')으로 바꾸어 Return
     ) AS HER2
 FROM(
@@ -24,7 +25,7 @@ FROM(
             -- WHEN(LENGTH(HER2) - LENGTH(REPLACE(HER2, '!', ''))) / LENGTH('!') = 1 THEN SUBSTR(HER2, INSTR(HER2, '!('))
             ELSE SUBSTR(HER2, INSTR(HER2, 'B2')) -- 그렇지 않으면 HER2 Column에서 데이터 중 'B2'의 인덱스를 추출하고 데이터를 인덱스 위치에서부터 추출
         END AS HER2
-    FROM (
+    FROM(
         SELECT
             원무접수ID,
             CASE
@@ -34,7 +35,7 @@ FROM(
                 THEN REPLACE(HER2, '(', '!(') -- HER2 Column에서 '(' 데이터를 '!('로 변환
                 ELSE HER2
             END AS HER2
-        FROM (
+        FROM(
             SELECT
                 원무접수ID,
                 REPLACE(
@@ -42,15 +43,11 @@ FROM(
                         REPLACE(
                             REPLACE(
                                 REPLACE(
-                                        HER2, 'positive', '(+)' -- HER2 Column의 데이터 중 'positive'를 '(+)'로 변환
-                                    ),
-                                'negative', '(-)' -- HER2 Column의 데이터 중 'negative'를 '(-)'로 변환
-                                ),
-                            '3+', '(+++)' -- HER2 Column의 데이터 중 '3+'를 '(+++)'로 변환
-                            ),
-                        '2+', '(++)' -- HER2 Column의 데이터 중 '2+'를 '(++)'로 변환
-                        ),
-                    '1+', '(+)' -- HER2 Column의 데이터 중 '1+'를 '(+)'로 변환
+                                    HER2, 'positive', '(+)' -- HER2 Column의 데이터 중 'positive'를 '(+)'로 변환
+                                ), 'negative', '(-)' -- HER2 Column의 데이터 중 'negative'를 '(-)'로 변환
+                            ), '3+', '(+++)' -- HER2 Column의 데이터 중 '3+'를 '(+++)'로 변환
+                        ), '2+', '(++)' -- HER2 Column의 데이터 중 '2+'를 '(++)'로 변환
+                    ), '1+', '(+)' -- HER2 Column의 데이터 중 '1+'를 '(+)'로 변환
                 ) AS HER2
             FROM genetic_02
         ) genetic

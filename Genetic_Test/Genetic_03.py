@@ -9,12 +9,12 @@ class Genetic03(BaseETL):
     def run(self):
         
         sql = '''
-            SELECT * FROM gc_protocol_test.genetic_01
-            WHERE NULLIF(병리진단,'') IS NOT NULL;
+            SELECT * FROM genetic_protocol.genetic_01
+            WHERE NULLIF(병리진단, '') IS NOT NULL;
         '''
-        # "SELECT * FROM gc_protocol_test.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
+        # "SELECT * FROM genetic_protocol.genetic_01 WHERE NULLIF(병리진단, '') IS NOT NULL;"
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
 
         data = df.set_index("원무접수ID")
     
@@ -42,11 +42,11 @@ class Genetic03(BaseETL):
         print(E_Cadherin)
         
         Data_E_Cadherin = DataFrame(E_Cadherin)
-        Data_E_Cadherin.rename(columns = {0:'원무접수ID', 1:'E_Cadherin', 2:'E_Cadherin_2', 3:'E_Cadherin_3', 4:'E_Cadherin_4'}, inplace = True)
+        Data_E_Cadherin.rename(columns = {0: '원무접수ID', 1: 'E_Cadherin', 2: 'E_Cadherin_2', 3: 'E_Cadherin_3', 4: 'E_Cadherin_4'}, inplace = True)
         
         print(Data_E_Cadherin)
         
-        self.insert(Data_E_Cadherin, db_name = 'gc_protocol_test', tb_name = 'genetic_03')
+        self.insert(Data_E_Cadherin, db_name = 'genetic_protocol', tb_name = 'genetic_03')
         
         # Genetic_Step_03(E_Cadherin).sql = E_Cadherin.sql
         f = open('Genetic_Test/Genetic_03(E_Cadherin).sql', 'rt', encoding = 'UTF8')
@@ -65,9 +65,10 @@ class Genetic03(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'genetic_03') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_03') 
+
 
 if __name__ == "__main__":
     obj = Genetic03()

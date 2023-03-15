@@ -17,8 +17,9 @@ from Genetic_14 import Genetic14
 from Genetic_15 import Genetic15
 
 class ETLGenetic():
-    """ Data Pipeline for creating Genetic score
-    """
+    '''
+    Data Pipeline for creating Genetic
+    '''
     def run(self):
         Genetic01().run()                  # 병리진단
         Genetic02().run()                  # HER2
@@ -37,6 +38,7 @@ class ETLGenetic():
         Genetic13().run()                  # Chromogranin
         Genetic14().run()                  # EBV
         Genetic15().run()                  # Giemsa
+
 
 if __name__ == "__main__":
     obj = ETLGenetic()

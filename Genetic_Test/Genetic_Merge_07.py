@@ -13,11 +13,11 @@ class GeneticMerge07(BaseETL):
                 E_Cadherin_2,
                 p53,
                 p53_p,
-                Ki_67,
-                ki_67_p,
+                `Ki-67`,
+                `Ki-67_p`,
                 CD31_N_D2_40_1,
                 CD31_N_D2_40_2,
-                C_kit,
+                `C-kit`,
                 CD34,
                 PKC_Theta
             FROM
@@ -25,8 +25,10 @@ class GeneticMerge07(BaseETL):
                 LEFT JOIN genetic_10 st1 ON st0.원무접수ID = st1.원무접수ID
         '''
         
-        df = self.df_from_sql(db_name = "gc_protocol_test", sql = sql)
-        self.insert(df, db_name = "gc_protocol_test", tb_name = "genetic_merge_07") 
+        df = self.df_from_sql(db_name = "genetic_protocol", sql = sql)
+        
+        self.insert(df, db_name = "genetic_protocol", tb_name = "genetic_merge_07") 
+
 
 if __name__ == "__main__":
     obj = GeneticMerge07()

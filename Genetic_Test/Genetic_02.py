@@ -9,12 +9,12 @@ class Genetic02(BaseETL):
     def run(self):
         
         sql = '''
-            SELECT * FROM gc_protocol_test.genetic_01
-            WHERE NULLIF(병리진단,'') IS NOT NULL;
+            SELECT * FROM genetic_protocol.genetic_01
+            WHERE NULLIF(병리진단, '') IS NOT NULL;
         '''
-        # "SELECT * FROM gc_protocol_test.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
+        # "SELECT * FROM genetic_protocol.genetic_01 WHERE NULLIF(병리진단, '') IS NOT NULL;"
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         
         # Index로 삼기 원하는 Column의 이름 설정
         data = df.set_index('원무접수ID')
@@ -48,10 +48,10 @@ class Genetic02(BaseETL):
         
         Data_HER = DataFrame(HER)
         # Data_HER.rename(columns = {0 : '원무접수ID', 1 : 'HER2', 2 : 'HER2_2'}, inplace = True)
-        Data_HER.rename(columns = {0 : '원무접수ID', 1 : 'HER2', 2 : 'HER2_2'}, inplace = True)
+        Data_HER.rename(columns = {0: '원무접수ID', 1: 'HER2', 2: 'HER2_2'}, inplace = True)
         print(Data_HER)
         
-        self.insert(Data_HER, db_name = 'gc_protocol_test', tb_name = 'genetic_02')
+        self.insert(Data_HER, db_name = 'genetic_protocol', tb_name = 'genetic_02')
         
         # Genetic_Step_02(HER2).sql = HER2.sql
         f = open('Genetic_Test/Genetic_02(HER2).sql', 'rt', encoding = 'UTF8')
@@ -70,9 +70,10 @@ class Genetic02(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'genetic_02') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_02') 
+
 
 if __name__ == "__main__":
     obj = Genetic02()

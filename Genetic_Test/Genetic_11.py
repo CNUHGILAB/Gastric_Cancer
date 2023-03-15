@@ -9,12 +9,12 @@ class Genetic11(BaseETL):
     def run(self):
         
         sql = '''
-            SELECT * FROM gc_protocol_test.genetic_01
-            WHERE NULLIF(병리진단,'') IS NOT NULL;
+            SELECT * FROM genetic_protocol.genetic_01
+            WHERE NULLIF(병리진단, '') IS NOT NULL;
         '''
-        # "SELECT * FROM gc_protocol_test.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
+        # "SELECT * FROM genetic_protocol.genetic_01 WHERE NULLIF(병리진단, '') IS NOT NULL;"
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
 
         data = df.set_index("원무접수ID")
     
@@ -40,13 +40,12 @@ class Genetic11(BaseETL):
         print(SMA)
         
         Data_SMA = DataFrame(SMA)
-        Data_SMA.rename(columns = {0:'원무접수ID', 1 : 'SMA', 2:'SMA_1', 3:'SMA_2'}, inplace = True)
+        Data_SMA.rename(columns = {0: '원무접수ID', 1: 'SMA', 2: 'SMA_1', 3: 'SMA_2'}, inplace = True)
         
         print(Data_SMA)
         
-        self.insert(Data_SMA, db_name = 'gc_protocol_test', tb_name = 'genetic_11')
-        
-        # Path/KI_67.sql = KI_67.sql
+        self.insert(Data_SMA, db_name = 'genetic_protocol', tb_name = 'genetic_11')
+
         f = open('Genetic_Test/Genetic_11(SMA).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
@@ -63,9 +62,10 @@ class Genetic11(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'genetic_11') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_11') 
+
 
 if __name__ == "__main__":
     obj = Genetic11()

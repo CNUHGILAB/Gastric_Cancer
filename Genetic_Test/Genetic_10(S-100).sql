@@ -25,7 +25,7 @@ FROM(
         SELECT
             원무접수ID,
             CASE
-                WHEN INSTR(`S-100`, '&') != 0 OR INSTR(`S-100`, 'and') != 0
+                WHEN (INSTR(`S-100`, '&') != 0 OR INSTR(`S-100`, 'and') != 0)
                 THEN REPLACE(`S-100`, '(', '!(')
                 ELSE CONCAT(
                     CONCAT(
@@ -49,5 +49,4 @@ FROM(
         ) genetic
     ) genetic
 ) genetic
-WHERE
-    NULLIF(`S-100`, '') IS NOT NULL
+WHERE NULLIF(`S-100`, '') IS NOT NULL

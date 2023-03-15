@@ -17,9 +17,9 @@ FROM(
         SELECT
             원무접수ID,
             CASE
-                WHEN (((LENGTH(Giemsa) - LENGTH(REPLACE(Giemsa, '!', ''))) / LENGTH('!')) > 1)
+                WHEN ((LENGTH(Giemsa) - LENGTH(REPLACE(Giemsa, '!', ''))) / LENGTH('!')) > 1
                 THEN SUBSTR(Giemsa, INSTR(Giemsa, '!('), INSTR(Giemsa, ')') + 1)
-                WHEN (((LENGTH(Giemsa) - LENGTH(REPLACE(Giemsa, '!', ''))) / LENGTH('!')) = 1)
+                WHEN ((LENGTH(Giemsa) - LENGTH(REPLACE(Giemsa, '!', ''))) / LENGTH('!')) = 1
                 THEN SUBSTR(Giemsa, INSTR(Giemsa, '!'))
                 ELSE Giemsa
             END AS Giemsa

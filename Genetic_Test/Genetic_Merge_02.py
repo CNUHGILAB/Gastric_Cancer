@@ -18,9 +18,10 @@ class GeneticMerge02(BaseETL):
                 LEFT JOIN genetic_05 st1 ON st0.원무접수ID = st1.원무접수ID
         '''
         
-        df = self.df_from_sql(db_name = "gc_protocol_test", sql = sql)
+        df = self.df_from_sql(db_name = "genetic_protocol", sql = sql)
         
-        self.insert(df, db_name = "gc_protocol_test", tb_name = "genetic_merge_02") 
+        self.insert(df, db_name = "genetic_protocol", tb_name = "genetic_merge_02") 
+
 
 if __name__ == "__main__":
     obj = GeneticMerge02()

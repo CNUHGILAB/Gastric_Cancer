@@ -9,12 +9,12 @@ class Genetic15(BaseETL):
     def run(self):
         
         sql = '''
-            SELECT * FROM gc_protocol_test.genetic_01
-            WHERE NULLIF(병리진단,'') IS NOT NULL;
+            SELECT * FROM genetic_protocol.genetic_01
+            WHERE NULLIF(병리진단, '') IS NOT NULL;
         '''
-        # "SELECT * FROM gc_protocol_test.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
+        # "SELECT * FROM genetic_protocol.genetic_01 WHERE NULLIF(병리진단, '') IS NOT NULL;"
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
 
         data = df.set_index("원무접수ID")
     
@@ -40,13 +40,12 @@ class Genetic15(BaseETL):
         print(Giemsa)
         
         Data_Giemsa = DataFrame(Giemsa)
-        Data_Giemsa.rename(columns = {0:'원무접수ID', 1 : 'Giemsa', 2:'Giemsa_1', 3:'Giemsa_2'}, inplace = True)
+        Data_Giemsa.rename(columns = {0: '원무접수ID', 1: 'Giemsa', 2: 'Giemsa_1', 3: 'Giemsa_2'}, inplace = True)
         
         print(Data_Giemsa)
         
-        self.insert(Data_Giemsa, db_name = 'gc_protocol_test', tb_name = 'genetic_15')
-        
-        # Path/KI_67.sql = KI_67.sql
+        self.insert(Data_Giemsa, db_name = 'genetic_protocol', tb_name = 'genetic_15')
+
         f = open('Genetic_Test/Genetic_15(Giemsa).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
@@ -63,9 +62,10 @@ class Genetic15(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'genetic_15') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_15') 
+
 
 if __name__ == "__main__":
     obj = Genetic15()

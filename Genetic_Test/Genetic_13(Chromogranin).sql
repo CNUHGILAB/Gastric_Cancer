@@ -19,9 +19,9 @@ FROM(
         SELECT
             원무접수ID,
             CASE
-                WHEN (((LENGTH(Chromogranin) - LENGTH(REPLACE(Chromogranin, '!', ''))) / LENGTH('!')) > 1)
+                WHEN ((LENGTH(Chromogranin) - LENGTH(REPLACE(Chromogranin, '!', ''))) / LENGTH('!')) > 1
                 THEN SUBSTR(Chromogranin, INSTR(Chromogranin, '!('), INSTR(Chromogranin, ')') + 1)
-                WHEN (((LENGTH(Chromogranin) - LENGTH(REPLACE(Chromogranin, '!', ''))) / LENGTH('!')) = 1)
+                WHEN ((LENGTH(Chromogranin) - LENGTH(REPLACE(Chromogranin, '!', ''))) / LENGTH('!')) = 1
                 THEN SUBSTR(Chromogranin, INSTR(Chromogranin, '!'))
                 ELSE Chromogranin
             END AS Chromogranin

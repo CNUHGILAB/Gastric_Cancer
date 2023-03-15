@@ -13,22 +13,24 @@ from Genetic_Merge_12 import GeneticMerge12
 from Genetic_Merge_13 import GeneticMerge13
 
 class ETLGeneticMerge():
-    """ Data Pipeline for creating Genetic score
-    """
+    '''
+    Data Pipeline for creating Genetic Merge
+    '''
     def run(self):
-        GeneticMerge01().run()                  # 
-        GeneticMerge02().run()                  # 
-        GeneticMerge03().run()                  # 
-        GeneticMerge04().run()                  # 
-        GeneticMerge05().run()                  # 
-        GeneticMerge06().run()                  # 
-        GeneticMerge07().run()                  # 
-        GeneticMerge08().run()                  # 
-        GeneticMerge09().run()                  # 
-        GeneticMerge10().run()                  # 
-        GeneticMerge11().run()                  # 
-        GeneticMerge12().run()                  # 
-        GeneticMerge13().run()                  # 
+        GeneticMerge01().run()                  # HER2, E_Cadherin_1, E_Cadherin_2
+        GeneticMerge02().run()                  # p53, p53_p
+        GeneticMerge03().run()                  # Ki-67, Ki-67_p
+        GeneticMerge04().run()                  # CD31_N_D2_40_1, CD31_N_D2_40_2
+        GeneticMerge05().run()                  # C-kit
+        GeneticMerge06().run()                  # CD34
+        GeneticMerge07().run()                  # PKC_Theta
+        GeneticMerge08().run()                  # S-100
+        GeneticMerge09().run()                  # SMA
+        GeneticMerge10().run()                  # CK_1, CK_2
+        GeneticMerge11().run()                  # Chromogranin
+        GeneticMerge12().run()                  # EBV
+        GeneticMerge13().run()                  # Giemsa
+
 
 if __name__ == "__main__":
     obj = ETLGeneticMerge()

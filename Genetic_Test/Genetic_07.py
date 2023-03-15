@@ -9,12 +9,12 @@ class Genetic07(BaseETL):
     def run(self):
         
         sql = '''
-            SELECT * FROM gc_protocol_test.genetic_01
-            WHERE NULLIF(병리진단,'') IS NOT NULL;
+            SELECT * FROM genetic_protocol.genetic_01
+            WHERE NULLIF(병리진단, '') IS NOT NULL;
         '''
-        # "SELECT * FROM gc_protocol_test.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
+        # "SELECT * FROM genetic_protocol.genetic_01 WHERE NULLIF(병리진단, '') IS NOT NULL;"
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
 
         data = df.set_index("원무접수ID")
     
@@ -44,13 +44,12 @@ class Genetic07(BaseETL):
         print(C_KIT)
         
         Data_C_KIT = DataFrame(C_KIT)
-        Data_C_KIT.rename(columns = {0:'원무접수ID', 1 : 'C_Kit', 2:'C_Kit_1', 3:'C_Kit_2'}, inplace = True)
+        Data_C_KIT.rename(columns = {0: '원무접수ID', 1: 'C_Kit', 2: 'C_Kit_1', 3: 'C_Kit_2'}, inplace = True)
         
         print(Data_C_KIT)
         
-        self.insert(Data_C_KIT, db_name = 'gc_protocol_test', tb_name = 'genetic_07')
-        
-        # Path/C-kit.sql = C-Kit.sql
+        self.insert(Data_C_KIT, db_name = 'genetic_protocol', tb_name = 'genetic_07')
+
         f = open('Genetic_Test/Genetic_07(C-Kit).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
@@ -67,9 +66,10 @@ class Genetic07(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'genetic_07') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_07') 
+
 
 if __name__ == "__main__":
     obj = Genetic07()

@@ -9,12 +9,12 @@ class Genetic09(BaseETL):
     def run(self):
         
         sql = '''
-            SELECT * FROM gc_protocol_test.genetic_01
-            WHERE NULLIF(병리진단,'') IS NOT NULL;
+            SELECT * FROM genetic_protocol.genetic_01
+            WHERE NULLIF(병리진단, '') IS NOT NULL;
         '''
-        # "SELECT * FROM gc_protocol_test.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
+        # "SELECT * FROM genetic_protocol.genetic_01 WHERE NULLIF(병리진단, '') IS NOT NULL;"
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
 
         data = df.set_index("원무접수ID")
     
@@ -42,11 +42,11 @@ class Genetic09(BaseETL):
         print(PKC_Theta)
         
         Data_PKC_Theta = DataFrame(PKC_Theta)
-        Data_PKC_Theta.rename(columns = {0:'원무접수ID', 1 : 'PKC_Theta', 2:'PKC_Theta_1', 3 : 'PKC'}, inplace = True)
+        Data_PKC_Theta.rename(columns = {0: '원무접수ID', 1: 'PKC_Theta', 2: 'PKC_Theta_1', 3: 'PKC'}, inplace = True)
         
         print(Data_PKC_Theta)
         
-        self.insert(Data_PKC_Theta, db_name = 'gc_protocol_test', tb_name = 'genetic_09')
+        self.insert(Data_PKC_Theta, db_name = 'genetic_protocol', tb_name = 'genetic_09')
         
         # Path/KI_67.sql = KI_67.sql
         f = open('Genetic_Test/Genetic_09(PKC_Theta).sql', 'rt', encoding = 'UTF8')
@@ -65,9 +65,10 @@ class Genetic09(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'genetic_09') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_09') 
+
 
 if __name__ == "__main__":
     obj = Genetic09()

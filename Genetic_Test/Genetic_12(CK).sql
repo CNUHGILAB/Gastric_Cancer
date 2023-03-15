@@ -18,9 +18,9 @@ FROM(
         SELECT
             원무접수ID,
             CASE
-                WHEN (((LENGTH(CK) - LENGTH(REPLACE(CK, '!', ''))) / LENGTH('!')) > 1)
+                WHEN ((LENGTH(CK) - LENGTH(REPLACE(CK, '!', ''))) / LENGTH('!')) > 1
                 THEN SUBSTR(CK, INSTR(CK, '!('), INSTR(CK, ')'))
-                WHEN (((LENGTH(CK) - LENGTH(REPLACE(CK, '!', ''))) / LENGTH('!')) = 1)
+                WHEN ((LENGTH(CK) - LENGTH(REPLACE(CK, '!', ''))) / LENGTH('!')) = 1
                 THEN SUBSTR(CK, INSTR(CK, '!'))
                 ELSE CK
             END AS CK

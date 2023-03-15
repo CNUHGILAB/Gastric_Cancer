@@ -57,10 +57,7 @@ FROM(
                             ), '!'
                         ),
                         --  E_Cadherin Column에서의 데이터를 나온 값에서부터 추출
-                        SUBSTR(
-                            E_Cadherin,
-                            INSTR(E_Cadherin, 'E-Cadherin') + LENGTH('E-Cadherin') + 1 -- E_Cadherin Column에서 데이터 중 'E-Cadherin'의 인덱스와 'E-Cadherin'의 글자 수와 1을 더한 값
-                        )
+                        SUBSTR(E_Cadherin, INSTR(E_Cadherin, 'E-Cadherin') + LENGTH('E-Cadherin') + 1) -- E_Cadherin Column에서 데이터 중 'E-Cadherin'의 인덱스와 'E-Cadherin'의 글자 수와 1을 더한 값
                     )
                     WHEN (INSTR(E_Cadherin, '&') = 0 OR INSTR(E_Cadherin, 'and') = 0)
                     THEN CONCAT(
@@ -74,10 +71,7 @@ FROM(
                             ), '!'
                         ),
                         --  E_Cadherin Column에서의 데이터를 나온 값에서부터 추출
-                        SUBSTR(
-                            E_Cadherin,
-                            INSTR(E_Cadherin, 'E Cadherin') + LENGTH('E Cadherin') + 1 -- E_Cadherin Column에서 데이터 중 'E-Cadherin'의 인덱스와 'E-Cadherin(10)'의 글자 수와 1을 더한 값
-                        )
+                        SUBSTR(E_Cadherin,INSTR(E_Cadherin, 'E Cadherin') + LENGTH('E Cadherin') + 1) -- E_Cadherin Column에서 데이터 중 'E-Cadherin'의 인덱스와 'E-Cadherin(10)'의 글자 수와 1을 더한 값
                     )
                 END AS E_Cadherin
             FROM(

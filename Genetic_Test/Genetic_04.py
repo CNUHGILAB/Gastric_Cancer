@@ -9,12 +9,12 @@ class Genetic04(BaseETL):
     def run(self):
         
         sql = '''
-            SELECT * FROM gc_protocol_test.genetic_01
+            SELECT * FROM genetic_protocol.genetic_01
             WHERE NULLIF(병리진단, '') IS NOT NULL;
         '''
-        # "SELECT * FROM gc_protocol_test.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
+        # "SELECT * FROM genetic_protocol.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
 
         data = df.set_index("원무접수ID")
     
@@ -42,14 +42,14 @@ class Genetic04(BaseETL):
         print(p53)
         
         Data_p53 = DataFrame(p53)
-        Data_p53.rename(columns = {0:'원무접수ID', 1:'p53', 2:'p53_p'}, inplace = True)
+        Data_p53.rename(columns = {0: '원무접수ID', 1: 'p53', 2: 'p53_p'}, inplace = True)
         
         print(Data_p53)
         
-        self.insert(Data_p53, db_name = 'gc_protocol_test', tb_name = 'genetic_04')
+        self.insert(Data_p53, db_name = 'genetic_protocol', tb_name = 'genetic_04')
         
         # Path/p53.sql = p53.sql
-        f = open('Genetic_Test/p53.sql', 'rt', encoding = 'UTF8')
+        f = open('Genetic_Test/Genetic_04(p53).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         
@@ -65,9 +65,10 @@ class Genetic04(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'genetic_04') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_04') 
+
 
 if __name__ == "__main__":
     obj = Genetic04()

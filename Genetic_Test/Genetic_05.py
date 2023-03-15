@@ -9,12 +9,12 @@ class Genetic05(BaseETL):
     def run(self):
         
         sql = '''
-            SELECT * FROM gc_protocol_test.genetic_01
+            SELECT * FROM genetic_protocol.genetic_01
             WHERE NULLIF(병리진단,'') IS NOT NULL;
         '''
-        # "SELECT * FROM gc_protocol_test.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
+        # "SELECT * FROM genetic_protocol.genetic_01 WHERE NULLIF(병리진단,'') IS NOT NULL;"
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
 
         data = df.set_index("원무접수ID")
     
@@ -44,11 +44,11 @@ class Genetic05(BaseETL):
         print(KI_67)
         
         Data_KI_67 = DataFrame(KI_67)
-        Data_KI_67.rename(columns = {0:'원무접수ID', 1:'Ki_67', 2:'Ki_67_p'}, inplace = True)
+        Data_KI_67.rename(columns = {0: '원무접수ID', 1: 'Ki_67', 2: 'Ki_67_p'}, inplace = True)
         
         print(Data_KI_67)
         
-        self.insert(Data_KI_67, db_name = 'gc_protocol_test', tb_name = 'genetic_05')
+        self.insert(Data_KI_67, db_name = 'genetic_protocol', tb_name = 'genetic_05')
         
         # Path/KI_67.sql = KI_67.sql
         f = open('Genetic_Test/Genetic_05(Ki-67).sql', 'rt', encoding = 'UTF8')
@@ -67,9 +67,10 @@ class Genetic05(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = 'gc_protocol_test', sql = sql)
+        df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         
-        self.insert(df, db_name = 'gc_protocol_test', tb_name = 'genetic_05') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_05') 
+
 
 if __name__ == "__main__":
     obj = Genetic05()

@@ -32,16 +32,16 @@ FROM(
     SELECT
         원무접수ID,
         CASE
-            WHEN ((LENGTH(PKC_Theta) - LENGTH(REPLACE(PKC_Theta, '!', ''))) / LENGTH('!') > 1)
+            WHEN (LENGTH(PKC_Theta) - LENGTH(REPLACE(PKC_Theta, '!', ''))) / LENGTH('!') > 1
             THEN SUBSTR(PKC_Theta, INSTR(PKC_Theta, 'ta !('),INSTR(PKC_Theta, ')'))
-            WHEN ((LENGTH(PKC_Theta) - LENGTH(REPLACE(PKC_Theta, '!', ''))) / LENGTH('!') = 1)
+            WHEN (LENGTH(PKC_Theta) - LENGTH(REPLACE(PKC_Theta, '!', ''))) / LENGTH('!') = 1
             THEN SUBSTR(PKC_Theta, INSTR(PKC_Theta, '!'))
             ELSE PKC_Theta
         END AS PKC_Theta
         CASE
-            WHEN ((LENGTH(PKC) - LENGTH(REPLACE(PKC, '!', ''))) / LENGTH('!') > 1)
+            WHEN (LENGTH(PKC) - LENGTH(REPLACE(PKC, '!', ''))) / LENGTH('!') > 1
             THEN SUBSTR(PKC, INSTR(PKC, 'ta !('),INSTR(PKC, ')'))
-            WHEN ((LENGTH(PKC) - LENGTH(REPLACE(PKC, '!', ''))) / LENGTH('!') = 1)
+            WHEN (LENGTH(PKC) - LENGTH(REPLACE(PKC, '!', ''))) / LENGTH('!') = 1
             THEN SUBSTR(PKC, INSTR(PKC, '!'))
             ELSE PKC
         END AS PKC

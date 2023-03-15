@@ -17,9 +17,9 @@ FROM(
         SELECT
             원무접수ID,
             CASE
-                WHEN (((LENGTH(EBV) - LENGTH(REPLACE(EBV, '!', ''))) / LENGTH('!')) > 1)
+                WHEN ((LENGTH(EBV) - LENGTH(REPLACE(EBV, '!', ''))) / LENGTH('!')) > 1
                 THEN SUBSTR(EBV, INSTR(EBV, '!('), INSTR(EBV, ')') + 1)
-                WHEN (((LENGTH(EBV) - LENGTH(REPLACE(EBV, '!', ''))) / LENGTH('!')) = 1)
+                WHEN ((LENGTH(EBV) - LENGTH(REPLACE(EBV, '!', ''))) / LENGTH('!')) = 1
                 THEN SUBSTR(EBV, INSTR(EBV, '!'))
                 ELSE EBV
             END AS EBV

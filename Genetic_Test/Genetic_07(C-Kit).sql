@@ -25,7 +25,7 @@ FROM(
         SELECT
             원무접수ID,
             CASE
-                WHEN ((INSTR(`C-Kit`, '&') != 0) OR (INSTR(`C-Kit`, 'and') != 0))
+                WHEN (INSTR(`C-Kit`, '&') != 0 OR INSTR(`C-Kit`, 'and') != 0)
                 THEN REPLACE(`C-Kit`, '(', '!(')
                 WHEN(INSTR(`C-Kit`, 'C-Kit,') != 0)
                 THEN CONCAT(
