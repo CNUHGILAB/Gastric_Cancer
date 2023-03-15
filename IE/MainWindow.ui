@@ -31,8 +31,10 @@
       <widget class="QPushButton" name="newbtn">
        <property name="font">
         <font>
-         <family>맑은 고딕</family>
+         <family>나눔스퀘어라운드 Bold</family>
          <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -57,8 +59,10 @@
       <widget class="QPushButton" name="addbtn">
        <property name="font">
         <font>
-         <family>맑은 고딕</family>
+         <family>나눔스퀘어라운드 Bold</family>
          <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -83,8 +87,10 @@
       <widget class="QPushButton" name="downloadbtn">
        <property name="font">
         <font>
-         <family>맑은 고딕</family>
+         <family>나눔스퀘어라운드 Bold</family>
          <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -105,7 +111,7 @@
     </property>
     <property name="font">
      <font>
-      <family>맑은 고딕</family>
+      <family>나눔스퀘어라운드 ExtraBold</family>
       <pointsize>24</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -146,6 +152,11 @@
   <action name="actionEsit">
    <property name="text">
     <string>Exit</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>나눔스퀘어라운드 Regular</family>
+    </font>
    </property>
   </action>
  </widget>

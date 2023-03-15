@@ -8,6 +8,7 @@ from DownloadWindow import DownloadWindow
 form_class = uic.loadUiType("IE/MainWindow.ui")[0]
 
 class MyWindow(QMainWindow, form_class):
+    
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -19,7 +20,6 @@ class MyWindow(QMainWindow, form_class):
         self.actionEsit.setShortcut('Ctrl+Q')
         self.actionEsit.setStatusTip('Exit application')
         self.actionEsit.triggered.connect(qApp.quit)
-        
         
         self.newbtn.clicked.connect(self.buttonNew)
         self.addbtn.clicked.connect(self.buttonAdd)

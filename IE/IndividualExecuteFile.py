@@ -12,6 +12,7 @@ pymysql.install_as_MySQLdb()
 form_class = uic.loadUiType("IE/IndividualExecuteFile.ui")[0]
 
 class IndividualExecuteFile(QDialog, QWidget, form_class):
+    
     def __init__(self):
         super(IndividualExecuteFile, self).__init__()
         self.initUI()

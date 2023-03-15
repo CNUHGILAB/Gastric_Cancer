@@ -5,12 +5,12 @@ import pandas as pd
 from sqlalchemy import create_engine
 import pymysql
 import sqlalchemy
-import MySQLdb
 pymysql.install_as_MySQLdb()
 
 form_class = uic.loadUiType("IE/NewWindow.ui")[0]
 
 class NewWindow(QDialog, QWidget, form_class):
+    
     def __init__(self):
         super(NewWindow,self).__init__()
         self.initUI()
@@ -37,7 +37,7 @@ class NewWindow(QDialog, QWidget, form_class):
         
     def openFileNamesDialog(self):
 
-        files = QFileDialog.getOpenFileName(None, "Open Excel File",'.',"(*.xlsx)")[0]
+        files = QFileDialog.getOpenFileName(None, "Open Excel File", '.', "(*.xlsx)")[0]
 
         # ⓐ '.' = 현재 디렉토리 기준
         # ⓑ ".xlsx" = xlsx 파일을 기본적으로 선택할 수 있음
@@ -51,11 +51,11 @@ class NewWindow(QDialog, QWidget, form_class):
             if self.new_com1.currentText() == "sheet1":
                 frames = pd.read_excel(files, skiprows = [0], sheet_name = 0)
             elif self.new_com1.currentText() == "sheet2":
-                frames = pd.read_excel(files,sheet_name=1)
+                frames = pd.read_excel(files, sheet_name=1)
                 
             print(frames)
         
-        self.new_lbl.setText("파일을 열었습니다.\nDB 이름을 설정해 주세요")
+        self.new_lbl.setText("파일을 열었습니다\nDB 이름을 설정해 주세요")
         # self.btn1.setDisabled(True)
         
     def FileNamesSelect(self):
@@ -91,20 +91,22 @@ class NewWindow(QDialog, QWidget, form_class):
             self.new_lineEdit2.setText("asa_score")
             
     def saveFileName(self):
+        
         global text
         text = self.new_lineEdit2.text()
         self.new_lbl.setText(text)
         
     def RunProgram(self):
         
-        engine = create_engine("mysql+mysqldb://cnuh:cnuh12345!!@127.0.0.1:3306/raw_file", encoding = 'utf-8')
+        engine = create_engine("mysql+mysqldb://SC:cnuh12345!@127.0.0.1:3306/raw_file_total", encoding = 'utf-8')
         conn = engine.connect()
         self.new_lbl.setText("DB에 연결됐습니다")
         
         dtypedict = {}
         
         if text == "patient":
-            for i,j in zip(frames.columns, frames.dtypes):    
+            
+            for i,j in zip(frames.columns, frames.dtypes):
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                 
@@ -134,16 +136,16 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         if text == "diagnosis":
-            for i,j in zip(frames.columns, frames.dtypes):    
-                
+            
+            for i,j in zip(frames.columns, frames.dtypes):
                 if "첫 진단일자" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                     
@@ -160,13 +162,14 @@ class NewWindow(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
 
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
 
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
-        
+                    
         if text == "operation":
-            for i,j in zip(frames.columns, frames.dtypes):    
+            
+            for i,j in zip(frames.columns, frames.dtypes):
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                 
@@ -202,14 +205,15 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
-        
+                    
         if text == "blood_test":
+            
             for i,j in zip(frames.columns, frames.dtypes):    
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
@@ -228,14 +232,15 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
-        
+                    
         if text == "nursing_record":
+            
             for i,j in zip(frames.columns, frames.dtypes):    
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
@@ -248,14 +253,15 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
-        
+                    
         if text == "biopsy":
+            
             for i,j in zip(frames.columns, frames.dtypes):    
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
@@ -271,15 +277,15 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-                
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
-                
-        
+                    
         if text == "anesthetic":
+            
             for i,j in zip(frames.columns, frames.dtypes):    
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
@@ -295,17 +301,18 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
+        '''
+        if text == "microorganism":
         
-        # if text == "microorganism":
-        #     for i,j in zip(frames.columns, frames.dtypes):    
-        #         if "생년월일" in i:
-        #             dtypedict.update({i: sqlalchemy.types.Date()}) 
+            for i,j in zip(frames.columns, frames.dtypes):    
+                if "생년월일" in i:
+                    dtypedict.update({i: sqlalchemy.types.Date()}) 
                     
         #         elif "object" in str(j):
         #             dtypedict.update({i: sqlalchemy.types.TEXT()})
@@ -318,8 +325,9 @@ class NewWindow(QDialog, QWidget, form_class):
 
         #         elif "int" in str(j):
         #             dtypedict.update({i: sqlalchemy.types.INT()})
-        
+        '''
         if text == "image":
+            
             for i,j in zip(frames.columns, frames.dtypes):    
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
@@ -341,15 +349,15 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
                     
-        
         if text == "operation_record":
+            
             for i,j in zip(frames.columns, frames.dtypes):    
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
@@ -368,15 +376,15 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
                     
-        
         if text == "endoscope":
+            
             for i,j in zip(frames.columns, frames.dtypes):    
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
@@ -392,14 +400,13 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
-        
-        
+        '''
         # if text == "anticancer_drug":
         #     for i,j in zip(frames.columns, frames.dtypes):    
         #         if "생년월일" in i:
@@ -422,9 +429,9 @@ class NewWindow(QDialog, QWidget, form_class):
 
         #         elif "int" in str(j):
         #             dtypedict.update({i: sqlalchemy.types.INT()})
-        
-        
+        '''
         if text == "outpatient":
+            
             for i,j in zip(frames.columns, frames.dtypes):    
                 if "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
@@ -440,15 +447,15 @@ class NewWindow(QDialog, QWidget, form_class):
                                             
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
                     
-        
         if text == "asa_score":
+            
             for i,j in zip(frames.columns, frames.dtypes):    
                 if "수술일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
@@ -458,16 +465,16 @@ class NewWindow(QDialog, QWidget, form_class):
                 
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                    
                 elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
         
         # outputdict = self.sqlcol(frames)
                 
-        frames.to_sql(name=text, con = engine, if_exists = 'replace', index = False, dtype = dtypedict) 
+        frames.to_sql(name = text, con = engine, if_exists = 'replace', index = False, dtype = dtypedict) 
         self.new_lbl.setText("DB에 파일이 업로드 되었습니다")
         conn.close
     
@@ -475,12 +482,3 @@ class NewWindow(QDialog, QWidget, form_class):
         
 
     #     return dtypedict
-
-        
-        
-        
-        
-        
-        
-        
-        
