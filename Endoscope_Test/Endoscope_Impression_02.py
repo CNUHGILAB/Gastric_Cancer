@@ -114,9 +114,10 @@ class EndoscopeImpression02(BaseETL):
             FROM endoscope_impression_01
         '''
         
-        data = self.df_from_sql(db_name = "gc_protocol_test", sql = sql)
+        data = self.df_from_sql(db_name = "endoscope_protocol", sql = sql)
         
-        self.insert(data, db_name = "gc_protocol_test", tb_name = "endoscope_impression_02") 
+        self.insert(data, db_name = "endoscope_protocol", tb_name = "endoscope_impression_02") 
+
 
 if __name__ == "__main__":
     obj = EndoscopeImpression02()

@@ -19,12 +19,13 @@ class Endoscope33(BaseETL):
             ) a
             WHERE Stomach_General_Normal IS NOT NULL
         '''
-            
+        
         df = self.df_from_sql(db_name = "gc_raw", sql = sql)
         #print(df)
         
-        self.insert(df, db_name = "gc_protocol", tb_name = "endoscope_33") 
-        
+        self.insert(df, db_name = "endoscope_protocol", tb_name = "endoscope_33") 
+
+
 if __name__ == "__main__":
     obj = Endoscope33()
     obj.run()

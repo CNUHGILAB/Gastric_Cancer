@@ -13,14 +13,15 @@ class EndoscopeImpression04(BaseETL):
                     WHEN Stomach_EGC_Cancer IS NOT NULL
                     THEN REGEXP_REPLACE(Impression, "[^가-힣]", '')
                 END AS Test
-            FROM gc_protocol_test.endoscope_impression_03 
+            FROM endoscope_protocol.endoscope_impression_03 
         '''
         
-        data = self.df_from_sql(db_name = "gc_protocol_test", sql = sql)
+        data = self.df_from_sql(db_name = "endoscope_protocol", sql = sql)
         #print(data)
     
         #data.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/endoscope_egc_location.xlsx')
-        self.insert(data, db_name = "gc_protocol", tb_name = "endoscope_impression_04") 
+        self.insert(data, db_name = "endoscope_protocol", tb_name = "endoscope_impression_04") 
+
 
 if __name__ == "__main__":
     obj = EndoscopeImpression04()

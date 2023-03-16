@@ -5,9 +5,9 @@ class PreEndoscope02(BaseETL):
 
     def run(self):
         
-        sql = "SELECT * FROM endoscope01"
+        sql = "SELECT * FROM pre_endoscope_01"
         
-        data_df = self.df_from_sql(db_name = "gc_protocol", sql = sql)
+        data_df = self.df_from_sql(db_name = "endoscope_protocol", sql = sql)
         #print(data_df)
         
         data_df_list = list(data_df['검사결과'])
@@ -43,12 +43,13 @@ class PreEndoscope02(BaseETL):
         df['CHKID'] = pd.DataFrame(CHKID_list)
         df['Date'] = pd.DataFrame(date_list)
         df["검사결과"] = pd.DataFrame(data_list)
+        
         df = df.drop_duplicates()
         #print(df)
         #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/endoscope.xlsx')
         
-        self.insert(df, db_name = "gc_protocol", tb_name = "pre_endoscope_02") 
-        
+        self.insert(df, db_name = "endoscope_protocol", tb_name = "pre_endoscope_02") 
+
 
 if __name__ == "__main__":
     obj = PreEndoscope02()

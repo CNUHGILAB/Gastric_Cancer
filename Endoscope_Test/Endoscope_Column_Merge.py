@@ -133,14 +133,15 @@ class Endoscope_ColumnMerge(BaseETL):
             FROM endoscope_file_merge;
         '''
         
-        df01 = self.df_from_sql(db_name = "gc_protocol", sql = sql01)
+        df01 = self.df_from_sql(db_name = "endoscope_protocol", sql = sql01)
         df01 = df01.drop_duplicates()
         df01 = df01.sort_values(['ID', 'DATE'])
         #df01.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/내시경.xlsx')
         
-        self.insert(df01, db_name = "gc_protocol", tb_name = "endoscope_column_merge")
+        self.insert(df01, db_name = "endoscope_protocol", tb_name = "endoscope_column_merge")
         self.instr(df01, db_name = "gc_db", tb_name = "endoscope")
-        
+
+
 if __name__ == "__main__":
     obj = Endoscope_ColumnMerge()
     obj.run()

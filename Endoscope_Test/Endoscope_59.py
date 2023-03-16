@@ -30,13 +30,14 @@ class Endoscope59(BaseETL):
             
             data = self.df_from_sql(db_name = "gc_raw", sql = sql)
             df = pd.concat([df, data], axis = 0, sort = False) 
-            
+        
         df = df.sort_values(['환자번호', '검사시행일'])
         df = df.reset_index(drop = True)
         #print(df)
         
-        self.insert(df, db_name = "gc_protocol", tb_name = "endoscope_59") 
-        
+        self.insert(df, db_name = "endoscope_protocol", tb_name = "endoscope_59") 
+
+
 if __name__ == "__main__":
     obj = Endoscope59()
     obj.run()

@@ -6,9 +6,9 @@ class PreEndoscope03(BaseETL):
 
     def run(self):
         
-        sql = "SELECT * FROM endoscope02"
+        sql = "SELECT * FROM pre_endoscope_02"
         
-        data = self.df_from_sql(db_name = "gc_protocol", sql = sql)
+        data = self.df_from_sql(db_name = "endoscope_protocol", sql = sql)
         #print(data)
         data_df_list = list(data['검사결과'])
         
@@ -45,45 +45,45 @@ class PreEndoscope03(BaseETL):
                     int.append(z)
                 elif "1" == z:
                     int.append(z)
-                elif "ii" ==z:
+                elif "ii" == z:
                     int.append(z)
                 elif "2" == z:
                     int.append(z)
-                elif "ll" ==z:
+                elif "ll" == z:
                     int.append(z)
-                elif "iia" ==z:
+                elif "iia" == z:
                     int.append(z)
-                elif "lla" ==z:
+                elif "lla" == z:
                     int.append(z)
-                elif "iib" ==z:
+                elif "iib" == z:
                     int.append(z)
-                elif "llb" ==z:
+                elif "llb" == z:
                     int.append(z)
-                elif "iic" ==z:
+                elif "iic" == z:
                     int.append(z)
-                elif "llc" ==z:
+                elif "llc" == z:
                     int.append(z)
-                elif "ilc" ==z:
+                elif "ilc" == z:
                     int.append(z)
-                elif "iii" ==z:
+                elif "iii" == z:
                     int.append(z)
                 elif "3" == z:
                     int.append(z)
-                elif "lll" ==z:
+                elif "lll" == z:
                     int.append(z)  
-                elif "iv" ==z:
+                elif "iv" == z:
                     int.append(z)
                 elif "4" == z:
                     int.append(z)
-                elif "v" ==z:
+                elif "v" == z:
                     int.append(z)
                 elif "5" == z:
                     int.append(z)
                 if "egc" == z:
                     int2.append(z)
-                elif "agc" ==z:
+                elif "agc" == z:
                     int2.append(z)
-                    
+            
             data_list_2.append('+'.join(int2))
             data_list.append('+'.join(int))
             
@@ -105,7 +105,8 @@ class PreEndoscope03(BaseETL):
         #print(df)
         #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/endoscope_EGC.xlsx')
         
-        self.insert(df, db_name = "gc_protocol", tb_name = "pre_endoscope_03") 
+        self.insert(df, db_name = "endoscope_protocol", tb_name = "pre_endoscope_03") 
+
 
 if __name__ == "__main__":
     obj = PreEndoscope03()

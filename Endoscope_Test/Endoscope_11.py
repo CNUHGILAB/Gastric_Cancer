@@ -7,9 +7,7 @@ class Endoscope11(BaseETL):
         
         df = pd.DataFrame()
         
-        o_ID= ["E7630L:100373469",
-                "E7630B:100373469"
-        ]
+        o_ID= ["E7630L:100373469", "E7630B:100373469"]
         
         for x in o_ID:
             
@@ -33,8 +31,9 @@ class Endoscope11(BaseETL):
         df = df.reset_index(drop = True)
         #print(df)
         
-        self.insert(df, db_name = "gc_protocol", tb_name = "endoscope_11") 
-        
+        self.insert(df, db_name = "endoscope_protocol", tb_name = "endoscope_11") 
+
+
 if __name__ == "__main__":
     obj = Endoscope11()
     obj.run()

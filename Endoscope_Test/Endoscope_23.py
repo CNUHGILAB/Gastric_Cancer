@@ -7,11 +7,7 @@ class Endoscope23(BaseETL):
         
         df = pd.DataFrame()
         
-        o_ID= ["E7630B:100373460",
-                "E7630B:100026427",
-                "E7630L:100373460",
-                "E7630L:100026427"
-        ]
+        o_ID= ["E7630B:100373460", "E7630B:100026427", "E7630L:100373460", "E7630L:100026427"]
         
         for x in o_ID:
             
@@ -30,13 +26,14 @@ class Endoscope23(BaseETL):
             
             data = self.df_from_sql(db_name = "gc_raw", sql = sql)
             df = pd.concat([df, data], axis = 0, sort = False)
-            
+        
         df = df.sort_values(['환자번호', '검사시행일'])
         df = df.reset_index(drop = True)
         #print(df)
         
-        self.insert(df, db_name = "gc_protocol", tb_name = "endoscope_23") 
-        
+        self.insert(df, db_name = "endoscope_protocol", tb_name = "endoscope_23") 
+
+
 if __name__ == "__main__":
     obj = Endoscope23()
     obj.run()

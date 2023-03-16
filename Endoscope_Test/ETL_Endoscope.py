@@ -87,8 +87,9 @@ from Endoscope_File_Merge import Endoscope_FileMerge
 from Endoscope_Column_Merge import Endoscope_ColumnMerge
 
 class ETLEndoscope():
-    """ Data Pipeline for creating Comorbidity score
-    """
+    '''
+    Data Pipeline for creating Endoscope
+    '''
     def run(self):
         
         PreEndoscope01().run()
@@ -178,6 +179,7 @@ class ETLEndoscope():
         Endoscope84().run()                # 조직검사유무_2
         Endoscope_FileMerge().run()        # Merge
         Endoscope_ColumnMerge().run()      # Merge
+
 
 if __name__ == "__main__":
     obj = ETLEndoscope()

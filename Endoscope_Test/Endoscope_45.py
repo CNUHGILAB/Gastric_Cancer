@@ -36,8 +36,9 @@ class Endoscope45(BaseETL):
         df = df.reset_index(drop = True)
         #print(df)
         
-        self.insert(df, db_name = "gc_protocol", tb_name = "endoscope_45") 
-        
+        self.insert(df, db_name = "endoscope_protocol", tb_name = "endoscope_45") 
+
+
 if __name__ == "__main__":
     obj = Endoscope45()
     obj.run()

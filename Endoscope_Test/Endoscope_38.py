@@ -19,12 +19,13 @@ class Endoscope38(BaseETL):
             ) a
             WHERE Stomach_Varix_출혈유무 IS NOT NULL
         '''
-            
+        
         df = self.df_from_sql(db_name = "gc_raw", sql = sql)
         #print(df)
         
-        self.insert(df, db_name = "gc_protocol", tb_name = "endoscope_38") 
-        
+        self.insert(df, db_name = "endoscope_protocol", tb_name = "endoscope_38") 
+
+
 if __name__ == "__main__":
     obj = Endoscope38()
     obj.run()

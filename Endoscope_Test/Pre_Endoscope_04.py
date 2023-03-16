@@ -65,15 +65,16 @@ class PreEndoscope04(BaseETL):
                                 ), "l", 1
                             ), "i", 1
                         ) AS `int`
-                    FROM endoscope_03
+                    FROM pre_endoscope_03
                     WHERE NULLIF(Type, '') IS NOT NULL
                 ) a
             ) a
         '''
-        data = self.df_from_sql(db_name = "gc_protocol", sql = sql)
+        data = self.df_from_sql(db_name = "endoscope_protocol", sql = sql)
         # data.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/endoscope_AGC.xlsx')
         
-        self.insert(data, db_name = "gc_protocol", tb_name = "pre_endoscope_04")
+        self.insert(data, db_name = "endoscope_protocol", tb_name = "pre_endoscope_04")
+
 
 if __name__ == "__main__":
     obj = PreEndoscope04()

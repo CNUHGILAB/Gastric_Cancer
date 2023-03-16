@@ -59,13 +59,14 @@ class EndoscopeImpression03(BaseETL):
                 `r/o`,
                 Scar,
                 Remnant
-            FROM
-                endoscope_impression_step02
+            FROM endoscope_impression_02
         '''
-        data = self.df_from_sql(db_name="gc_protocol", sql=sql)
+        
+        data = self.df_from_sql(db_name = "endoscope_protocol", sql = sql)
         #data.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/endoscope.xlsx')
         
-        self.insert(data, db_name="gc_protocol", tb_name="endoscope_impression_step03") 
+        self.insert(data, db_name = "endoscope_protocol", tb_name = "endoscope_impression_03") 
+
 
 if __name__ == "__main__":
     obj = EndoscopeImpression03()
