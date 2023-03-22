@@ -122,7 +122,7 @@ class AddWindow(QDialog, QWidget, form_class):
                 frames["수술후퇴실장소코드"], frames["수술후퇴실장소"], frames["마취종류코드"], frames["마취종류"], frames["수술진단코드"], frames["수술진단명"], frames["입실일시"], frames["마취시작(간)"],
                 frames["수술시작시간"], frames["수술종료시간"], frames["마취종료(간)"], frames["퇴실시간"], frames["회복실입실일시"], frames["회복실퇴실일시"]):
                 sql  = '''
-                    INSERT INTO gc_raw.{0} (
+                    INSERT INTO raw_file_total.{0} (
                         `원무접수ID`,
                         `환자번호`,
                         `환자명`,
@@ -165,7 +165,7 @@ class AddWindow(QDialog, QWidget, form_class):
                 print(원무접수ID, 환자번호, 환자명, 성별, 생년월일, 수술일자, 수술코드, 수술명, ICD9CM코드, ICD9CM명, 수술_진료과코드, 수술_진료과, 집도의_사번, 집도의, 수석의_사번, 수석의, 수술후퇴실장소코드, 수술후퇴실장소, 마취종류코드, 마취종류, 수술진단코드, 수술진단명, 입실일시,  마취시작, 수술시작시간, 수술종료시간,마취종료, 퇴실시간, 회복실입실일시, 회복실퇴실일시)
                 
                 cursor.execute(sql %(원무접수ID, 환자번호, 환자명, 성별, 생년월일, 수술일자, 수술코드, 수술명, ICD9CM코드, ICD9CM명, 수술_진료과코드, 수술_진료과, 집도의_사번, 집도의, 수석의_사번, 수석의,수술후퇴실장소코드, 수술후퇴실장소, 마취종류코드, 마취종류, 수술진단코드, 수술진단명, 입실일시, 마취시작, 수술시작시간, 수술종료시간,마취종료, 퇴실시간, 회복실입실일시, 회복실퇴실일시))
-                
+        
         if text == "operation_record":
             
             for 원무접수ID, 환자번호, 환자명, 성별, 생년월일, 의무기록작성일, 수정기록일, 의무기록작성_진료과코드, 의무기록작성_진료과, 작성의_사번, 작성의, 의무기록_환자진료과코드, 의무기록_환자진료과, 진료서식ID, 의무기록명, 진료서식구성원소ID, 의무기록항목명, 의무기록내용_수치값, 의무기록내용, 진료서식유형코드, 의무기록구분명, 진료기록서명여부  in zip(
@@ -173,7 +173,7 @@ class AddWindow(QDialog, QWidget, form_class):
                 frames["의무기록작성 진료과"], frames["작성의 사번"], frames["작성의"], frames["의무기록 환자진료과코드"], frames["의무기록 환자진료과"], frames["진료서식ID"], frames["의무기록명"], frames["진료서식구성원소ID"],
                 frames["의무기록항목명"], frames["의무기록내용-수치값"], frames["의무기록내용"], frames["진료서식유형코드"], frames["의무기록구분명"], frames["진료기록서명여부"]):
                 sql  = '''
-                    INSERT INTO gc_raw.{0} (
+                    INSERT INTO raw_file_total.{0} (
                         `원무접수ID`,
                         `환자번호`,
                         `환자명`,
@@ -209,7 +209,7 @@ class AddWindow(QDialog, QWidget, form_class):
                 print(원무접수ID, 환자번호, 환자명, 성별, 생년월일, 의무기록작성일, 수정기록일, 의무기록작성_진료과코드, 의무기록작성_진료과, 작성의_사번, 작성의, 의무기록_환자진료과코드, 의무기록_환자진료과, 진료서식ID, 의무기록명, 진료서식구성원소ID, 의무기록항목명, 의무기록내용_수치값, 의무기록내용, 진료서식유형코드, 의무기록구분명, 진료기록서명여부)
                 
                 cursor.execute(sql %(원무접수ID, 환자번호, 환자명, 성별, 생년월일, 의무기록작성일, 수정기록일, 의무기록작성_진료과코드, 의무기록작성_진료과, 작성의_사번, 작성의, 의무기록_환자진료과코드, 의무기록_환자진료과, 진료서식ID, 의무기록명, 진료서식구성원소ID, 의무기록항목명, 의무기록내용_수치값, 의무기록내용, 진료서식유형코드, 의무기록구분명, 진료기록서명여부))
-        
+
         if text == "blood_test":
             
             for 원무접수ID, 환자번호, 환자명, 성별, 생년월일, 검사시행일, 검사코드, 검사명, 검사세부항목명, 검사서식세부항목ID, 검사결과_수치값, 검사결과_음성양성, 검사결과, 판독의사번, 판독의, 검사처방일, 검사_처방의사번, 검사_처방의, 검사유형, 검사_시행처, 처방전표분류, 응급여부, 시행여부 in zip(
@@ -217,7 +217,7 @@ class AddWindow(QDialog, QWidget, form_class):
                 frames["검사세부항목명"], frames["검사서식세부항목ID"], frames["검사결과-수치값"], frames["검사결과-음성양성"], frames["검사결과"], frames["판독의사번"], frames["판독의"], frames["검사처방일"],
                 frames["검사 처방의사번"], frames["검사 처방의"], frames["검사유형"], frames["검사 시행처"], frames["처방전표분류"], frames["응급여부"], frames["시행여부"]):
                 sql  = '''
-                    INSERT INTO gc_raw.{0} (
+                    INSERT INTO raw_file_total.{0} (
                         `원무접수ID`
                         ,`환자번호`
                         ,`환자명`
@@ -258,7 +258,7 @@ class AddWindow(QDialog, QWidget, form_class):
                 frames["원무접수ID"], frames["환자번호"] , frames["환자명"], frames["성별"] , frames["생년월일"], frames["[간호기록]간호기록부서"], frames["[간호기록]기록작성일시"],
                 frames["기록종류명"], frames["간호항목/진술문명"], frames["Entity"], frames["Attribute"], frames["Value"], frames["Ent:Atr:항목"]):
                 sql  = '''
-                    INSERT INTO gc_raw.{0} (
+                    INSERT INTO raw_file_total.{0} (
                         `원무접수ID`,
                         `환자번호`,
                         `환자명`,
@@ -285,7 +285,7 @@ class AddWindow(QDialog, QWidget, form_class):
                 print(원무접수ID, 환자번호, 환자명, 성별, 생년월일, 간호기록부서, 기록작성일시, 기록종류명, 간호항목_진술문명, Entity, Attribute, Value, Ent_Atr_항목)
                 
                 cursor.execute(sql %(원무접수ID, 환자번호, 환자명, 성별, 생년월일, 간호기록부서, 기록작성일시, 기록종류명, 간호항목_진술문명, Entity, Attribute, Value, Ent_Atr_항목))
-            
+        
         if text == "image":
             
             for 원무접수ID, 환자번호, 환자명, 성별, 생년월일, 검사시행일, 검사코드, 검사명, 검사세부항목명, 검사서식세부항목ID, 검사결과_수치값, 검사결과_음성양성, 검사결과, 판독의사번, 판독의, 검사처방일, 검사_처방의사번, 검사_처방의, 검사유형, 검사_시행처, 처방전표분류, 응급여부, 시행여부 in zip(
@@ -293,7 +293,7 @@ class AddWindow(QDialog, QWidget, form_class):
                 frames["검사세부항목명"], frames["검사서식세부항목ID"], frames["검사결과-수치값"], frames["검사결과-음성양성"], frames["검사결과"], frames["판독의사번"], frames["판독의"], frames["검사처방일"],
                 frames["검사 처방의사번"], frames["검사 처방의"], frames["검사유형"], frames["검사 시행처"], frames["처방전표분류"], frames["응급여부"], frames["시행여부"]):
                 sql  = '''
-                    INSERT INTO gc_raw.{0} (
+                    INSERT INTO raw_file_total.{0} (
                         원무접수ID,
                         `환자번호`,
                         `환자명`,
@@ -339,8 +339,8 @@ class AddWindow(QDialog, QWidget, form_class):
         
         con.commit()
         con.close
-
-        sql = "SELECT distinct * FROM gc_raw.{0}".format(text)
+        
+        sql = "SELECT DISTINCT * FROM raw_file_total.{0}".format(text)
         
         df = pd.read_sql(sql, engine)
         df.to_sql(name = text, con = engine, if_exists = 'replace', index = False) 
