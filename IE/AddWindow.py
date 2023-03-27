@@ -13,24 +13,24 @@ form_class = uic.loadUiType("IE/AddWindow.ui")[0]
 class AddWindow(QDialog, QWidget, form_class):
     
     def __init__(self):
-        super(AddWindow,self).__init__()
+        super(AddWindow, self).__init__()
         self.initUI()
         self.show()
         
     def initUI(self):
         self.setupUi(self)
-        self.homebtn.clicked.connect(self.Home)
-        self.add_btn1.clicked.connect(self.openFileNamesDialog)   
-        self.add_btn2.clicked.connect(self.FileNamesSelect) 
-        self.add_btn3.clicked.connect(self.saveFileName)
-        self.add_startbtn.clicked.connect(self.RunProgram)
+        self.add_homebtn.clicked.connect(self.Home)
+        self.add_importbtn.clicked.connect(self.openFileNamesDialog)   
+        self.add_selectbtn.clicked.connect(self.FileNamesSelect) 
+        self.add_savebtn.clicked.connect(self.saveFileName)
+        self.add_actbtn.clicked.connect(self.RunProgram)
         
     def Home(self):
         self.close()
         
     def openFileNamesDialog(self):
 
-        files = QFileDialog.getOpenFileName(None, "Open Excel File",'.',"(*.*)")[0]
+        files = QFileDialog.getOpenFileName(None, "Open Excel File", '.', "(*.*)")[0]
 
         # ⓐ '.' = 현재 디렉토리 기준
         # ⓑ ".xlsx" = xlsx 파일을 기본적으로 선택할 수 있음
@@ -38,15 +38,15 @@ class AddWindow(QDialog, QWidget, form_class):
         # ⓓ [0] = ['파일명'] 처럼 list 형태로 반환, 그것을 처리해주기 위함
         
         if files:
-            self.add_lineEdit1.setText(files)
+            self.showfiilename.setText(files)
+            
             global frames
             
-            if self.add_com1.currentText() == "sheet1":
-                frames = pd.read_excel(files,skiprows=[0],sheet_name=0)
-            elif self.add_com1.currentText() == "sheet2":
-                frames = pd.read_excel(files,sheet_name=1)
+            if self.setsheet.currentText() == "sheet1":
+                frames = pd.read_excel(files, skiprows = [0], sheet_name = 0)
+            elif self.setsheet.currentText() == "sheet2":
+                frames = pd.read_excel(files, sheet_name = 1)
                 
-            
             print(frames)
             # frames.to_csv("C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/data.csv",encoding='UTF8',index=False)
             # data = pd.read_csv("C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/data.csv", sep=",")
@@ -59,45 +59,47 @@ class AddWindow(QDialog, QWidget, form_class):
             # csvReader = csv.reader(f)
             # print(csvReader)
         
-        self.add_lbl.setText("파일을 열었습니다.\nDB 이름을 설정해 주세요")
+        self.showtext.setText("파일을 열었습니다.\nDB 이름을 설정해 주세요")
         # self.btn1.setDisabled(True)
     
     def FileNamesSelect(self):
         
-        print("comboBox index:", self.add_com2.currentText())
-        if self.add_com2.currentText() == "환자정보":
-            self.add_lineEdit2.setText("patient")
-        elif self.add_com2.currentText() == "진단":
-            self.add_lineEdit2.setText("diagnosis")
-        elif self.add_com2.currentText() == "수술":
-            self.add_lineEdit2.setText("operation")
-        elif self.add_com2.currentText() == "혈액검사":
-            self.add_lineEdit2.setText("blood_test")
-        elif self.add_com2.currentText() == "간호기록":
-            self.add_lineEdit2.setText("nursing_record")
-        elif self.add_com2.currentText() == "조직검사":
-            self.add_lineEdit2.setText("biopsy")
-        elif self.add_com2.currentText() == "마취기록":
-            self.add_lineEdit2.setText("anesthetic")
-        elif self.add_com2.currentText() == "미생물":
-            self.add_lineEdit2.setText("microorganism")
-        elif self.add_com2.currentText() == "영상검사":
-            self.add_lineEdit2.setText("image")
-        elif self.add_com2.currentText() == "수술기록지":
-            self.add_lineEdit2.setText("operation_record")
-        elif self.add_com2.currentText() == "내시경검사":
-            self.add_lineEdit2.setText("endoscope")
-        elif self.add_com2.currentText() == "항암제":
-            self.add_lineEdit2.setText("anticancer_drug")
-        elif self.add_com2.currentText() == "외래초진":
-            self.add_lineEdit2.setText("outpatient")
-        elif self.add_com2.currentText() == "ASA":
-            self.add_lineEdit2.setText("asa_score")
+        print("comboBox index:", self.setdbname.currentText())
+        if self.setdbname.currentText() == "환자정보":
+            self.showdbname.setText("patient")
+        elif self.setdbname.currentText() == "진단":
+            self.showdbname.setText("diagnosis")
+        elif self.setdbname.currentText() == "수술":
+            self.showdbname.setText("operation")
+        elif self.setdbname.currentText() == "혈액검사":
+            self.showdbname.setText("blood_test")
+        elif self.setdbname.currentText() == "간호기록":
+            self.showdbname.setText("nursing_record")
+        elif self.setdbname.currentText() == "조직검사":
+            self.showdbname.setText("biopsy")
+        elif self.setdbname.currentText() == "마취기록":
+            self.showdbname.setText("anesthetic")
+        elif self.setdbname.currentText() == "미생물":
+            self.showdbname.setText("microorganism")
+        elif self.setdbname.currentText() == "영상검사":
+            self.showdbname.setText("image")
+        elif self.setdbname.currentText() == "수술기록지":
+            self.showdbname.setText("operation_record")
+        elif self.setdbname.currentText() == "내시경검사":
+            self.showdbname.setText("endoscope")
+        elif self.setdbname.currentText() == "항암제":
+            self.showdbname.setText("anticancer_drug")
+        elif self.setdbname.currentText() == "외래초진":
+            self.showdbname.setText("outpatient")
+        elif self.setdbname.currentText() == "ASA":
+            self.showdbname.setText("asa_score")
         
     def saveFileName(self):
+        
         global text
-        text = self.add_lineEdit2.text()
-        self.add_lbl.setText(text)
+        
+        text = self.showdbname.text()
+        self.showtext.setText(text)
     
     def RunProgram(self):
         
@@ -112,7 +114,7 @@ class AddWindow(QDialog, QWidget, form_class):
         
         cursor = con.cursor()
         
-        self.add_lbl.setText("DB에 연결 되었습니다")
+        self.showtext.setText("DB에 연결 되었습니다")
         
         if text == "operation":
             
@@ -345,6 +347,6 @@ class AddWindow(QDialog, QWidget, form_class):
         df = pd.read_sql(sql, engine)
         df.to_sql(name = text, con = engine, if_exists = 'replace', index = False) 
         
-        self.add_lbl.setText("DB에 파일이 업로드 되었습니다")
+        self.showtext.setText("DB에 파일이 업로드 되었습니다")
         
         conn.close

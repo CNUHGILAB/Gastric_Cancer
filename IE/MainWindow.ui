@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>480</width>
-    <height>640</height>
+    <height>728</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>40</x>
       <y>280</y>
       <width>401</width>
-      <height>267</height>
+      <height>338</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -28,7 +28,7 @@
       <number>22</number>
      </property>
      <item>
-      <widget class="QPushButton" name="newbtn">
+      <widget class="QPushButton" name="NewFile">
        <property name="font">
         <font>
          <family>나눔스퀘어라운드 Bold</family>
@@ -38,7 +38,7 @@
         </font>
        </property>
        <property name="text">
-        <string>새로운 DB 업로드</string>
+        <string>Raw File 업로드</string>
        </property>
       </widget>
      </item>
@@ -56,7 +56,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="addbtn">
+      <widget class="QPushButton" name="AddFile">
        <property name="font">
         <font>
          <family>나눔스퀘어라운드 Bold</family>
@@ -66,7 +66,7 @@
         </font>
        </property>
        <property name="text">
-        <string>DB에 새로 추가하기</string>
+        <string>DB에 Raw File 추가하기</string>
        </property>
       </widget>
      </item>
@@ -84,7 +84,35 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="downloadbtn">
+      <widget class="QPushButton" name="ExcelFile">
+       <property name="font">
+        <font>
+         <family>나눔스퀘어라운드 Bold</family>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Excel File 업로드</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="DownFile">
        <property name="font">
         <font>
          <family>나눔스퀘어라운드 Bold</family>
@@ -139,7 +167,7 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionEsit"/>
+    <addaction name="FileVar"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -149,7 +177,7 @@
     <string>Exit\</string>
    </property>
   </action>
-  <action name="actionEsit">
+  <action name="FileVar">
    <property name="text">
     <string>Exit</string>
    </property>

@@ -19,18 +19,18 @@ class NewWindow(QDialog, QWidget, form_class):
     def initUI(self):
         self.setupUi(self)
         
-        self.homebtn.clicked.connect(self.Home)
+        self.new_homebtn.clicked.connect(self.Home)
         
-        self.new_btn1.clicked.connect(self.openFileNamesDialog)   
+        self.new_importbtn.clicked.connect(self.openFileNamesDialog)   
         # excel 파일 불러오기 버튼 클릭
         
-        self.new_btn2.clicked.connect(self.FileNamesSelect) 
+        self.new_selectbtn.clicked.connect(self.FileNamesSelect) 
         
         
-        self.new_btn3.clicked.connect(self.saveFileName)
+        self.new_savebtn.clicked.connect(self.saveFileName)
         
         
-        self.new_startbtn.clicked.connect(self.RunProgram)
+        self.new_actbtn.clicked.connect(self.RunProgram)
         
     def Home(self):
         self.close()
@@ -45,62 +45,62 @@ class NewWindow(QDialog, QWidget, form_class):
         # ⓓ [0] = ['파일명'] 처럼 list 형태로 반환, 그것을 처리해주기 위함
         
         if files:
-            self.new_lineEdit1.setText(files)
+            self.showfilename.setText(files)
             
             global frames
-            if self.new_com1.currentText() == "sheet1":
+            if self.setsheet.currentText() == "sheet1":
                 frames = pd.read_excel(files, skiprows = [0], sheet_name = 0)
-            elif self.new_com1.currentText() == "sheet2":
+            elif self.setsheet.currentText() == "sheet2":
                 frames = pd.read_excel(files, sheet_name=1)
                 
             print(frames)
         
-        self.new_lbl.setText("파일을 열었습니다\nDB 이름을 설정해 주세요")
+        self.showtext.setText("파일을 열었습니다\nDB 이름을 설정해 주세요")
         # self.btn1.setDisabled(True)
         
     def FileNamesSelect(self):
         
-        print("comboBox index:", self.new_com2.currentText())
-        if self.new_com2.currentText() == "환자정보":
-            self.new_lineEdit2.setText("patient")
-        elif self.new_com2.currentText() == "진단":
-            self.new_lineEdit2.setText("diagnosis")
-        elif self.new_com2.currentText() == "수술":
-            self.new_lineEdit2.setText("operation")
-        elif self.new_com2.currentText() == "혈액검사":
-            self.new_lineEdit2.setText("blood_test")
-        elif self.new_com2.currentText() == "간호기록":
-            self.new_lineEdit2.setText("nursing_record")
-        elif self.new_com2.currentText() == "조직검사":
-            self.new_lineEdit2.setText("biopsy")
-        elif self.new_com2.currentText() == "마취기록":
-            self.new_lineEdit2.setText("anesthetic")
-        elif self.new_com2.currentText() == "미생물":
-            self.new_lineEdit2.setText("microorganism")
-        elif self.new_com2.currentText() == "영상검사":
-            self.new_lineEdit2.setText("image")
-        elif self.new_com2.currentText() == "수술기록지":
-            self.new_lineEdit2.setText("operation_record")
-        elif self.new_com2.currentText() == "내시경검사":
-            self.new_lineEdit2.setText("endoscope")
-        elif self.new_com2.currentText() == "항암제":
-            self.new_lineEdit2.setText("anticancer_drug")
-        elif self.new_com2.currentText() == "외래초진":
-            self.new_lineEdit2.setText("outpatient")
-        elif self.new_com2.currentText() == "ASA":
-            self.new_lineEdit2.setText("asa_score")
+        print("comboBox index:", self.setdbname.currentText())
+        if self.setdbname.currentText() == "환자정보":
+            self.showdbname.setText("patient")
+        elif self.setdbname.currentText() == "진단":
+            self.showdbname.setText("diagnosis")
+        elif self.setdbname.currentText() == "수술":
+            self.showdbname.setText("operation")
+        elif self.setdbname.currentText() == "혈액검사":
+            self.showdbname.setText("blood_test")
+        elif self.setdbname.currentText() == "간호기록":
+            self.showdbname.setText("nursing_record")
+        elif self.setdbname.currentText() == "조직검사":
+            self.showdbname.setText("biopsy")
+        elif self.setdbname.currentText() == "마취기록":
+            self.showdbname.setText("anesthetic")
+        elif self.setdbname.currentText() == "미생물":
+            self.showdbname.setText("microorganism")
+        elif self.setdbname.currentText() == "영상검사":
+            self.showdbname.setText("image")
+        elif self.setdbname.currentText() == "수술기록지":
+            self.showdbname.setText("operation_record")
+        elif self.setdbname.currentText() == "내시경검사":
+            self.showdbname.setText("endoscope")
+        elif self.setdbname.currentText() == "항암제":
+            self.showdbname.setText("anticancer_drug")
+        elif self.setdbname.currentText() == "외래초진":
+            self.showdbname.setText("outpatient")
+        elif self.setdbname.currentText() == "ASA":
+            self.showdbname.setText("asa_score")
             
     def saveFileName(self):
         
         global text
-        text = self.new_lineEdit2.text()
-        self.new_lbl.setText(text)
+        text = self.showdbname.text()
+        self.showtext.setText(text)
         
     def RunProgram(self):
         
         engine = create_engine("mysql+mysqldb://SC:cnuh12345!@127.0.0.1:3306/raw_file_total", encoding = 'utf-8')
         conn = engine.connect()
-        self.new_lbl.setText("DB에 연결됐습니다")
+        self.showtext.setText("DB에 연결됐습니다")
         
         dtypedict = {}
         
@@ -475,7 +475,7 @@ class NewWindow(QDialog, QWidget, form_class):
         # outputdict = self.sqlcol(frames)
                 
         frames.to_sql(name = text, con = engine, if_exists = 'replace', index = False, dtype = dtypedict) 
-        self.new_lbl.setText("DB에 파일이 업로드 되었습니다")
+        self.showtext.setText("DB에 파일이 업로드 되었습니다")
         conn.close
     
     # def sqlcol(dfparam):    
