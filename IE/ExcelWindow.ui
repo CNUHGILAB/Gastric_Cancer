@@ -228,45 +228,6 @@
       </property>
      </widget>
     </item>
-    <item row="6" column="0">
-     <widget class="QComboBox" name="setdbname">
-      <property name="font">
-       <font>
-        <family>나눔스퀘어라운드 Regular</family>
-       </font>
-      </property>
-      <item>
-       <property name="text">
-        <string>Type1</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Type2</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Type3</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Type4</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Type5</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Type6</string>
-       </property>
-      </item>
-     </widget>
-    </item>
     <item row="8" column="0" colspan="2">
      <widget class="QLabel" name="showtext">
       <property name="font">
@@ -276,6 +237,15 @@
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLineEdit" name="setname">
+      <property name="font">
+       <font>
+        <family>나눔스퀘어라운드 Regular</family>
+       </font>
       </property>
      </widget>
     </item>
