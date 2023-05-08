@@ -7,7 +7,7 @@ import pymysql
 import sqlalchemy
 pymysql.install_as_MySQLdb()
 
-form_class = uic.loadUiType("IE/ExcelWindow.ui")[0]
+form_class = uic.loadUiType("SQLyog/ExcelWindow.ui")[0]
 
 class ExcelWindow(QDialog, QWidget, form_class):
     
@@ -24,11 +24,11 @@ class ExcelWindow(QDialog, QWidget, form_class):
         self.excel_importbtn.clicked.connect(self.openFileNamesDialog)   
         # excel 파일 불러오기 버튼 클릭
         
-        self.excel_selectbtn.clicked.connect(self.FileNamesSelect) 
+        self.setname.textChanged.connect(self.setDBName)
         
+        self.selectbtn.clicked.connect(self.returnDBName)
         
         self.excel_savebtn.clicked.connect(self.saveFileName)
-        
         
         self.excel_actbtn.clicked.connect(self.RunProgram)
         
@@ -58,68 +58,29 @@ class ExcelWindow(QDialog, QWidget, form_class):
         
         self.showtext.setText("파일을 열었습니다\nDB 이름을 설정해 주세요")
         # self.btn1.setDisabled(True)
-        
-    def FileNamesSelect(self):
-        
-        print("comboBox index:", self.setdbname.currentText())
-        if self.setdbname.currentText() == "Type1":
-            self.showdbname.setText("data_type1")
-        elif self.setdbname.currentText() == "Type2":
-            self.showdbname.setText("data_type2")
-        elif self.setdbname.currentText() == "Type3":
-            self.showdbname.setText("data_type3")
-        elif self.setdbname.currentText() == "Type4":
-            self.showdbname.setText("data_type4")
-        elif self.setdbname.currentText() == "Type5":
-            self.showdbname.setText("data_type5")
-        elif self.setdbname.currentText() == "Type6":
-            self.showdbname.setText("data_type6")
-            
-    def saveFileName(self):
-        
+    
+    #setname
+    def setDBName(self):
         global text
-        text = self.showdbname.text()
+        text = self.setname.text()
+        
+    def returnDBName(self):
+        self.showdbname.setText(text)
+    
+    #excel_savebtn
+    def saveFileName(self):
         self.showtext.setText(text)
         
     def RunProgram(self):
         
-        engine = create_engine("mysql+mysqldb://cnuh:cnuh12345!!@192.168.0.122:3306/block_mapping_protocol", encoding = 'utf-8')
+        # 192.168.0.122
+        engine = create_engine("mysql+mysqldb://cnuh:cnuh12345!!@192.168.1.12:3306/block_mapping_protocol", encoding = 'utf-8')
         conn = engine.connect()
         self.showtext.setText("DB에 연결됐습니다")
         
         dtypedict = {}
         
-        if text == "data_type1":
-            
-            for i, j in zip(frames.columns, frames.dtypes):
-                if "object" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.TEXT()})
-                                            
-                elif "datetime" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.DateTime()})
-                    
-                elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
-                    
-                elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
-        
-        if text == "data_type2":
-            
-            for i, j in zip(frames.columns, frames.dtypes):
-                if "object" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.TEXT()})
-                                            
-                elif "datetime" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.DateTime()})
-
-                elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
-
-                elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
-                    
-        if text == "data_type3":
+        if text == text:
             
             for i, j in zip(frames.columns, frames.dtypes):
                 if "object" in str(j):
@@ -134,51 +95,6 @@ class ExcelWindow(QDialog, QWidget, form_class):
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
                     
-        if text == "data_type4":
-            
-            for i, j in zip(frames.columns, frames.dtypes):    
-                if "object" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.TEXT()})
-                                            
-                elif "datetime" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.DateTime()})
-                    
-                elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
-                    
-                elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
-                    
-        if text == "data_type5":
-            
-            for i,j in zip(frames.columns, frames.dtypes):    
-                if "object" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.TEXT()})
-                                            
-                elif "datetime" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.DateTime()})
-                    
-                elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
-                    
-                elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
-                    
-        if text == "data_type6":
-            
-            for i,j in zip(frames.columns, frames.dtypes):    
-                if "object" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.TEXT()})
-                                            
-                elif "datetime" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.DateTime()})
-                    
-                elif "float" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
-                    
-                elif "int" in str(j):
-                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
-        
         # outputdict = self.sqlcol(frames)
         
         frames.to_sql(name = text, con = engine, if_exists = 'replace', index = False, dtype = dtypedict) 
