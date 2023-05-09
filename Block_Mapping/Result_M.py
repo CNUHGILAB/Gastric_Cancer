@@ -5,7 +5,7 @@ class Result_M(BaseETL):
 
     def run(self):
         
-        f = open("Result_Test/Result_M.sql", 'rt', encoding = 'UTF8')
+        f = open("Block_Mapping/Result_M.sql", 'rt', encoding = 'UTF8')
         
         sql= ''
         
@@ -21,9 +21,11 @@ class Result_M(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = "result_test", sql = sql)
+        df = self.df_from_sql(db_name = "block_mapping_protocol", sql = sql)
+        df.to_excel('D:/Gastric_Cancer_xlsx/Block_Mapping/Result_Macroscopic.xlsx')
         
-        self.insert(df, db_name = "result_test", tb_name = "result_m")
+        self.insert(df, db_name = "block_mapping_protocol", tb_name = "result_m")
+
 
 if __name__ == "__main__":
     obj = Result_M()

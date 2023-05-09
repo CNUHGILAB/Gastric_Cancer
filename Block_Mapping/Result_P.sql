@@ -12,5 +12,5 @@ FROM(
             THEN REGEXP_REPLACE(병_리_진_단, '[◎|◈]', '')
             ELSE 병_리_진_단
         END AS 병리진단
-    FROM result_all
+    FROM result_test.result_all
 ) a
