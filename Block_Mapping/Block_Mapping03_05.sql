@@ -92,38 +92,67 @@ FROM(
             FROM(
                 SELECT *,
                     CASE 
-                        WHEN REGEXP_INSTR(SUBSTR(FGE_BLOCK_A, INSTR(FGE_BLOCK_A, 'Slide key')), 'A[0-9]+') != 0
+                        WHEN REGEXP_INSTR(SUBSTR(FGE_BLOCK_A1, REGEXP_INSTR(FGE_BLOCK_A1, '(S|s)lide key')), 'A[0-9]+') != 0
                         THEN REGEXP_REPLACE(
-                            REPLACE(
-                                REPLACE(
-                                    SUBSTR(FGE_BLOCK_A, INSTR(FGE_BLOCK_A, 'Slide key')), 'Slide keys;', ' '
-                                ), 'Slide key;', ' '
+                            REGEXP_REPLACE(
+                                REGEXP_REPLACE(
+                                    SUBSTR(FGE_BLOCK_A1, REGEXP_INSTR(FGE_BLOCK_A1, '(S|s)lide key')), '(S|s)lide keys;', ' '
+                                ), '(S|s)lide key;', ' '
+                            ), ' {2,}', ' '
+                        )
+                        WHEN REGEXP_INSTR(SUBSTR(FGE_BLOCK_A1, REGEXP_INSTR(FGE_BLOCK_A1, '(P|p)araffin block key')), 'A[0-9]+') != 0
+                        THEN REGEXP_REPLACE(
+                            REGEXP_REPLACE(
+                                REGEXP_REPLACE(
+                                    SUBSTR(FGE_BLOCK_A1, REGEXP_INSTR(FGE_BLOCK_A1, '(P|p)araffin block key')), '(P|p)araffin block keys;', ' '
+                                ), '(P|p)araffin block key;', ' '
                             ), ' {2,}', ' '
                         )
                         ELSE NULL
-                    END AS RE_FGE_BLOCK_A,
+                    END AS RE_FGE_BLOCK_A1,
                     CASE 
-                        WHEN REGEXP_INSTR(SUBSTR(FD_BLOCK_A, INSTR(FD_BLOCK_A, 'Slide key')), 'A[0-9]+') != 0
-                        THEN REGEXP_REPLACE(
-                            REPLACE(
-                                REPLACE(
-                                    SUBSTR(FD_BLOCK_A, INSTR(FD_BLOCK_A, 'Slide key')), 'Slide keys;', ' '
-                                ), 'Slide key;', ' '
-                            ), ' {2,}', ' '
-                        )
-                        ELSE NULL
-                    END AS RE_FD_BLOCK_A,
+                        WHEN 
+                        THEN 
+                        ELSE 
+                    END AS 
                     CASE 
-                        WHEN REGEXP_INSTR(SUBSTR(GE_BLOCK_A, INSTR(GE_BLOCK_A, 'Slide key')), 'A[0-9]+') != 0
+                        WHEN REGEXP_INSTR(SUBSTR(FD_BLOCK_A1, REGEXP_INSTR(FD_BLOCK_A1, '(S|s)lide key')), 'A[0-9]+') != 0
                         THEN REGEXP_REPLACE(
-                            REPLACE(
-                                REPLACE(
-                                    SUBSTR(GE_BLOCK_A, INSTR(GE_BLOCK_A, 'Slide key')), 'Slide keys;', ' '
-                                ), 'Slide key;', ' '
+                            REGEXP_REPLACE(
+                                REGEXP_REPLACE(
+                                    SUBSTR(FD_BLOCK_A1, REGEXP_INSTR(FD_BLOCK_A1, '(S|s)lide key')), '(S|s)lide keys;', ' '
+                                ), '(S|s)lide key;', ' '
+                            ), ' {2,}', ' '
+                        )
+                        WHEN REGEXP_INSTR(SUBSTR(FD_BLOCK_A1, REGEXP_INSTR(FD_BLOCK_A1, '(P|p)araffin block key')), 'A[0-9]+') != 0
+                        THEN REGEXP_REPLACE(
+                            REGEXP_REPLACE(
+                                REGEXP_REPLACE(
+                                    SUBSTR(FD_BLOCK_A1, REGEXP_INSTR(FD_BLOCK_A1, '(P|p)araffin block key')), '(P|p)araffin block keys;', ' '
+                                ), '(P|p)araffin block key;', ' '
                             ), ' {2,}', ' '
                         )
                         ELSE NULL
-                    END AS RE_GE_BLOCK_A
+                    END AS RE_FD_BLOCK_A1,
+                    CASE 
+                        WHEN REGEXP_INSTR(SUBSTR(GE_BLOCK_A1, REGEXP_INSTR(GE_BLOCK_A1, '(S|s)lide key')), 'A[0-9]+') != 0
+                        THEN REGEXP_REPLACE(
+                            REGEXP_REPLACE(
+                                REGEXP_REPLACE(
+                                    SUBSTR(GE_BLOCK_A1, REGEXP_INSTR(GE_BLOCK_A1, '(S|s)lide key')), '(S|s)lide keys;', ' '
+                                ), '(S|s)lide key;', ' '
+                            ), ' {2,}', ' '
+                        )
+                        WHEN REGEXP_INSTR(SUBSTR(GE_BLOCK_A1, REGEXP_INSTR(GE_BLOCK_A1, '(P|p)araffin block key')), 'A[0-9]+') != 0
+                        THEN REGEXP_REPLACE(
+                            REGEXP_REPLACE(
+                                REGEXP_REPLACE(
+                                    SUBSTR(GE_BLOCK_A1, REGEXP_INSTR(GE_BLOCK_A1, '(P|p)araffin block key')), '(P|p)araffin block keys;', ' '
+                                ), '(P|p)araffin block key;', ' '
+                            ), ' {2,}', ' '
+                        )
+                        ELSE NULL
+                    END AS RE_GE_BLOCK_A1
                 FROM(
                     SELECT *,
                         CASE 
