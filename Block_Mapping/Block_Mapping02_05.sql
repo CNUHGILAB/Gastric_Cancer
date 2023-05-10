@@ -60,17 +60,27 @@ FROM(
                                                                                 REPLACE(
                                                                                     REPLACE(
                                                                                         REPLACE(
-                                                                                            VALUE_FROZEN, 'Froze', 'FROZEN'
-                                                                                        ), 'examinaton', 'examination'
-                                                                                    ), 'examinatio', 'examination'
-                                                                                ), 'examaination', 'examination'
-                                                                            ), 'examinationn', 'examination'
-                                                                        ), 'FROZENn', 'FROZEN'
-                                                                    ), 'FROZEN Gross', 'FROZEN GROSS EXAMINATION'
-                                                                ), 'FROZEN gross', 'FROZEN GROSS EXAMINATION'
-                                                            ), 'FROZEN GROSS EXAMINATION examination', 'FROZEN GROSS EXAMINATION'
-                                                        ), 'FROZEN diagnosis', 'FROZEN DIAGNOSIS'
-                                                    ), 'FROZEN Diagnosis', 'FROZEN DIAGNOSIS'
+                                                                                            REPLACE(
+                                                                                                REPLACE(
+                                                                                                    REPLACE(
+                                                                                                        REPLACE(
+                                                                                                            REPLACE(
+                                                                                                                VALUE_FROZEN, 'Froze', 'FROZEN'
+                                                                                                            ), 'examinaton', 'examination'
+                                                                                                        ), 'examinatio', 'examination'
+                                                                                                    ), 'examaination', 'examination'
+                                                                                                ), 'examinationn', 'examination'
+                                                                                            ), 'FROZENn', 'FROZEN'
+                                                                                        ), 'FROZEN Gross', 'FROZEN GROSS EXAMINATION'
+                                                                                    ), 'FROZEN gross', 'FROZEN GROSS EXAMINATION'
+                                                                                ), 'FROZEN GROSS EXAMINATION examination', 'FROZEN Gross Examination'
+                                                                            ), 'FROZEN GROSS EXAMINATION', 'FROZEN Gross Examination'
+                                                                        ), 'Frozen', 'FROZEN'
+                                                                    ), 'Forzen', 'FROZEN'
+                                                                ), 'diagnosis', 'DIAGNOSIS'
+                                                            ), 'disagnosis', 'DIAGNOSIS'
+                                                        ), 'daignosis', 'DIAGNOSIS'
+                                                    ), 'Diagnosis', 'DIAGNOSIS'
                                                 ), 'Gross examination', 'GROSS EXAMINATION'
                                             ), ';;', ';'
                                         )

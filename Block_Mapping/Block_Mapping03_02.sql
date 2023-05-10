@@ -1,28 +1,155 @@
 SELECT
     원무접수ID,
     환자번호,
-    BLOCK_A
+    RE_FROZEN_ENG_BLOCK,
+    FROZEN_ENG_BLOCK_ELSE,
+    RE_FROZEN_NUM_BLOCK,
+    FROZEN_NUM_BLOCK_ELSE
 FROM(
-    SELECT *
+    SELECT *,
+        CASE 
+            WHEN (NULLIF(FROZEN_ENG_BLOCK, '') IS NOT NULL AND NULLIF(FROZEN_ENG_BLOCK_ELSE, '') IS NULL)
+            THEN FROZEN_ENG_BLOCK
+            ELSE NULL
+        END AS RE_FROZEN_ENG_BLOCK,
+        CASE 
+            WHEN (NULLIF(FROZEN_NUM_BLOCK, '') IS NOT NULL AND NULLIF(FROZEN_NUM_BLOCK_ELSE, '') IS NULL)
+            THEN FROZEN_NUM_BLOCK
+            ELSE NULL
+        END AS RE_FROZEN_NUM_BLOCK
     FROM(
-        SELECT *
+        SELECT *,
+            CASE
+                WHEN (REGEXP_INSTR(FROZEN_ENG_BLOCK, '(A|RG)[0-9]+[,|.|;| ][A-z]+[,|.|;| ]') != 0
+                    OR REGEXP_INSTR(FROZEN_ENG_BLOCK, '(A|RG)[0-9]+[,|.|;| ][,|.|;| ][A-z]+[,|.|;| ]') != 0
+                    OR REGEXP_INSTR(FROZEN_ENG_BLOCK, '[-][0-9]+[,|.|;| ][A-z]+[,|.|;| ]') != 0
+                    OR REGEXP_INSTR(FROZEN_ENG_BLOCK, '[-][0-9]+[,|.|;| ][,|.|;| ][A-z]+[,|.|;| ]') != 0)
+                THEN REGEXP_REPLACE(
+                    REPLACE(
+                        FROZEN_ENG_BLOCK, '\n', ' '
+                    ), ' {2,}', ' '
+                )
+                WHEN (REGEXP_INSTR(FROZEN_ENG_BLOCK, '(A|RG)[0-9]+[)][,|.|;| ][A-z]+[,|.|;| ]') != 0
+                    OR REGEXP_INSTR(FROZEN_ENG_BLOCK, '(A|RG)[0-9]+[)][,|.|;| ][,|.|;| ][A-z]+[,|.|;| ]') != 0)
+                THEN FROZEN_ENG_BLOCK
+                ELSE NULL
+            END AS FROZEN_ENG_BLOCK_ELSE,
+            CASE
+                WHEN (REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[,|.|;| ](A|RG)[0-9]+[,|.|;| ]') != 0
+                    OR REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[,|.|;| ][,|.|;| ](A|RG)[0-9]+[,|.|;| ]') != 0
+                    OR REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[,|.|;| ](A|RG)[0-9]+[-][0-9]+[,|.|;| ]') != 0
+                    OR REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[,|.|;| ][,|.|;| ](A|RG)[0-9]+[-][0-9]+[,|.|;| ]') != 0
+                    OR REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[,|.|;| ](A|RG)[0-9]+[-](A|RG)[0-9]+[,|.|;| ]') != 0
+                    OR REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[,|.|;| ][,|.|;| ](A|RG)[0-9]+[-](A|RG)[0-9]+[,|.|;| ]') != 0)
+                THEN REGEXP_REPLACE(
+                    REPLACE(
+                        FROZEN_NUM_BLOCK, '\n', ' '
+                    ), ' {2,}', ' '
+                )
+                WHEN (REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[,|.|;| ][(](A|RG)[0-9]+[,|-|)]') != 0
+                    OR REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[,|.|;| ][,|.|;| ][(](A|RG)[0-9]+[,|-|)]') != 0)
+                THEN FROZEN_NUM_BLOCK
+                WHEN (REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[)][,|.|;| ](A|RG)[0-9]+[,|-]') != 0
+                    OR REGEXP_INSTR(FROZEN_NUM_BLOCK, '[A-z]+[)][,|.|;| ][,|.|;| ](A|RG)[0-9]+[,|-]') != 0)
+                THEN REGEXP_REPLACE(
+                    REPLACE(
+                        FROZEN_NUM_BLOCK, '\n', ' '
+                    ), ' {2,}', ' '
+                )
+                ELSE NULL
+            END AS FROZEN_NUM_BLOCK_ELSE
         FROM(
-            SELECT *
+            SELECT *,
+                CASE 
+                    WHEN (REGEXP_INSTR(RE_FGE_BLOCK_A, '^ [A-z]+') != 0
+                        AND REGEXP_INSTR(RE_FGE_BLOCK_A, '^ (A|RG)[0-9]+') = 0)
+                    THEN RE_FGE_BLOCK_A
+                    WHEN (REGEXP_INSTR(RE_FD_BLOCK_A, '^ [A-z]+') != 0
+                        AND REGEXP_INSTR(RE_FD_BLOCK_A, '^ (A|RG)[0-9]+') = 0)
+                    THEN RE_FD_BLOCK_A
+                    WHEN (REGEXP_INSTR(RE_GE_BLOCK_A, '^ [A-z]+') != 0
+                        AND REGEXP_INSTR(RE_GE_BLOCK_A, '^ (A|RG)[0-9]+') = 0)
+                    THEN RE_GE_BLOCK_A
+                    ELSE NULL
+                END AS FROZEN_ENG_BLOCK,
+                CASE 
+                    WHEN REGEXP_INSTR(RE_FGE_BLOCK_A, '^ (A|RG)[0-9]+') != 0
+                    THEN RE_FGE_BLOCK_A
+                    WHEN REGEXP_INSTR(RE_FD_BLOCK_A, '^ (A|RG)[0-9]+') != 0
+                    THEN RE_FD_BLOCK_A
+                    WHEN REGEXP_INSTR(RE_GE_BLOCK_A, '^ (A|RG)[0-9]+') != 0
+                    THEN RE_GE_BLOCK_A
+                    ELSE NULL
+                END AS FROZEN_NUM_BLOCK
             FROM(
-                SELECT *
+                SELECT *,
+                    CASE 
+                        WHEN REGEXP_INSTR(SUBSTR(FGE_BLOCK_A, INSTR(FGE_BLOCK_A, 'Slide key')), 'A[0-9]+') != 0
+                        THEN REGEXP_REPLACE(
+                            REPLACE(
+                                REPLACE(
+                                    SUBSTR(FGE_BLOCK_A, INSTR(FGE_BLOCK_A, 'Slide key')), 'Slide keys;', ' '
+                                ), 'Slide key;', ' '
+                            ), ' {2,}', ' '
+                        )
+                        ELSE NULL
+                    END AS RE_FGE_BLOCK_A,
+                    CASE 
+                        WHEN REGEXP_INSTR(SUBSTR(FD_BLOCK_A, INSTR(FD_BLOCK_A, 'Slide key')), 'A[0-9]+') != 0
+                        THEN REGEXP_REPLACE(
+                            REPLACE(
+                                REPLACE(
+                                    SUBSTR(FD_BLOCK_A, INSTR(FD_BLOCK_A, 'Slide key')), 'Slide keys;', ' '
+                                ), 'Slide key;', ' '
+                            ), ' {2,}', ' '
+                        )
+                        ELSE NULL
+                    END AS RE_FD_BLOCK_A,
+                    CASE 
+                        WHEN REGEXP_INSTR(SUBSTR(GE_BLOCK_A, INSTR(GE_BLOCK_A, 'Slide key')), 'A[0-9]+') != 0
+                        THEN REGEXP_REPLACE(
+                            REPLACE(
+                                REPLACE(
+                                    SUBSTR(GE_BLOCK_A, INSTR(GE_BLOCK_A, 'Slide key')), 'Slide keys;', ' '
+                                ), 'Slide key;', ' '
+                            ), ' {2,}', ' '
+                        )
+                        ELSE NULL
+                    END AS RE_GE_BLOCK_A
                 FROM(
-                    SELECT *
+                    SELECT *,
+                        CASE 
+                            WHEN NULLIF(RE_FROZEN_GROSS_EXAMINATION, '') IS NOT NULL AND NULLIF(FGE_BLOCK_A, '') IS NULL
+                            THEN RE_FROZEN_GROSS_EXAMINATION
+                            ELSE NULL
+                        END AS NONE_FGE_BLOCK_A,
+                        CASE 
+                            WHEN NULLIF(RE_FROZEN_DIAGNOSIS, '') IS NOT NULL AND NULLIF(FD_BLOCK_A, '') IS NULL
+                            THEN RE_FROZEN_DIAGNOSIS
+                            ELSE NULL
+                        END AS NONE_FD_BLOCK_A,
+                        CASE 
+                            WHEN NULLIF(RE_GROSS_EXAMINATION, '') IS NOT NULL AND NULLIF(GE_BLOCK_A, '') IS NULL
+                            THEN RE_GROSS_EXAMINATION
+                            ELSE NULL
+                        END AS NONE_GE_BLOCK_A
                     FROM(
                         SELECT *,
                             CASE 
                                 WHEN REGEXP_INSTR(RE_FROZEN_GROSS_EXAMINATION, 'A[0-9]+') != 0
                                 THEN RE_FROZEN_GROSS_EXAMINATION
+                                ELSE NULL
+                            END AS FGE_BLOCK_A,
+                            CASE 
                                 WHEN REGEXP_INSTR(RE_FROZEN_DIAGNOSIS, 'A[0-9]+') != 0
                                 THEN RE_FROZEN_DIAGNOSIS
+                                ELSE NULL
+                            END AS FD_BLOCK_A,
+                            CASE 
                                 WHEN REGEXP_INSTR(RE_GROSS_EXAMINATION, 'A[0-9]+') != 0
                                 THEN RE_GROSS_EXAMINATION
                                 ELSE NULL
-                            END AS BLOCK_A
+                            END AS GE_BLOCK_A
                         FROM(
                             SELECT *,
                                 CASE 
@@ -111,14 +238,15 @@ FROM(
                                                     FROM(
                                                         SELECT *,
                                                             CASE
-                                                                WHEN REGEXP_INSTR(SUBSTR(BINARY RE_BLOCK_A3, INSTR(BINARY RE_BLOCK_A3, 'FROZEN DIAGNOSIS')), '(One|Two|Three|Four|Five|Six|Senven|Eight|Nine|Ten|Eleven|Twelve) specimens are') != 0
+                                                                WHEN (REGEXP_INSTR(SUBSTR(BINARY RE_BLOCK_A3, INSTR(BINARY RE_BLOCK_A3, 'FROZEN DIAGNOSIS')), '(One|Two|Three|Four|Five|Six|Senven|Eight|Nine|Ten|Eleven|Twelve) specimens are') != 0
+                                                                    OR REGEXP_INSTR(SUBSTR(BINARY RE_BLOCK_A3, INSTR(BINARY RE_BLOCK_A3, 'FROZEN DIAGNOSIS')), 'GROSS EXAMINATION') = 0)
                                                                 THEN REPLACE(
                                                                     RE_BLOCK_A3,
                                                                     SUBSTR(SUBSTR(BINARY RE_BLOCK_A3, INSTR(BINARY RE_BLOCK_A3, 'FROZEN DIAGNOSIS')),
                                                                     REGEXP_INSTR(SUBSTR(BINARY RE_BLOCK_A3, INSTR(BINARY RE_BLOCK_A3, 'FROZEN DIAGNOSIS')),
                                                                     '(One|Two|Three|Four|Five|Six|Senven|Eight|Nine|Ten|Eleven|Twelve) specimens are')),
                                                                     CONCAT(
-                                                                        'GROSS EXAMINATION\n\n',
+                                                                        'GROSS EXAMINATION ',
                                                                         SUBSTR(
                                                                             SUBSTR(BINARY RE_BLOCK_A3, INSTR(BINARY RE_BLOCK_A3, 'FROZEN DIAGNOSIS')),
                                                                             REGEXP_INSTR(SUBSTR(BINARY RE_BLOCK_A3, INSTR(BINARY RE_BLOCK_A3, 'FROZEN DIAGNOSIS')),
@@ -131,7 +259,8 @@ FROM(
                                                         FROM(
                                                             SELECT *,
                                                                 CASE
-                                                                    WHEN (INSTR(BINARY BLOCK_A3, 'FROZEN DIAGNOSIS') = 0 AND INSTR(BINARY BLOCK_A3, 'GROSS EXAMINATION') != 0)
+                                                                    WHEN (INSTR(BINARY BLOCK_A3, 'FROZEN DIAGNOSIS') = 0
+                                                                        AND REGEXP_INSTR(REGEXP_REPLACE(SUBSTR(BINARY BLOCK_A3, INSTR(BINARY BLOCK_A3, 'GROSS EXAMINATION')), '^GROSS EXAMINATION', ''), 'GROSS EXAMINATION') != 0)
                                                                     THEN REPLACE(
                                                                         BLOCK_A3,
                                                                         SUBSTR(BINARY BLOCK_A3, INSTR(BINARY BLOCK_A3, 'GROSS EXAMINATION')),
