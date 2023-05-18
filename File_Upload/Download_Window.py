@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic
 
 
-form_class = uic.loadUiType("IE/DownloadWindow.ui")[0]
+form_class = uic.loadUiType("File_Upload/Download_Window.ui")[0]
 
 class DownloadWindow(QDialog, QWidget, form_class):
     def __init__(self):
