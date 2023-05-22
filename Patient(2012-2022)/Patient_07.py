@@ -42,6 +42,7 @@ class Patient07(BaseETL):
         '''
         
         df = self.df_from_sql(db_name = "patient_protocol", sql = sql)
+        df.to_excel('D:/Gastric_Cancer_xlsx/Patient(2012-2022)/Patient_07.xlsx')
         
         self.insert(df, db_name = "patient_protocol", tb_name = "patient_07") 
 

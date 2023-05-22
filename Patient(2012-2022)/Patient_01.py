@@ -20,7 +20,9 @@ class Patient01(BaseETL):
             # 환자번호로 정렬
             ORDER BY 환자번호
         '''  
-        df = self.df_from_sql(db_name = "gc_raw", sql = sql)
+        
+        df = self.df_from_sql(db_name = "raw_file_2012_2022", sql = sql)
+        df.to_excel('D:/Gastric_Cancer_xlsx/Patient(2012-2022)/Patient_01.xlsx')
         
         self.insert(df, db_name = "patient_protocol", tb_name = "patient_01") 
 

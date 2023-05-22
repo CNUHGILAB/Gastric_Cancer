@@ -30,14 +30,14 @@ class Patient04(BaseETL):
                 WHERE `Ent:Atr:항목` = '{0}'
             '''.format(x)
             
-            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
+            data = self.df_from_sql(db_name = "raw_file_2012_2022", sql = sql)
             
             df = pd.concat([df, data], axis = 0, sort = False) 
             
         df = df.sort_values(['ID', 'Date'])
         
         df = df.reset_index(drop = True)
-        #df.to_excel('D:/Gastric_Cancer/Excel_File/Patient_Weight.xlsx')
+        df.to_excel('D:/Gastric_Cancer_xlsx/Patient(2012-2022)/Patient_04(Weight).xlsx')
         
         self.insert(df, db_name = "patient_protocol", tb_name = "patient_04") 
 

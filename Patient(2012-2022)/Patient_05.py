@@ -34,7 +34,7 @@ class Patient05(BaseETL):
         df = df.sort_values(['ID','Date'])
         
         df = df.reset_index(drop = True)
-        #df.to_excel('D:/Gastric_Cancer/Excel_File/Patient_Height.xlsx')
+        df.to_excel('D:/Gastric_Cancer_xlsx/Patient(2012-2022)/Patient_05(Height).xlsx')
         
         self.insert(df, db_name = "patient_protocol", tb_name="patient_05") 
 
