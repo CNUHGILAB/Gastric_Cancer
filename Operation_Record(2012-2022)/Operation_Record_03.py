@@ -19,7 +19,7 @@ class OpRecord03(BaseETL):
 
         for x in one:
             
-            f = open("OperationRecord_Test/Operation_Record_03.sql", 'rt', encoding = 'UTF8')
+            f = open("Operation_Record(2012-2022)/Operation_Record_03.sql", 'rt', encoding = 'UTF8')
             
             sql= ''
             
@@ -38,10 +38,10 @@ class OpRecord03(BaseETL):
             
             f.close()
             
-            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
+            data = self.df_from_sql(db_name = "raw_file_2012_2022", sql = sql)
             
             df = pd.merge(df, data, how = 'left', on = ['원무접수ID', '의무기록작성일', '진료서식ID', '환자번호'])
-            #print(df)
+            df.to_excel('D:/Gastric_Cancer_xlsx/Operation_Record(2012-2022)/Operation_Record_03.xlsx')
             
         self.insert(df, db_name = "operation_record_protocol", tb_name = "operation_record_03") 
 

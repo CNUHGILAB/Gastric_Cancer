@@ -34,7 +34,7 @@ FROM(
                 FROM operation_record_04
                 WHERE 원무접수ID IN (
                     SELECT 원무접수ID
-                    FROM gc_raw.operation
+                    FROM raw_file_2012_2022.operation
                 )
             )
             THEN 원무접수ID

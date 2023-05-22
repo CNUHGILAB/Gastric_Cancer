@@ -12,7 +12,7 @@ SELECT
                 REPLACE(
                     REPLACE(
                         CONCAT(
-                            `DSG`, ',', TG, ',', `Near TG`, ',', PG, ',', `PpG (Central G)`, ',', Wedge, ',', `Bypass GJ`, ',', ther
+                            `DSG`, ',', TG, ',', `Near TG`, ',', PG, ',', `PpG(Central G)`, ',', Wedge, ',', `Bypass GJ`, ',', ther
                         ), '0,', ''
                     ), ',0', ''
                 ), '0', ''
@@ -23,7 +23,7 @@ SELECT
             REPLACE(
                 REPLACE(
                     CONCAT(
-                        `DSG`, ',', TG, ',', `Near TG`, ',', PG, ',', `PpG (Central G)`, ',', Wedge, ',', `Bypass GJ`, ',', ther
+                        `DSG`, ',', TG, ',', `Near TG`, ',', PG, ',', `PpG(Central G)`, ',', Wedge, ',', `Bypass GJ`, ',', ther
                     ), '0,', ''
                 ), ',0', ''
             ), '0', ''

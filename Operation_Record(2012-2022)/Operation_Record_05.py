@@ -1,11 +1,11 @@
 from Base_ETL import BaseETL
 import pandas as pd
 
-class OpRecord04(BaseETL):
+class OpRecord05(BaseETL):
     
     def run(self):
         
-        f = open("OperationRecord_Test/Operation_Record_04.sql", 'rt', encoding = 'UTF8')
+        f = open("Operation_Record(2012-2022)/Operation_Record_05.sql", 'rt', encoding = 'UTF8')
         
         sql= ''
         
@@ -23,11 +23,12 @@ class OpRecord04(BaseETL):
         f.close()
         
         df = self.df_from_sql(db_name = "operation_record_protocol", sql = sql)
+        df.to_excel('D:/Gastric_Cancer_xlsx/Operation_Record(2012-2022)/Operation_Record.xlsx')
         
-        self.insert(df, db_name = "operation_record_protocol", tb_name = "operation_record_04") 
+        self.insert(df, db_name = "gc_database", tb_name = "operation_record") 
 
 
 if __name__ == "__main__":
-    obj = OpRecord04()
+    obj = OpRecord05()
     obj.run()
 
