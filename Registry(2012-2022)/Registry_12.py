@@ -1,0 +1,44 @@
+from Base_ETL import BaseETL
+
+class Registry12(BaseETL):
+
+    def run(self):
+        
+        sql = '''
+            SELECT
+                CAST(환자번호 AS CHAR) AS 환자번호,
+                원무접수ID,
+                AFP,
+                검사시행일
+            FROM(
+                SELECT
+                    환자번호,
+                    원무접수ID,
+                    CASE
+                        WHEN (검사코드 = 'B5202' OR 검사코드 = 'D1617')
+                        THEN 검사결과
+                    END AS AFP,
+                    STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') AS 검사시행일
+                FROM raw_file_2012_2022.blood_test
+                WHERE(
+                    환자번호 IN (
+                        SELECT
+                            DISTINCT 환자번호
+                        FROM raw_file_2012_2022.operation_record
+                    )
+                )
+            ) c
+            WHERE
+                AFP IS NOT NULL
+        '''
+        
+        df = self.df_from_sql(db_name = "registry_protocol", sql = sql)
+        df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_12.xlsx')
+        #print(df)
+        
+        self.insert(df, db_name = "registry_protocol", tb_name = "registry_12")
+
+
+if __name__ == "__main__":
+    obj = Registry12()
+    obj.run()
