@@ -19,8 +19,8 @@ class WashCytology02(BaseETL):
             )
         '''
         
-        df = self.df_from_sql(db_name = "gc_raw", sql = sql)
-        #print(df)
+        df = self.df_from_sql(db_name = "raw_file_2012_2022", sql = sql)
+        df.to_excel('D:/Gastric_Cancer_xlsx/WashCytology(2012-2022)/WashCytology_02.xlsx')
         
         self.insert(df, db_name = "wash_cytology_protocol", tb_name = "washcytology_02")
 

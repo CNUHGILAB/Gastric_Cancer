@@ -20,7 +20,8 @@ class WashCytology03(BaseETL):
         '''
         
         df = self.df_from_sql(db_name = "wash_cytology_protocol", sql = sql)
-        #print(df)
+        df.to_excel('D:/Gastric_Cancer_xlsx/WashCytology(2012-2022)/WashCytology_03.xlsx')
+        
         self.insert(df, db_name = "wash_cytology_protocol", tb_name = "washcytology_03")
 
 

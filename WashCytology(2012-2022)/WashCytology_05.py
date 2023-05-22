@@ -4,7 +4,7 @@ class WashCytology05(BaseETL):
 
     def run(self):
         
-        f = open("Washcytology_Test/WashCytology_05(Washcytology).sql", 'rt', encoding = 'UTF8')
+        f = open("Washcytology(2012-2022)/WashCytology_05.sql", 'rt', encoding = 'UTF8')
         
         sql= ''
         
@@ -21,6 +21,7 @@ class WashCytology05(BaseETL):
         f.close()
 
         df = self.df_from_sql(db_name = "wash_cytology_protocol", sql = sql) 
+        df.to_excel('D:/Gastric_Cancer_xlsx/WashCytology(2012-2022)/WashCytology.xlsx')
         
         self.insert(df, db_name = "gc_database", tb_name = "washcytology")
 
