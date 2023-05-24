@@ -45,7 +45,7 @@ class RegistryMerge10(BaseETL):
                 OP_CURA,
                 OP_DRAN_NO,
                 OP_DRAN_TP,
-                TumorLesion,
+                #TumorLesion,
                 TumorLocation,
                 TumorLocation_1,
                 TumorCircumference,
@@ -55,11 +55,9 @@ class RegistryMerge10(BaseETL):
                 Diff,
                 Diff_Mix,
                 GrossType,
-                /*
                 HER2,
                 p53,
                 EBV,
-                */
                 MSI_Test,
                 pT,
                 pN,

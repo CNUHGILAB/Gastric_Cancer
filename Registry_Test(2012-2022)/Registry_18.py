@@ -4,7 +4,7 @@ class Registry18(BaseETL):
 
     def run(self):
         
-        f = open("Registry_Test/Registry_18(Biopsy).sql", 'rt', encoding = 'UTF8')
+        f = open("Registry_Test(2012-2022)/Registry_18(Pathology).sql", 'rt', encoding = 'UTF8')
         
         sql= ''
         
@@ -20,7 +20,7 @@ class Registry18(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = "registry_test", sql = sql)
+        df = self.df_from_sql(db_name = "gc_database", sql = sql)
         #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_18.xlsx')
         #print(df)
         

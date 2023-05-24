@@ -16,8 +16,12 @@ class Registry25(BaseETL):
                 registry_03 a
                 LEFT JOIN endoscope_protocol.pre_endoscope_05 b ON a.ID = b.ID
             WHERE
+                Date(b.`Date`) < a.OP_Date
+            /*
+            WHERE
                 Date(b.`Date`) BETWEEN DATE_SUB(a.OP_Date, INTERVAL 59 DAY)
                 AND a.OP_Date
+            */
             GROUP BY
                 ID, OP_Date
             ORDER BY

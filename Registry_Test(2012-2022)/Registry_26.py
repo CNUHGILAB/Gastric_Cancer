@@ -19,7 +19,7 @@ class Registry26(BaseETL):
         '''
             
         df = self.df_from_sql(db_name = "registry_test", sql = sql)
-        df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_26.xlsx')
+        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_26.xlsx')
         
         self.insert(df, db_name = "registry_test", tb_name = "registry_26")
 

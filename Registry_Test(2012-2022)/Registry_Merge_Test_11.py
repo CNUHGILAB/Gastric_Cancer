@@ -6,7 +6,7 @@ class RegistryMerge11(BaseETL):
         
         sql= '''
             SELECT
-                CAST(st0.ID AS UNSIGNED) AS ID,
+                DISTINCT CAST(st0.ID AS UNSIGNED) AS ID,
                 st0.CHKID,
                 Sex,
                 OP_AGE,
@@ -45,7 +45,7 @@ class RegistryMerge11(BaseETL):
                 OP_CURA,
                 OP_DRAN_NO,
                 OP_DRAN_TP,
-                TumorLesion,
+                #TumorLesion,
                 TumorLocation,
                 TumorLocation_1,
                 TumorCircumference,
@@ -55,11 +55,9 @@ class RegistryMerge11(BaseETL):
                 Diff,
                 Diff_Mix,
                 GrossType,
-                /*
                 HER2,
                 p53,
                 EBV,
-                */
                 MSI_Test,
                 pT,
                 pN,
@@ -83,7 +81,7 @@ class RegistryMerge11(BaseETL):
         '''
         
         df = self.df_from_sql(db_name = "registry_test", sql = sql) 
-        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_Merge_01.xlsx')
+        df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_Test.xlsx')
         #print(df)
         
         self.insert(df, db_name = "registry_test", tb_name = "registry_merge_11")

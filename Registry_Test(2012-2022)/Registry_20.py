@@ -4,7 +4,7 @@ class Registry20(BaseETL):
 
     def run(self):
         
-        f = open("Registry_Test/Registry_20(Anticancer_Drug).sql",'rt',encoding='UTF8')
+        f = open("Registry_Test(2012-2022)/Registry_20(AnticancerDrug).sql",'rt',encoding='UTF8')
         
         sql= ''
         

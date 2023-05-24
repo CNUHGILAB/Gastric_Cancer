@@ -16,10 +16,14 @@ class Registry24(BaseETL):
             FROM
                 registry_03 a
                 LEFT JOIN registry_23 b on a.ID = b.환자번호
+            WHERE
+                Date(b.검사시행일) < a.OP_Date
+            /*
             WHERE(
                 Date(b.검사시행일) BETWEEN DATE_SUB(a.OP_Date, INTERVAL 59 DAY)
                 AND a.OP_Date
             )
+            */
             GROUP BY
                 OP_Date
             ORDER BY
