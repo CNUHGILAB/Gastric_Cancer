@@ -20,7 +20,7 @@ class Comorbidity04_02(BaseETL):
         
         for x in o_ID:
             
-            f = open("Comorbidity_Test/Comorbidity_04_02(HTN_Duration).sql", 'rt', encoding = 'UTF8')
+            f = open("Comorbidity(2012-2022)/Comorbidity_04_02(HTN_Duration).sql", 'rt', encoding = 'UTF8')
             
             sql= ''
             
@@ -39,16 +39,16 @@ class Comorbidity04_02(BaseETL):
             
             f.close()
             
-            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
+            data = self.df_from_sql(db_name = "raw_file_2012_2022", sql = sql)
             
             df = pd.concat([df, data], axis = 0, sort = False)
             
         df = df.sort_values(['ID', 'HTN_Date'])
         
         df = df.reset_index(drop = True)
-        #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_HTN_Duration.xlsx')
+        df.to_excel('D:/Gastric_Cancer_xlsx/Comorbidity(2012-2022)/Comorbidity_04_02(HTN_Duration).xlsx')
         
-        self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_04_02") 
+        self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_04_02") #tb_name = "tb_tmp_comorbidity_step_04_01"
 
 
 if __name__ == "__main__":

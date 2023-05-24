@@ -5,7 +5,7 @@ class Comorbidity03_02(BaseETL):
 
     def run(self):
         
-        sql = "SELECT ID FROM comorbidity_02_02;"
+        sql = "SELECT `ID` FROM comorbidity_02_02;"
         
         df = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql) 
 
@@ -19,9 +19,8 @@ class Comorbidity03_02(BaseETL):
             #print(y)
             
             sql =''' 
-                SELECT * FROM
-                    comorbidity_02_02
-                WHERE(ID = '{0}' AND INSTR(DM_MD_1, 'IM') != 0)
+                SELECT * FROM comorbidity_02_02
+                WHERE (ID = '{0}' AND INSTR(DM_MD_1, 'IM') != 0)
                 ORDER BY
                     CASE
                         WHEN DM_MD_1 = 'IM4'
@@ -49,8 +48,8 @@ class Comorbidity03_02(BaseETL):
             if data2.empty == True:
                 
                 sql = '''
-                    SELECT * FROM tb_tmp_comorbidity_02_02
-                    WHERE(ID = '{0}' AND INSTR(DM_MD_1, 'IM') = 0)
+                    SELECT * FROM comorbidity_02_02
+                    WHERE (ID = '{0}' AND INSTR(DM_MD_1, 'IM') = 0)
                     ORDER BY
                         CASE
                             WHEN DM_MD_1 = 'GS'
@@ -85,10 +84,10 @@ class Comorbidity03_02(BaseETL):
                 
             df2 = pd.concat([df2, data2], axis = 0, sort = False)
         
-        #df2.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_DM_Duration_2.xlsx')
+        df2.to_excel('D:/Gastric_Cancer_xlsx/Comorbidity(2012-2022)/Comorbidity_03_02.xlsx')
         #print(df)
         
-        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_03_02")
+        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_03_02") #tb_name = "tb_tmp_comorbidity_step_03_01"
 
 
 if __name__ == "__main__":

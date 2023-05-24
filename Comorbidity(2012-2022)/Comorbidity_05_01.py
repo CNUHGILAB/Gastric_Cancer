@@ -5,7 +5,7 @@ class Comorbidity05_01(BaseETL):
 
     def run(self):
         
-        sql = "SELECT ID FROM comorbidity_protocol.comorbidity_04_01;"
+        sql = "SELECT `ID` FROM comorbidity_protocol.comorbidity_04_01;"
         
         df = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql) 
 
@@ -21,7 +21,7 @@ class Comorbidity05_01(BaseETL):
             sql = '''
                 SELECT * FROM(
                     SELECT 
-                        a.ID,
+                        a.`ID`,
                         CASE
                             WHEN Mdate > Pdate
                             THEN '-'
@@ -35,23 +35,23 @@ class Comorbidity05_01(BaseETL):
                             COUNT(IF(HTN = '-', HTN, NULL)) AS Mdate,
                             COUNT(IF(HTN = '+', HTN, NULL)) AS Pdate
                         FROM comorbidity_protocol.comorbidity_04_01
-                        WHERE ID = '{0}'
+                        WHERE `ID` = '{0}'
                     )a, (
                         SELECT * FROM comorbidity_protocol.comorbidity_04_01
-                        WHERE ID = '{0}'
+                        WHERE `ID` = '{0}'
                     )b
                 ) c
                 WHERE HTN IS NOT NULL
                 GROUP BY HTN
             '''.format(y)
             
-            data2 = self.df_from_sql(db_name = "gc_raw", sql = sql)
+            data2 = self.df_from_sql(db_name = "raw_file_2012_2022", sql = sql)
             
             df2 = pd.concat([df2, data2], axis = 0, sort = False)
             
         #df2.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_HTN_2.xlsx')
         
-        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_05_01") # tb_name = "tb_tmp_comorbidity_05_00"
+        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_05_01") # tb_name = "tb_tmp_comorbidity_step_05"
 
 
 if __name__ == "__main__":

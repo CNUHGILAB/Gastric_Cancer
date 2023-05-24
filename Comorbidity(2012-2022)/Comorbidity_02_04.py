@@ -30,7 +30,7 @@ class Comorbidity02_04(BaseETL):
         '''
         
         df = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql) 
-        #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_DM_Merge.xlsx')
+        df.to_excel('D:/Gastric_Cancer_xlsx/Comorbidity(2012-2022)/Comorbidity_02_04.xlsx')
         #print(df)
         
         self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_02_04") # tb_name = "tb_tmp_comorbidity_02_03"

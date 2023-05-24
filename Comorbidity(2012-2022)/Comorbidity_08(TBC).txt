@@ -1,5 +1,5 @@
 SELECT 
-    환자번호 AS ID,
+    환자번호 AS `ID`,
     의무기록작성일 AS TBC_Date,
     `의무기록 환자진료과코드` AS TBC_MD_1,
     `의무기록 환자진료과` AS TBC_MD_2,
@@ -7,20 +7,20 @@ SELECT
         WHEN 진료서식구성원소ID = '{0}'
         THEN(
             CASE
-                WHEN (instr(의무기록내용,'+')) != 0
+                WHEN (INSTR(의무기록내용,'+')) != 0
                 THEN '+'
-                WHEN (instr(의무기록내용,'-')) != 0
+                WHEN (INSTR(의무기록내용,'-')) != 0
                 THEN '-'
-                WHEN (instr(의무기록내용,'1')) != 0
+                WHEN (INSTR(의무기록내용,'1')) != 0
                 THEN '+'
-                WHEN (instr(의무기록내용,'yes')) != 0
+                WHEN (INSTR(의무기록내용,'yes')) != 0
                 THEN '+'
-                WHEN (instr(의무기록내용,'no')) != 0
+                WHEN (INSTR(의무기록내용,'no')) != 0
                 THEN '-'
-                WHEN (instr(의무기록내용,'없')) != 0
+                WHEN (INSTR(의무기록내용,'없')) != 0
                 THEN '-'
             END
         )
     END AS TBC
-FROM gc_raw_test.outpatient
+FROM outpatient
 WHERE 진료서식구성원소ID = '{0}'

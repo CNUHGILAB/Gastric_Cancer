@@ -49,7 +49,7 @@ class Comorbidity02_01(BaseETL):
             
             sql = '''
                 SELECT 
-                    환자번호 AS ID,
+                    환자번호 AS `ID`,
                     의무기록작성일 AS DM_Date,
                     `의무기록 환자진료과코드` AS DM_MD_1,
                     `의무기록 환자진료과` AS DM_MD_2,
@@ -70,19 +70,19 @@ class Comorbidity02_01(BaseETL):
                             END
                         )
                     END AS DM
-                FROM gc_raw.outpatient
+                FROM raw_file_2012_2022.outpatient
                 WHERE 진료서식구성원소ID = '{0}'
             ''' .format(x)
             
-            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
+            data = self.df_from_sql(db_name = "raw_file_2012_2022", sql = sql)
             
             df = pd.concat([df, data], axis = 0, sort = False) 
             
         df = df.sort_values(['ID', 'DM_Date'])
-        
         df = df.reset_index(drop = True)
+        df.to_excel('D:/Gastric_Cancer_xlsx/Comorbidity(2012-2022)/Comorbidity_02_01.xlsx')
         
-        self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_02_01") # tb_name = "tb_tmp_comorbidity_02_00"
+        self.insert(df, db_name = "comorbidity_protocol", tb_name = "comorbidity_02_01") # tb_name = "comorbidity_step_02_01"
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ class Comorbidity05_02(BaseETL):
             
             sql =''' 
                 SELECT * FROM comorbidity_protocol.comorbidity_04_02
-                WHERE(ID = '{0}' AND INSTR(HTN_MD_1, 'IM') != 0)
+                WHERE(`ID` = '{0}' AND INSTR(HTN_MD_1, 'IM') != 0)
                 ORDER BY
                     CASE
                         WHEN HTN_MD_1 = 'IM4'
@@ -49,7 +49,7 @@ class Comorbidity05_02(BaseETL):
                 
                 sql = '''
                     SELECT * FROM comorbidity_protocol.comorbidity_04_02
-                    WHERE(ID = '{0}' AND INSTR(HTN_MD_1, 'IM') = 0)
+                    WHERE(`ID` = '{0}' AND INSTR(HTN_MD_1, 'IM') = 0)
                     ORDER BY
                         CASE
                             WHEN HTN_MD_1 = 'GS'
@@ -93,7 +93,7 @@ class Comorbidity05_02(BaseETL):
         #df2.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_HTN_Duration_2.xlsx')
         #print(df2)
         
-        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_05_02") # tb_name = "tb_tmp_comorbidity_05_01"
+        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_05_02") # tb_name = "tb_tmp_comorbidity_step_05_01"
 
 
 if __name__ == "__main__":

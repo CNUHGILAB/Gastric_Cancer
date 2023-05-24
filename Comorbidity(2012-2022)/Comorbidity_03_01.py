@@ -5,7 +5,7 @@ class Comorbidity03_01(BaseETL):
 
     def run(self):
         
-        sql = "SELECT ID FROM comorbidity_protocol.comorbidity_02_01;"
+        sql = "SELECT `ID` FROM comorbidity_protocol.comorbidity_02_01;"
         
         df = self.df_from_sql(db_name = "comorbidity_protocol", sql = sql) 
 
@@ -45,13 +45,13 @@ class Comorbidity03_01(BaseETL):
                 GROUP BY DM
             '''.format(y)
             
-            data2 = self.df_from_sql(db_name = "gc_raw", sql = sql)
+            data2 = self.df_from_sql(db_name = "raw_file_2012_2022", sql = sql)
             
             df2 = pd.concat([df2, data2], axis = 0, sort = False)
             
-        #df2.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/Comorbidity_DM_2.xlsx')
+        df2.to_excel('D:/Gastric_Cancer_xlsx/Comorbidity(2012-2022)/Comorbidity_03_01.xlsx')
         
-        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_03_01")
+        self.insert(df2, db_name = "comorbidity_protocol", tb_name = "comorbidity_03_01") #tb_name = "tb_tmp_comorbidity_step_03"
 
 
 if __name__ == "__main__":
