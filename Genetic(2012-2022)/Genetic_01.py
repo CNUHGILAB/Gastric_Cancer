@@ -9,6 +9,8 @@ class Genetic01(BaseETL):
             SELECT
                 DISTINCT
                 원무접수ID,
+                환자번호,
+                검사시행일,
                 TRIM(
                     TRAILING SUBSTR(병리진단, INSTR(병리진단, '검사항목'))
                     FROM 병리진단
@@ -16,10 +18,14 @@ class Genetic01(BaseETL):
             FROM(
                 SELECT
                     원무접수ID,
+                    환자번호,
+                    검사시행일,
                     SUBSTR(병리진단, INSTR(병리진단, 'Immunohistochemical')) AS 병리진단
                 FROM(
                     SELECT
                         원무접수ID,
+                        환자번호,
+                        검사시행일,
                         SUBSTR(검사결과, INSTR(검사결과, '병 리 진 단')) AS 병리진단
                     FROM(
                         SELECT * FROM raw_file_2012_2022.biopsy
