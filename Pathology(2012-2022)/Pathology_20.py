@@ -6,7 +6,7 @@ class Pathology20(BaseETL):
         
         sql = '''
             SELECT
-                st0. 원무접수ID,
+                st0.원무접수ID,
                 환자번호,
                 검사시행일,
                 HER2

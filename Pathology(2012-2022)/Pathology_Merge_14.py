@@ -67,7 +67,7 @@ class PathologyMerge14(BaseETL):
                 검사항목
             FROM
                 pathology_merge_13 st0
-                LEFT JOIN pathology_33 st1 ON (
+                LEFT JOIN pathology_34 st1 ON (
                     st0.환자번호 = st1.환자번호
                     AND st0.원무접수ID = st1.원무접수ID
                     AND st0.검사시행일 = st1.검사시행일
