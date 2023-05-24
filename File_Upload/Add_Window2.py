@@ -31,9 +31,11 @@ class AddWindow2(QDialog, QWidget, form_class):
         
         self.add_savebtn2.clicked.connect(self.saveDBName)
         
-        self.add_actbtn1.clicked.connect(self.RunProgram)
+        self.add_actbtn.clicked.connect(self.RunProgram)
         
-        self.add_actbtn2.clicked.connect(self.DeleteOverlap)
+        self.add_yesbtn.clicked.connect(self.DeleteOverlap)
+        
+        self.add_nobtn.clicked.connect(self.Cancel)
         
     def openFileNamesDialog(self):
         
@@ -53,7 +55,7 @@ class AddWindow2(QDialog, QWidget, form_class):
             elif self.setsheet.currentText() == "sheet2":
                 frames = pd.read_excel(files, sheet_name=1)
                 
-            print(frames)
+            print("파일을 열었습니다.")
         
         self.showtext1.setText("파일을 열었습니다.\n\nDB 이름을 설정해 주세요.")
         # self.btn1.setDisabled(True)
@@ -79,8 +81,10 @@ class AddWindow2(QDialog, QWidget, form_class):
             self.showdbname.setText("operation")
         elif self.setdbname.currentText() == "혈액검사":
             self.showdbname.setText("blood_test")
-        elif self.setdbname.currentText() == "간호기록":
-            self.showdbname.setText("nursing_record")
+        elif self.setdbname.currentText() == "간호기록(통합+진술문x)":
+            self.showdbname.setText("nursing_record_1")
+        elif self.setdbname.currentText() == "간호기록(진술문o)":
+            self.showdbname.setText("nursing_record_2")
         elif self.setdbname.currentText() == "조직검사":
             self.showdbname.setText("biopsy")
         elif self.setdbname.currentText() == "마취기록":
@@ -148,6 +152,9 @@ class AddWindow2(QDialog, QWidget, form_class):
                 elif "수진(진료)일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                 
+                elif "수진당시나이" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                    
                 elif "입원일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                 
@@ -177,7 +184,7 @@ class AddWindow2(QDialog, QWidget, form_class):
             for i,j in zip(frames.columns, frames.dtypes):
                 if "원무접수ID" in i:
                     dtypedict.update({i: sqlalchemy.types.TEXT()})
-                    
+                
                 elif "첫 진단일자" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                     
@@ -186,31 +193,55 @@ class AddWindow2(QDialog, QWidget, form_class):
                 
                 elif "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
+                
+                elif "진단등록나이" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "첫 진단당시나이" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "진단코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
                     
+                elif "ICD10코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "object" in str(j):
                     dtypedict.update({i: LONGTEXT()})
-                                            
+
                 elif "datetime" in str(j):
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-
+                
                 elif "float" in str(j):
                     dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
-
+                
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
-                    
+                
         if db_name == "operation":
             
             for i,j in zip(frames.columns, frames.dtypes):
                 if "원무접수ID" in i:
                     dtypedict.update({i: sqlalchemy.types.TEXT()})
-                    
+                
                 elif "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                 
                 elif "수술일자" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
-                    
+                
+                elif "수술코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "ICD9CM코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "집도의 사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "수술진단코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "마취시작(간)" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                 
@@ -258,13 +289,22 @@ class AddWindow2(QDialog, QWidget, form_class):
                 
                 elif "검사시행일" in i:
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-                    
+                
+                elif "검사코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "검사서식세부항목ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "검사처방일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                 
                 elif "검사결과-수치값" in i:
-                    dtypedict.update({i: LONGTEXT()})
-                    
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "검사 처방의사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "object" in str(j):
                     dtypedict.update({i: LONGTEXT()})
                                             
@@ -277,7 +317,7 @@ class AddWindow2(QDialog, QWidget, form_class):
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
                     
-        if db_name == "nursing_record":
+        if db_name == "nursing_record_1":
             
             for i,j in zip(frames.columns, frames.dtypes):
                 if "원무접수ID" in i:
@@ -287,6 +327,33 @@ class AddWindow2(QDialog, QWidget, form_class):
                     dtypedict.update({i: sqlalchemy.types.Date()})
                 
                 elif "[간호기록]기록작성일시" in i:
+                    dtypedict.update({i: sqlalchemy.types.DateTime()})
+                
+                elif "Ent:Atr:항목" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "object" in str(j):
+                    dtypedict.update({i: LONGTEXT()})
+                                            
+                elif "datetime" in str(j):
+                    dtypedict.update({i: sqlalchemy.types.DateTime()})
+                    
+                elif "float" in str(j):
+                    dtypedict.update({i: sqlalchemy.types.Float(precision = 3, asdecimal = True)})
+                    
+                elif "int" in str(j):
+                    dtypedict.update({i: sqlalchemy.types.INTEGER()})
+        
+        if db_name == "nursing_record_2":
+            
+            for i,j in zip(frames.columns, frames.dtypes):
+                if "원무접수ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                    
+                elif "생년월일" in i:
+                    dtypedict.update({i: sqlalchemy.types.Date()})
+                
+                elif "[진술문]기록작성일시" in i:
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
                     
                 elif "object" in str(j):
@@ -312,10 +379,19 @@ class AddWindow2(QDialog, QWidget, form_class):
                 
                 elif "검사시행일" in i:
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-                    
+                
+                elif "검사코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "판독의사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "검사처방일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})    
-                    
+                
+                elif "검사 처방의사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "object" in str(j):
                     dtypedict.update({i: LONGTEXT()})
                                             
@@ -342,7 +418,22 @@ class AddWindow2(QDialog, QWidget, form_class):
                     
                 elif "수정기록일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})    
-                    
+                
+                elif "작성의 사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "진료서식ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "진료서식구성원소ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "의무기록내용" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "진료서식유형코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "object" in str(j):
                     dtypedict.update({i: LONGTEXT()})
                                             
@@ -384,16 +475,25 @@ class AddWindow2(QDialog, QWidget, form_class):
                 
                 elif "검사시행일" in i:
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
-                    
+                
+                elif "검사코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "검사처방일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})  
-                    
+                
+                elif "검사서식세부항목ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "검사결과-수치값" in i:
-                    dtypedict.update({i: LONGTEXT()})
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
                     
                 elif "검사결과-음성양성" in i:
-                    dtypedict.update({i: LONGTEXT()})
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
                     
+                elif "검사 처방의사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "object" in str(j):
                     dtypedict.update({i: LONGTEXT()})
                                             
@@ -420,9 +520,24 @@ class AddWindow2(QDialog, QWidget, form_class):
                     
                 elif "수정기록일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})    
-                    
+                
+                elif "작성의 사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "의무기록 환자진료과코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "진료서식ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "진료서식구성원소ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "의무기록내용-수치값" in i:
-                    dtypedict.update({i: LONGTEXT()})
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                    
+                elif "진료서식유형코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
                     
                 elif "object" in str(j):
                     dtypedict.update({i: LONGTEXT()})
@@ -447,10 +562,22 @@ class AddWindow2(QDialog, QWidget, form_class):
                 
                 elif "검사시행일" in i:
                     dtypedict.update({i: sqlalchemy.types.DateTime()})
+                
+                elif "검사코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "검사결과-음성양성" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "판독의사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
                     
                 elif "검사처방일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})    
-                    
+                
+                elif "검사 처방의사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "object" in str(j):
                     dtypedict.update({i: LONGTEXT()})
                                             
@@ -462,30 +589,45 @@ class AddWindow2(QDialog, QWidget, form_class):
                     
                 elif "int" in str(j):
                     dtypedict.update({i: sqlalchemy.types.INTEGER()})
-        '''
+
         if db_name == "anticancer_drug":
-            for i,j in zip(frames.columns, frames.dtypes):    
-                if "생년월일" in i:
+            for i,j in zip(frames.columns, frames.dtypes):
+                if "원무접수ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                    
+                elif "생년월일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})
                 
-        #         elif "의무기록작성일" in i:
-        #             dtypedict.update({i: sqlalchemy.types.DateTime()})
+                elif "약품처방일" in i:
+                    dtypedict.update({i: sqlalchemy.types.Date()})
                     
-        #         elif "수정기록일" in i:
-        #             dtypedict.update({i: sqlalchemy.types.Date()})    
+                elif "약품코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "대표약품코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "포장단위1일약품투여량" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "1회처방량" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "약품 처방의사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
                     
-        #         elif "object" in str(j):
-        #             dtypedict.update({i: LONGTEXT()})
+                elif "object" in str(j):
+                    dtypedict.update({i: LONGTEXT()})
                                             
-        #         elif "datetime" in str(j):
-        #             dtypedict.update({i: sqlalchemy.types.DateTime()})
-
-        #         elif "float" in str(j):
-        #             dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal=True)})
-
-        #         elif "int" in str(j):
-        #             dtypedict.update({i: sqlalchemy.types.INT()})
-        '''
+                elif "datetime" in str(j):
+                    dtypedict.update({i: sqlalchemy.types.DateTime()})
+                    
+                elif "float" in str(j):
+                    dtypedict.update({i: sqlalchemy.types.Float(precision=3, asdecimal = True)})
+                    
+                elif "int" in str(j):
+                    dtypedict.update({i: sqlalchemy.types.INT()})
+        
         if db_name == "outpatient":
             
             for i,j in zip(frames.columns, frames.dtypes):
@@ -500,7 +642,22 @@ class AddWindow2(QDialog, QWidget, form_class):
                     
                 elif "수정기록일" in i:
                     dtypedict.update({i: sqlalchemy.types.Date()})    
+                
+                elif "작성의 사번" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "진료서식ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
                     
+                elif "진료서식구성원소ID" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "의무기록내용" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
+                elif "진료서식유형코드" in i:
+                    dtypedict.update({i: sqlalchemy.types.TEXT()})
+                
                 elif "object" in str(j):
                     dtypedict.update({i: LONGTEXT()})
                                             
@@ -556,8 +713,23 @@ class AddWindow2(QDialog, QWidget, form_class):
         df.to_sql(name = db_name, con = engine, if_exists = 'replace', index = False) 
         
         self.showtext5.setText("중복된 값이 제거되었습니다.")
+        
+        if self.showtext5.text() == "중복된 값이 제거되었습니다.":
+            print("DB에 파일이 업로드 되었습니다.")
             
-        print("DB에 파일이 업로드 되었습니다.")
+            self.showtext1.setText("")
+            self.showtext2.setText("")
+            self.showtext3.setText("")
+            self.showtext4.setText("")
+            self.showtext5.setText("")
+    
+    def Cancel(self):
+        self.showtext1.setText("")
+        self.showtext2.setText("")
+        self.showtext3.setText("")
+        self.showtext4.setText("")
+        self.showtext5.setText("")
+        
     # def sqlcol(dfparam):    
         
 
