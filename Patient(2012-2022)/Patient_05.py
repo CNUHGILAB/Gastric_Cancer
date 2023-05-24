@@ -27,7 +27,7 @@ class Patient05(BaseETL):
                 WHERE `Ent:Atr:항목` = '{0}'
             '''.format(x)
             
-            data = self.df_from_sql(db_name = "gc_raw", sql = sql)
+            data = self.df_from_sql(db_name = "raw_file_2012_2022", sql = sql)
             
             df = pd.concat([df, data], axis = 0, sort = False)
             

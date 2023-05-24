@@ -15,13 +15,9 @@ class Patient02(BaseETL):
             WHERE(
                 원무접수ID IN (
                     SELECT
-                        # 중복된 원무접수ID 제거
                         DISTINCT 원무접수ID
-                    # Raw Data 중 operation_record 항목에서 원무접수ID 추출
                     FROM operation_record
-                ) AND REGEXP_INSTR(수술일자, '^2022') != 0
-                # 수술 진료과코드가 'GS'인 것만 추출
-                AND `수술 진료과코드` = 'GS'
+                ) AND `수술 진료과코드` = 'GS'
             )
             ORDER BY 환자번호
         '''
