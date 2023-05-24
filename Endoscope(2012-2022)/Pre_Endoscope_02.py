@@ -29,16 +29,22 @@ class PreEndoscope02(BaseETL):
                 if "EGC" in z:
                     i = data_df_list.index(x)
                     list1.append(z)
-                    print(i)
+                    #print(i)
+                    
+                    data_list.append(" ".join(list1))
+                    ID_list.append(data_df['환자번호'].loc[i])
+                    CHKID_list.append(data_df['원무접수ID'].loc[i])
+                    date_list.append(data_df['검사시행일'].loc[i])
+                    
                 elif "AGC" in z:
                     i = data_df_list.index(x)
                     list1.append(z)
-                    print(i)
+                    #print(i)
                     
-                data_list.append(" ".join(list1))
-                ID_list.append(data_df['환자번호'].loc[i])
-                CHKID_list.append(data_df['원무접수ID'].loc[i])
-                date_list.append(data_df['검사시행일'].loc[i])
+                    data_list.append(" ".join(list1))
+                    ID_list.append(data_df['환자번호'].loc[i])
+                    CHKID_list.append(data_df['원무접수ID'].loc[i])
+                    date_list.append(data_df['검사시행일'].loc[i])
                     
         df = pd.DataFrame(ID_list, columns=['ID'])
         df['CHKID'] = pd.DataFrame(CHKID_list)

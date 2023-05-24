@@ -13,7 +13,8 @@ class PreEndoscope05(BaseETL):
                 검사결과,
                 GROUP_CONCAT(DISTINCT Endo SEPARATOR ",") AS Endo
             FROM pre_endoscope_04
-            GROUP BY ID, Date
+            GROUP BY
+                ID, Date
         '''
         
         data = self.df_from_sql(db_name = "endoscope_protocol", sql = sql)

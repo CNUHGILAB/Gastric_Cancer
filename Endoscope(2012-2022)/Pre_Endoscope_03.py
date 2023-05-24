@@ -79,6 +79,7 @@ class PreEndoscope03(BaseETL):
                     int.append(z)
                 elif "5" == z:
                     int.append(z)
+                
                 if "egc" == z:
                     int2.append(z)
                 elif "agc" == z:
