@@ -1,4 +1,3 @@
-# registry_23 참조 → 제외
 from Base_ETL import BaseETL
 import pandas as pd
 
@@ -8,26 +7,25 @@ class Registry24(BaseETL):
         
         sql= '''
             SELECT
-                b.환자번호 AS ID,
-                b.원무접수ID AS Checkin,
-                ESD AS PRE_ESD,
-                OP_Date,
-                검사시행일
+                b.ID,
+                b.CHKID,
+                endo AS PRE_ENDO,
+                a.OP_Date,
+                Date
             FROM
                 registry_03 a
-                LEFT JOIN registry_23 b on a.ID = b.환자번호
+                LEFT JOIN endoscope_protocol.pre_endoscope_05 b ON a.ID = b.ID
             WHERE
-                Date(b.검사시행일) < a.OP_Date
+                Date(b.`Date`) < a.OP_Date
             /*
-            WHERE(
-                Date(b.검사시행일) BETWEEN DATE_SUB(a.OP_Date, INTERVAL 59 DAY)
+            WHERE
+                Date(b.`Date`) BETWEEN DATE_SUB(a.OP_Date, INTERVAL 59 DAY)
                 AND a.OP_Date
-            )
             */
             GROUP BY
-                OP_Date
+                ID, OP_Date
             ORDER BY
-                ID, 검사시행일
+                ID, Date
         '''
             
         df = self.df_from_sql(db_name = "registry_test", sql = sql)

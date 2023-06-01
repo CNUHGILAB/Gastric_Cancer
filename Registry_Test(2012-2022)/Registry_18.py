@@ -20,7 +20,7 @@ class Registry18(BaseETL):
             
         f.close()
         
-        df = self.df_from_sql(db_name = "gc_database", sql = sql)
+        df = self.df_from_sql(db_name = "pathology_protocol", sql = sql)
         #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_18.xlsx')
         #print(df)
         

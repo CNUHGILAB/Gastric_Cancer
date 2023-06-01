@@ -89,8 +89,8 @@ FROM(
         INSTR(`약품명(성분명)`, 'Fluorouracil') != 0 AS F,
         INSTR(`약품명(성분명)`, 'Oxaliplatin') != 0 AS O,
         (INSTR(`약품명(성분명)`, 'Tegafur') != 0
-        AND INSTR(`약품명(성분명)`, 'Gimeracil') != 0
-        AND INSTR(`약품명(성분명)`, 'Oteracil') != 0) AS `S-1`,
+            AND INSTR(`약품명(성분명)`, 'Gimeracil') != 0
+            AND INSTR(`약품명(성분명)`, 'Oteracil') != 0) AS `S-1`,
         INSTR(`약품명(성분명)`, 'Capecitabine') != 0 AS C,
         INSTR(`약품명(성분명)`, 'Cisplatin') != 0 AS X,
         INSTR(`약품명(성분명)`, 'Docetaxel') != 0 AS D,

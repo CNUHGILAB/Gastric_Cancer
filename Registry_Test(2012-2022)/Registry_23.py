@@ -1,5 +1,4 @@
-# test file 출처 불분명 → 제외
-# endoscope 내용으로 수행
+# registry_23 참조 → 제외
 from Base_ETL import BaseETL
 import pandas as pd
 
@@ -9,16 +8,26 @@ class Registry23(BaseETL):
         
         sql= '''
             SELECT
-                DISTINCT 환자번호,
-                원무접수ID,
-                검사시행일,
-                CASE
-                    WHEN 환자번호 IS NOT NULL
-                    THEN 'YES'
-                END AS ESD
-            FROM raw_file_2012_2022.endoscope
+                b.환자번호 AS ID,
+                b.원무접수ID AS Checkin,
+                ESD AS PRE_ESD,
+                OP_Date,
+                검사시행일
+            FROM
+                registry_03 a
+                LEFT JOIN registry_22 b on a.ID = b.환자번호
             WHERE
-                검사코드 = 'Q7652G'
+                Date(b.검사시행일) < a.OP_Date
+            /*
+            WHERE(
+                Date(b.검사시행일) BETWEEN DATE_SUB(a.OP_Date, INTERVAL 59 DAY)
+                AND a.OP_Date
+            )
+            */
+            GROUP BY
+                OP_Date
+            ORDER BY
+                ID, 검사시행일
         '''
             
         df = self.df_from_sql(db_name = "registry_test", sql = sql)

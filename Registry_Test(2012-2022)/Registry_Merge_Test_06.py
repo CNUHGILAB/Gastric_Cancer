@@ -31,7 +31,7 @@ class RegistryMerge06(BaseETL):
                 st0.OP_Date
             FROM
                 registry_merge_05 st0
-                LEFT JOIN registry_24 st1 ON (st0.ID = st1.ID
+                LEFT JOIN registry_23 st1 ON (st0.ID = st1.ID
                 AND st0.OP_Date = st1.OP_Date
                 )
         '''

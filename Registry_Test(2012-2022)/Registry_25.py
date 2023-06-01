@@ -7,25 +7,15 @@ class Registry25(BaseETL):
         
         sql= '''
             SELECT
-                b.ID,
-                b.CHKID,
-                endo AS PRE_ENDO,
-                a.OP_Date,
-                Date
-            FROM
-                registry_03 a
-                LEFT JOIN endoscope_protocol.pre_endoscope_05 b ON a.ID = b.ID
-            WHERE
-                Date(b.`Date`) < a.OP_Date
-            /*
-            WHERE
-                Date(b.`Date`) BETWEEN DATE_SUB(a.OP_Date, INTERVAL 59 DAY)
-                AND a.OP_Date
-            */
-            GROUP BY
-                ID, OP_Date
-            ORDER BY
-                ID, Date
+                환자번호,
+                수술일, 
+                수술코드,
+                수술명,
+                수술전진단명,
+                수술후진단명,
+                IFNULL(`EMR ASA class`,0) AS `EMR ASA class`,
+                IFNULL(`차세대 ASA class`,0) AS `차세대 ASA class`
+            FROM gc_raw.asa_score
         '''
             
         df = self.df_from_sql(db_name = "registry_test", sql = sql)

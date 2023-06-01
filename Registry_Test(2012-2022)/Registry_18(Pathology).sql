@@ -2,12 +2,12 @@ SELECT
     환자번호 AS `ID`,
     원무접수ID AS CheckIn,
     Test_Date,
-    #TumorLesion,
+    TumorLesion,
     TumorLocation,
     CASE
         WHEN INSTR(TumorLocation, ',') != 0
         THEN 'Large lesion'
-    END AS TumorLocation_1,
+    END AS TumorLocation_Lesion,
     TumorCircumference,
     TumorSize,
     Histology,
@@ -35,13 +35,13 @@ FROM(
         환자번호,
         원무접수ID,
         STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') AS Test_Date,
-        #TumorLocation_2 AS TumorLesion,
-        Tumor_Location AS TumorLocation,
-        Tumor_Circumference AS TumorCircumference,
-        Tumor_Size AS TumorSize,
-        Histologic_Type AS Histology,
-        Lauren_Type AS LaurenType,
-        CONCAT(Gross_Type, ' ', Gross_Type_int) AS GrossType,
+        TumorLocation_Num AS TumorLesion,
+        TumorLocation,
+        TumorCircumference,
+        TumorSize,
+        HistologicType AS Histology,
+        LaurenType,
+        CONCAT(GrossType, ' ', GrossType_Int) AS GrossType,
         CASE
             WHEN INSTR(HER2, '+') != 0
             THEN 'Pos'
@@ -53,7 +53,7 @@ FROM(
         CASE
             WHEN INSTR(p53, '+') != 0
             THEN 'Pos'
-            WHEN NULLIF(p53_p, '') IS NOT NULL
+            WHEN NULLIF(p53_P, '') IS NOT NULL
             THEN 'Pos'
             WHEN INSTR(p53, '-') != 0
             THEN 'Neg'
@@ -83,16 +83,16 @@ FROM(
         harvLN,
         LVI,
         PNI,
-        pProx_Margin AS pProxMargin,
-        pDist_Margin AS pDistMargin,
+        pProxMargin,
+        pDistMargin,
         CASE
-            WHEN (NULLIF(pProx_Margin, '') IS NULL AND NULLIF(pDist_Margin, '') IS NULL)
+            WHEN (NULLIF(pProxMargin, '') IS NULL AND NULLIF(pDistMargin, '') IS NULL)
             THEN 'No'
-            WHEN (pProx_Margin IS NOT NULL AND NULLIF(pDist_Margin, '') IS NULL)
+            WHEN (pProxMargin IS NOT NULL AND NULLIF(pDistMargin, '') IS NULL)
             THEN 'No'
-            WHEN (NULLIF(pProx_Margin, '') IS NULL AND pDist_Margin IS NOT NULL)
+            WHEN (NULLIF(pProxMargin, '') IS NULL AND pDistMargin IS NOT NULL)
             THEN 'No'
-            WHEN (pProx_Margin IS NOT NULL AND pDist_Margin IS NOT NULL)
+            WHEN (pProxMargin IS NOT NULL AND pDistMargin IS NOT NULL)
             THEN 'Yes'
         END AS pSafeMargin,
         CASE
@@ -108,7 +108,7 @@ FROM(
             THEN 'Yes'
             ELSE 'No'
         END AS Diff_Mix
-    FROM pathology_test
+    FROM gc_database.pathology
     WHERE(
         환자번호 IN (
             SELECT

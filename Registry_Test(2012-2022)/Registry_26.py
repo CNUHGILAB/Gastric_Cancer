@@ -7,15 +7,13 @@ class Registry26(BaseETL):
         
         sql= '''
             SELECT
-                환자번호,
-                수술일, 
-                수술코드,
-                수술명,
-                수술전진단명,
-                수술후진단명,
-                IFNULL(`EMR ASA class`,0) AS `EMR ASA class`,
-                IFNULL(`차세대 ASA class`,0) AS `차세대 ASA class`
-            FROM gc_raw.asa_score
+                b.환자번호 AS ID,
+                CONCAT(`EMR ASA class`, `차세대 ASA class`) AS ASA,
+                a.OP_Date,
+                수술일 AS OP_DATE_1
+            FROM
+                registry_03 a
+                LEFT JOIN registry_25 b ON (a.ID = b.환자번호 AND a.OP_Date = b.수술일)
         '''
             
         df = self.df_from_sql(db_name = "registry_test", sql = sql)

@@ -45,9 +45,9 @@ class RegistryMerge11(BaseETL):
                 OP_CURA,
                 OP_DRAN_NO,
                 OP_DRAN_TP,
-                #TumorLesion,
+                TumorLesion,
                 TumorLocation,
-                TumorLocation_1,
+                TumorLocation_Lesion,
                 TumorCircumference,
                 TumorSize,
                 Histology,
@@ -74,7 +74,7 @@ class RegistryMerge11(BaseETL):
                 WC_Result
             FROM
                 registry_merge_10 st0
-                LEFT JOIN registry_27 st1 ON (
+                LEFT JOIN registry_26 st1 ON (
                     st0.ID = st1.ID
                     AND st0.OP_Date = st1.OP_DATE_1
                 )

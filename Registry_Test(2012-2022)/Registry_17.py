@@ -9,7 +9,7 @@ class Registry17(BaseETL):
             COUNT(*) AS cnt
             FROM registry_16
             GROUP BY
-                ID , CHKID , REC_Date , OP_RESC
+                ID, CHKID, REC_Date, OP_RESC
         '''
         
         df = self.df_from_sql(db_name = "registry_test", sql = sql)
