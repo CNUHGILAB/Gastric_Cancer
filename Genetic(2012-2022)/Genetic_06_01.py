@@ -27,6 +27,9 @@ class Genetic06_01(BaseETL):
         CD31_N_D240 = list(0 for i in range(0, x))
         
         for i in range(0, x):
+            if data_li[i] is not str:
+                data_li[i] = str(data_li[i])
+                
             string = ''.join(data_li[i])
             list_void = line_tokenizer.tokenize(string)
             

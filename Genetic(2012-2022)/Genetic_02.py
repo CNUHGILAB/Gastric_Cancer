@@ -27,6 +27,9 @@ class Genetic02(BaseETL):
         HER = list(0 for i in range(0, x)) # 변수 i를 0에서부터 x까지 반복
         
         for i in range(0, x):
+            if data_li[i] is not str:
+                data_li[i] = str(data_li[i])
+                
             string = ''.join(data_li[i]) # ''.join() : 리스트에 있는 요소들을 합쳐 하나의 문자열로 바꾸어 반환하는 함수
             list_void = line_tokenizer.tokenize(string)
             
