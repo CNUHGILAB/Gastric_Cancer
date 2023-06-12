@@ -1,7 +1,5 @@
 SELECT
     원무접수ID,
-    환자번호,
-    검사시행일,
     -- REGEXP_REPLACE() : 정규식 패턴을 검색하여 대체 문자열로 바꿈
     REGEXP_REPLACE(
         REGEXP_REPLACE(

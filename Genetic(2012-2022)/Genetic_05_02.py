@@ -1,10 +1,10 @@
 from Base_ETL import BaseETL
 
-class Genetic06_01(BaseETL):
+class Genetic05_02(BaseETL):
 
     def run(self):
         
-        f = open('Genetic(2012-2022)/Genetic_06_01(CD31nD240).sql', 'rt', encoding = 'UTF8')
+        f = open('Genetic(2012-2022)/Genetic_05_02(Ki-67).sql', 'rt', encoding = 'UTF8')
         
         sql = ''
         
@@ -23,9 +23,9 @@ class Genetic06_01(BaseETL):
         df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
         #df.to_excel('C:/Users/Hyunjeong Ki/Gastric_Cancer_xlsx/path_Inspection_items.xlsx')
         
-        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_06_01')
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_05_02')
 
 
 if __name__ == '__main__':
-    obj = Genetic06_01()
+    obj = Genetic05_02()
     obj.run()

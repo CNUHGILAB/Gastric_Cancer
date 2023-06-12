@@ -4,8 +4,8 @@ from pandas import DataFrame
 from nltk.tokenize import LineTokenizer
 line_tokenizer = LineTokenizer()
 
-# Column CD31 and D240 + Column CD31
-class Genetic06(BaseETL):
+# Column CD31 and D240
+class Genetic06_01(BaseETL):
 
     def run(self):
         
@@ -27,6 +27,9 @@ class Genetic06(BaseETL):
         CD31_N_D240 = list(0 for i in range(0, x))
         
         for i in range(0, x):
+            if data_li[i] is not str:
+                data_li[i] = str(data_li[i])
+                
             string = ''.join(data_li[i])
             list_void = line_tokenizer.tokenize(string)
             
@@ -46,22 +49,18 @@ class Genetic06(BaseETL):
                     CD31_N_D240[i].append(word)
                 elif 'd2-40, cd31' in word_low:
                     CD31_N_D240[i].append(word)
-                elif 'cd31' in word_low:
-                    CD31_N_D240[i].append(word)
-                elif 'cd-31' in word_low:
-                    CD31_N_D240[i].append(word)
         
-        print(CD31_N_D240)
+        #print(CD31_N_D240)
         
         Data_CD31_N_D240 = DataFrame(CD31_N_D240)
-        Data_CD31_N_D240.rename(columns = {0: '원무접수ID', 1: 'CD31_N_D240', 2: 'CD31_N_D240_1', 3: 'CD31_N_D240_2', 4: 'CD31'}, inplace = True)
+        Data_CD31_N_D240.rename(columns = {0: '원무접수ID', 1: 'CD31_n_D240', 2: 'CD31_n_D240_1', 3: 'CD31_n_D240_2'}, inplace = True)
         
-        print(Data_CD31_N_D240)
+        #print(Data_CD31_N_D240)
         
-        self.insert(Data_CD31_N_D240, db_name = 'genetic_protocol', tb_name = 'genetic_06')
+        self.insert(Data_CD31_N_D240, db_name = 'genetic_protocol', tb_name = 'genetic_06_01')
         
         # Path/KI_67.sql = KI_67.sql
-        f = open('Genetic_Test/CD31_N_D240.sql', 'rt', encoding = 'UTF8')
+        f = open('Genetic(2012-2022)/Genetic_06_01(CD31nD240).sql', 'rt', encoding = 'UTF8')
         
         sql= ''
         
@@ -78,9 +77,11 @@ class Genetic06(BaseETL):
         f.close()
         
         df = self.df_from_sql(db_name = 'genetic_protocol', sql = sql)
+        df.to_excel('D:/Gastric_Cancer_xlsx/Genetic(2012-2022)/Genetic_06_01(CD31nD240).xlsx')
         
-        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_06') 
+        self.insert(df, db_name = 'genetic_protocol', tb_name = 'genetic_06_01') 
+
 
 if __name__ == "__main__":
-    obj = Genetic06()
+    obj = Genetic06_01()
     obj.run()
