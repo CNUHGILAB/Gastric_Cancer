@@ -44,6 +44,7 @@ class ETLBiopsy():
         Pathologic_Biopsy19().run()                  # 검사항목
         Pathologic_Biopsy20().run()                  # Merge
 
+
 if __name__ == "__main__":
     obj = ETLBiopsy()
     obj.run()

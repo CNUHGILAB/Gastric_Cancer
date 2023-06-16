@@ -7,17 +7,18 @@ class Pathologic_Biopsy01(BaseETL):
         sql = '''
             SELECT * FROM(
                 SELECT
-                    DISTINCT 원무접수ID,
-                    환자번호,
-                    검사시행일,
-                    검사코드,
-                    판독의,
-                    SUBSTRING_INDEX(
+                    DISTINCT
+                        원무접수ID,
+                        환자번호,
+                        검사시행일,
+                        검사코드,
+                        판독의,
                         SUBSTRING_INDEX(
-                            검사결과, '병 리 진 단', 1
-                        ), '육 안 소 견', -1
-                    ) AS 육안소견,
-                    SUBSTR(검사결과, INSTR(검사결과, '병 리 진 단')) AS 병리진단
+                            SUBSTRING_INDEX(
+                                검사결과, '병 리 진 단', 1
+                            ), '육 안 소 견', -1
+                        ) AS 육안소견,
+                        SUBSTR(검사결과, INSTR(검사결과, '병 리 진 단')) AS 병리진단
                 FROM(
                     SELECT * FROM raw_data_total.biopsy
                     WHERE(
@@ -51,12 +52,14 @@ class Pathologic_Biopsy01(BaseETL):
             ) a
             WHERE(
                 REGEXP_INSTR(BINARY 병리진단, '[0-9][.] [S|s]tomach') != 0
-                    OR REGEXP_INSTR(BINARY 병리진단, '[0-9][.][S|s]tomach') != 0
-                    OR ((REGEXP_INSTR(BINARY 병리진단, '[0-9][.] [S|s]tomach') = 0
-                        OR REGEXP_INSTR(BINARY 병리진단, '[0-9][.][S|s]tomach') = 0)
-                        AND REGEXP_INSTR(BINARY 병리진단, 'and [S|s]tomach') != 0)
-                    OR REGEXP_INSTR(BINARY REGEXP_SUBSTR(병리진단, '[^\n]+', 1, 2), '^[S|s]tomach') != 0
-                    OR REGEXP_INSTR(BINARY REGEXP_SUBSTR(병리진단, '[^\n]+', 1, 4), '^[S|s]tomach') != 0
+                OR REGEXP_INSTR(BINARY 병리진단, '[0-9][.][S|s]tomach') != 0
+                OR ((REGEXP_INSTR(BINARY 병리진단, '[0-9][.] [S|s]tomach') = 0
+                    OR REGEXP_INSTR(BINARY 병리진단, '[0-9][.][S|s]tomach') = 0)
+                    AND REGEXP_INSTR(BINARY 병리진단, 'and [S|s]tomach') != 0)
+                OR REGEXP_INSTR(BINARY REGEXP_SUBSTR(병리진단, '[^\n]+', 1, 2), '^[S|s]tomach') != 0
+                OR REGEXP_INSTR(BINARY REGEXP_SUBSTR(병리진단, '[^\n]+', 1, 4), '^[S|s]tomach') != 0
+                OR REGEXP_INSTR(BINARY 병리진단, ' [S|s]tomach') != 0
+                OR REGEXP_INSTR(BINARY 병리진단, '[S|s]tomach ') != 0
             )
         '''
         
