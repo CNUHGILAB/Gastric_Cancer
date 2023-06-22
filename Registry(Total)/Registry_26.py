@@ -8,7 +8,7 @@ class Registry26(BaseETL):
         sql= '''
             SELECT
                 b.환자번호 AS ID,
-                CONCAT(`EMR ASA class`, `차세대 ASA class`) AS ASA,
+                `ASA Score` AS ASA,
                 a.OP_Date,
                 수술일 AS OP_DATE_1
             FROM

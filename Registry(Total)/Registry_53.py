@@ -1,20 +1,27 @@
 from Base_ETL import BaseETL
-import pandas as pd
 
 class Registry53(BaseETL):
 
     def run(self):
         
-        sql= '''
-            SELECT *
-            FROM registry_52
-            UNION ALL
-            SELECT *
-            FROM registry_46
-        '''
+        f = open("Registry(Total)/Registry_53.sql",'rt',encoding='UTF8')
+        
+        sql= ''
+        
+        while True:
+            line = f.readline()
             
+            if not line:
+                break
+            
+            a = str(line)
+            
+            sql  = sql + a
+            
+        f.close()
+        
         df = self.df_from_sql(db_name = "registry_total", sql = sql)
-        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_26.xlsx')
+        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_20.xlsx')
         #print(df)
         
         self.insert(df, db_name = "registry_total", tb_name = "registry_53")

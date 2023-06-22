@@ -6,11 +6,11 @@ class Registry39(BaseETL):
     def run(self):
         
         sql= '''
-            SELECT *
-            FROM registry_39_02
+            SELECT ID, CHKID, Op_Date, 검사시행일_DATE, PA
+            FROM registry_39_01
             UNION ALL
-            SELECT *
-            FROM registry_39_03
+            SELECT ID, CHKID, Op_Date, 검사시행일_DATE, PA
+            FROM registry_39_02
         '''
             
         df = self.df_from_sql(db_name = "registry_total", sql = sql)

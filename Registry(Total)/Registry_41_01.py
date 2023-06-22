@@ -1,7 +1,7 @@
 from Base_ETL import BaseETL
 import pandas as pd
 
-class Registry41(BaseETL):
+class Registry41_01(BaseETL):
 
     def run(self):
         
@@ -25,5 +25,5 @@ class Registry41(BaseETL):
 
 
 if __name__ == "__main__":
-    obj = Registry41()
+    obj = Registry41_01()
     obj.run()

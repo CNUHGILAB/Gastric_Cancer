@@ -73,7 +73,8 @@ class RegistryMerge11(BaseETL):
                     pDistMargin,
                     pSafeMargin,
                     WashCytology,
-                    WC_Result
+                    WC_Result,
+                    ASA
             FROM
                 registry_merge_10 st0
                 LEFT JOIN registry_26 st1 ON (

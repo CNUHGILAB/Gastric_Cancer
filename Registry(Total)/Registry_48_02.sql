@@ -4,1952 +4,1892 @@ SELECT
     Op_Date,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 1
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD1,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 2
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD2,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 3
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD3,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 4
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD4,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 5
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD5,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 6
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD6,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 7
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD7,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 8
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD8,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 9
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD9,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 10
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD10,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 11
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD11,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 12
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD12,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 13
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD13,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 14
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD14,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 15
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD15,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 16
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD16,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 17
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD17,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 18
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD18,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 19
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD19,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 20
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD20,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 21
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD21,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 22
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD22,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 23
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD23,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 24
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD24,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 25
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD25,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 26
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD26,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 27
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD27,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 28
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD28,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 29
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD29,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN1
         WHEN DATEDIFF(DATE2, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN2
         WHEN DATEDIFF(DATE3, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN3
         WHEN DATEDIFF(DATE4, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN4
         WHEN DATEDIFF(DATE5, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN5
         WHEN DATEDIFF(DATE6, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN6
         WHEN DATEDIFF(DATE7, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN7
         WHEN DATEDIFF(DATE8, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN8
         WHEN DATEDIFF(DATE9, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN9
         WHEN DATEDIFF(DATE10, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN10
         WHEN DATEDIFF(DATE11, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN11
         WHEN DATEDIFF(DATE12, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN12
         WHEN DATEDIFF(DATE13, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN13
         WHEN DATEDIFF(DATE14, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN14
         WHEN DATEDIFF(DATE15, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN15
         WHEN DATEDIFF(DATE16, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN16
         WHEN DATEDIFF(DATE17, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN17
         WHEN DATEDIFF(DATE18, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN18
         WHEN DATEDIFF(DATE19, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
-        WHEN DATEDIFF(DATE10, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN19
         WHEN DATEDIFF(DATE20, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN20
         WHEN DATEDIFF(DATE21, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN21
         WHEN DATEDIFF(DATE22, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN22
         WHEN DATEDIFF(DATE23, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN23
         WHEN DATEDIFF(DATE24, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN24
         WHEN DATEDIFF(DATE25, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN25
         WHEN DATEDIFF(DATE26, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN26
         WHEN DATEDIFF(DATE27, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN27
         WHEN DATEDIFF(DATE28, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN28
         WHEN DATEDIFF(DATE29, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN29
         WHEN DATEDIFF(DATE30, Op_Date) = 30
-        THEN CONCAT('P.Amylase: ', PA)
+        THEN SN30
         ELSE NULL
     END AS POD30
 FROM(
@@ -2103,6 +2043,156 @@ FROM(
             WHEN NULLIF(REGEXP_SUBSTR(`DATE`, '[^,]+', 1, 30), '') IS NOT NULL
             THEN REGEXP_SUBSTR(`DATE`, '[^,]+', 1, 30)
             ELSE NULL
-        END AS DATE30
-    FROM registry_40_01
+        END AS DATE30,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 1), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 1)
+            ELSE NULL
+        END AS SN1,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 2), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 2)
+            ELSE NULL
+        END AS SN2,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 3), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 3)
+            ELSE NULL
+        END AS SN3,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 4), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 4)
+            ELSE NULL
+        END AS SN4,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 5), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 5)
+            ELSE NULL
+        END AS SN5,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 6), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 6)
+            ELSE NULL
+        END AS SN6,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 7), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 7)
+            ELSE NULL
+        END AS SN7,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 8), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 8)
+            ELSE NULL
+        END AS SN8,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 9), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 9)
+            ELSE NULL
+        END AS SN9,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 10), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 10)
+            ELSE NULL
+        END AS SN10,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 11), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 11)
+            ELSE NULL
+        END AS SN11,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 12), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 12)
+            ELSE NULL
+        END AS SN12,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 13), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 13)
+            ELSE NULL
+        END AS SN13,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 14), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 14)
+            ELSE NULL
+        END AS SN14,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 15), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 15)
+            ELSE NULL
+        END AS SN15,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 16), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 16)
+            ELSE NULL
+        END AS SN16,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 17), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 17)
+            ELSE NULL
+        END AS SN17,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 18), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 18)
+            ELSE NULL
+        END AS SN18,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 19), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 19)
+            ELSE NULL
+        END AS SN19,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 20), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 20)
+            ELSE NULL
+        END AS SN20,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 21), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 21)
+            ELSE NULL
+        END AS SN21,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 22), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 22)
+            ELSE NULL
+        END AS SN22,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 23), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 23)
+            ELSE NULL
+        END AS SN23,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 24), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 24)
+            ELSE NULL
+        END AS SN24,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 25), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 25)
+            ELSE NULL
+        END AS SN25,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 26), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 26)
+            ELSE NULL
+        END AS SN26,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 27), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 27)
+            ELSE NULL
+        END AS SN27,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 28), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 28)
+            ELSE NULL
+        END AS SN28,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 29), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 29)
+            ELSE NULL
+        END AS SN29,
+        CASE 
+            WHEN NULLIF(REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 30), '') IS NOT NULL
+            THEN REGEXP_SUBSTR(SN_RESULT, '[^,]+', 1, 30)
+            ELSE NULL
+        END AS SN30
+    FROM registry_48_01
 ) a

@@ -20,8 +20,10 @@ class Registry35(BaseETL):
                     원무접수ID,
                     검사코드,
                     CASE
-                        WHEN 검사코드 = 'B109002' OR 검사코드 = 'B109002E'
+                        WHEN (검사코드 = 'B109002' OR 검사코드 = 'B109002E') AND REGEXP_INSTR(검사결과, '<|>|=|(|)') = 0
                         THEN 검사결과
+                        WHEN (검사코드 = 'B109002' OR 검사코드 = 'B109002E') AND REGEXP_INSTR(검사결과, '<|>|=|(|)') != 0
+                        THEN `검사결과-수치값`
                     END AS `Seg.Neutro(P)`,
                     STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') AS 검사시행일_DATE,
                     DATE_FORMAT(검사시행일, '%%T') AS 검사시행일_TIME

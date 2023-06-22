@@ -17,8 +17,10 @@ class Registry27(BaseETL):
                     환자번호,
                     원무접수ID,
                     CASE
-                        WHEN 검사코드 = 'B2610'
+                        WHEN 검사코드 = 'B2610' AND REGEXP_INSTR(검사결과, '<|>|=|(|)') = 0
                         THEN 검사결과
+                        WHEN 검사코드 = 'B2610' AND REGEXP_INSTR(검사결과, '<|>|=|(|)') != 0
+                        THEN `검사결과-수치값`
                     END AS PA,
                     STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') AS 검사시행일_DATE,
                     DATE_FORMAT(검사시행일, '%%T') AS 검사시행일_TIME

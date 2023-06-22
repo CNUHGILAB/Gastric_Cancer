@@ -1,7 +1,7 @@
 from Base_ETL import BaseETL
 import pandas as pd
 
-class Registry40(BaseETL):
+class Registry40_01(BaseETL):
 
     def run(self):
         
@@ -11,7 +11,7 @@ class Registry40(BaseETL):
                     ID,
                     CHKID,
                     Op_Date,
-                    PA,
+                    GROUP_CONCAT(PA) AS PA_RESULT,
                     GROUP_CONCAT(검사시행일_Date) AS DATE
             FROM registry_39
             GROUP BY ID, CHKID, Op_Date
@@ -25,5 +25,5 @@ class Registry40(BaseETL):
 
 
 if __name__ == "__main__":
-    obj = Registry40()
+    obj = Registry40_01()
     obj.run()

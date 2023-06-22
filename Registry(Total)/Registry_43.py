@@ -7,10 +7,10 @@ class Registry43(BaseETL):
         
         sql= '''
             SELECT *
-            FROM registry_43_02
+            FROM registry_43_01
             UNION ALL
             SELECT *
-            FROM registry_43_03
+            FROM registry_43_02
         '''
             
         df = self.df_from_sql(db_name = "registry_total", sql = sql)

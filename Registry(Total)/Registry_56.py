@@ -1,22 +1,27 @@
 from Base_ETL import BaseETL
-import pandas as pd
 
 class Registry56(BaseETL):
 
     def run(self):
         
-        sql= '''
-            SELECT *
-            FROM registry_55
-            WHERE ID IN (
-                SELECT
-                    ID
-                FROM registry_40
-            )
-        '''
+        f = open("Registry(Total)/Registry_56.sql",'rt',encoding='UTF8')
+        
+        sql= ''
+        
+        while True:
+            line = f.readline()
             
+            if not line:
+                break
+            
+            a = str(line)
+            
+            sql  = sql + a
+            
+        f.close()
+        
         df = self.df_from_sql(db_name = "registry_total", sql = sql)
-        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_26.xlsx')
+        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_20.xlsx')
         #print(df)
         
         self.insert(df, db_name = "registry_total", tb_name = "registry_56")
