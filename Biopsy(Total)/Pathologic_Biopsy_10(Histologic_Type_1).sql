@@ -95,6 +95,6 @@ FROM(
             SUBSTR(
                 병리진단, INSTR(병리진단, 'WHO clASsification (Histologic Type)')
             ) AS Histologic_Type_2
-        FROM pathologic_biopsy_01
+        FROM pathologic_biopsy_03
     ) biopsy
 ) biopsy

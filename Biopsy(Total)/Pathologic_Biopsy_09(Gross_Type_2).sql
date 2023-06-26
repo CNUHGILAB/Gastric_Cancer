@@ -111,7 +111,7 @@ FROM(
                     THEN Gross_Type_Int_2
                     ELSE Gross_Type_Int_1
                 END AS Gross_Type_Int
-            FROM pathologic_biopsy_06
+            FROM pathologic_biopsy_08
         ) biopsy
     ) biopsy
 ) biopsy

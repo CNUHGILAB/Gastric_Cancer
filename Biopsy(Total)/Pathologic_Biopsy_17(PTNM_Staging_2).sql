@@ -128,6 +128,6 @@ FROM(
             ) AS pN,
             REPLACE(SUBSTR(pT, INSTR(pT, 'M') + 1, 1), ',', '') AS pM,
             `Comment` AS pTNM_Comment
-        FROM pathologic_biopsy_14
+        FROM pathologic_biopsy_16
     ) biopsy
 ) biopsy

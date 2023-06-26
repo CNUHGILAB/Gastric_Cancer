@@ -4,33 +4,64 @@ class Pathologic_Biopsy20(BaseETL):
 
     def run(self):
         
-        # Biopsy_Step_20(Merge).sql = Biopsy_Merge.sql
-        f = open('Biopsy(Total)/Pathologic_Biopsy_20(Biopsy_Merge).sql', 'rt', encoding = 'UTF8')
-        
-        sql= ''
-        
-        while True:
-            line = f.readline()
-            
-            if not line:
-                break
-                
-            a = str(line)
-            
-            sql  = sql + a  
-            
-        f.close()
+        sql = '''
+            SELECT
+                DISTINCT 원무접수ID,
+                환자번호,
+                검사시행일,
+                REPLACE(
+                    REPLACE(
+                        REPLACE(
+                            CONCAT(
+                                Dysplasia_1, ',', Dysplasia_2
+                            ), '0,', ''
+                        ), ',0', ''
+                    ), '0', ''
+                ) AS Dysplasia,
+                Adenoma,
+                Gist
+            FROM(
+                SELECT
+                    원무접수ID,
+                    환자번호,
+                    검사시행일,
+                    CASE
+                        WHEN NULLIF(Dysplasia_1, '') IS NOT NULL
+                        THEN 'Low Grade Dysplasia'
+                        ELSE 0
+                    END AS Dysplasia_1,
+                    CASE
+                        WHEN NULLIF(Dysplasia_2, '') IS NOT NULL
+                        THEN 'High Grade Dysplasia'
+                        ELSE 0
+                    END AS Dysplasia_2,
+                    CASE
+                        WHEN NULLIF(adenoma, '') IS NOT NULL
+                        THEN 'adenoma'
+                    END AS Adenoma,
+                    CASE
+                        WHEN NULLIF(gist, '') IS NOT NULL
+                        THEN 'gist'
+                    END AS Gist
+                FROM(
+                    SELECT
+                        원무접수ID,
+                        환자번호,
+                        검사시행일,
+                        SUBSTR(병리진단, INSTR(병리진단, 'low grade dysplasia')) AS Dysplasia_1,
+                        SUBSTR(병리진단, INSTR(병리진단, 'high grade dysplasia')) AS Dysplasia_2,
+                        SUBSTR(병리진단, INSTR(병리진단, 'adenoma')) AS Adenoma,
+                        SUBSTR(병리진단, INSTR(병리진단, 'gist')) AS Gist
+                    FROM(
+                        SELECT * FROM pathologic_biopsy_03
+                    ) biopsy
+                ) biopsy
+            ) biopsy
+        '''
         
         df = self.df_from_sql(db_name = 'biopsy_total', sql = sql)
+        df.to_excel('D:/Gastric_Cancer_xlsx/Biopsy(Total)/Pathologic_Biopsy_20.xlsx')
         
-        df = df.sort_values(['환자번호', '검사시행일'])
-        
-        df = df.reset_index(drop = True)
-        
-        df = df.drop_duplicates()
-        df.to_excel('D:/Gastric_Cancer_xlsx/Biopsy(Total)/Pathologic_Biopsy.xlsx')
-        
-        self.insert(df, db_name = 'gc_database_total', tb_name = 'pathologic_biopsy')
         self.insert(df, db_name = 'biopsy_total', tb_name = 'pathologic_biopsy_20') 
 
 

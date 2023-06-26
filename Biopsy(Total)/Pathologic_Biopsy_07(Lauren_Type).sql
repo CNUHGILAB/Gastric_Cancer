@@ -117,7 +117,7 @@ FROM(
                         SUBSTR(병리진단, INSTR(병리진단, 'Lauren classification')) AS Lauren_Classification,
                         SUBSTR(병리진단, INSTR(병리진단, 'Early gastric cancer')) AS Early_Gastric_Cancer
                     FROM(
-                        SELECT * FROM pathologic_biopsy_01
+                        SELECT * FROM pathologic_biopsy_03
                     ) biopsy
                 ) biopsy
             ) biopsy

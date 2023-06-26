@@ -160,7 +160,7 @@ FROM(
                             ), ' '
                         )
                     END AS Margin
-                FROM pathologic_biopsy_01
+                FROM pathologic_biopsy_03
             ) biopsy
         ) biopsy
     ) biopsy

@@ -4,8 +4,8 @@ class Pathologic_Biopsy10(BaseETL):
 
     def run(self):
         
-        # Biopsy_Step_10(differentiation).sql = Differentiation.sql
-        f = open('Biopsy(Total)/Pathologic_Biopsy_10(Differentiation).sql', 'rt', encoding = 'UTF8')
+        # Biopsy_Step_08(Histologic_Type_1).sql = Histologic_Type_1.sql
+        f = open("Biopsy(Total)/Pathologic_Biopsy_10(Histologic_Type_1).sql", 'rt', encoding = 'UTF8')
         
         sql= ''
         
@@ -22,7 +22,7 @@ class Pathologic_Biopsy10(BaseETL):
         f.close()
         
         df = self.df_from_sql(db_name = 'biopsy_total', sql = sql)
-        df.to_excel('D:/Gastric_Cancer_xlsx/Biopsy(Total)/Pathologic_Biopsy_10(Differentiation).xlsx')
+        df.to_excel('D:/Gastric_Cancer_xlsx/Biopsy(Total)/Pathologic_Biopsy_10(Histologic Type1).xlsx')
         
         self.insert(df, db_name = 'biopsy_total', tb_name = 'pathologic_biopsy_10') 
 

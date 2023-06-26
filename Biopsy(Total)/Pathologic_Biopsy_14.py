@@ -4,26 +4,47 @@ class Pathologic_Biopsy14(BaseETL):
 
     def run(self):
         
-        # Biopsy_Step_14(PTNM_Staing_1).sql = PTNM_Staging_1.sql
-        f = open('Biopsy(Total)/Pathologic_Biopsy_14(PTNM_Staging_1).sql', 'rt', encoding = 'UTF8')
-        
-        sql= ''
-        
-        while True:
-            line = f.readline()
-            
-            if not line:
-                break
-                
-            a = str(line)
-            
-            sql  = sql + a
-            
-        f.close()
-        
+        sql = '''
+            SELECT
+                DISTINCT 원무접수ID,
+                환자번호,
+                검사시행일,
+                CASE
+                    WHEN Endoscopy IS NULL
+                    THEN 'OP'
+                    ELSE 'ESD'
+                END AS Endoscopy
+            FROM(
+                SELECT
+                    원무접수ID,
+                    환자번호,
+                    검사시행일,  
+                    CASE
+                        WHEN NULLIF(Endoscopy, '') IS NULL
+                        THEN NULL
+                        ELSE REGEXP_REPLACE(
+                                TRIM(
+                                    TRAILING SUBSTR(Endoscopy, INSTR(Endoscopy, '\n'))
+                                    FROM Endoscopy
+                                ), '[(|.|;|:|)]', ''
+                            )
+                    END AS Endoscopy
+                FROM(
+                    SELECT
+                        원무접수ID,
+                        환자번호,
+                        검사시행일,
+                        SUBSTR(병리진단, INSTR(병리진단, 'endoscopic')) AS Endoscopy
+                    FROM(
+                        SELECT * FROM pathologic_biopsy_03
+                    ) biopsy
+                ) biopsy
+            ) biopsy
+        '''
+
         df = self.df_from_sql(db_name = 'biopsy_total', sql = sql)
-        df.to_excel('D:/Gastric_Cancer_xlsx/Biopsy(Total)/Pathologic_Biopsy_14(pTNM Staging1).xlsx')
-        
+        df.to_excel('D:/Gastric_Cancer_xlsx/Biopsy(Total)/Pathologic_Biopsy_14.xlsx')
+            
         self.insert(df, db_name = 'biopsy_total', tb_name = 'pathologic_biopsy_14') 
 
 

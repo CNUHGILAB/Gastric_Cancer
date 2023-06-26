@@ -298,7 +298,7 @@ FROM(
                 환자번호,
                 검사시행일,
                 SUBSTR(병리진단, INSTR(병리진단, '검사항목')) AS 검사항목
-            FROM pathologic_biopsy_01
+            FROM pathologic_biopsy_03
         ) biopsy
     ) biopsy
 ) biopsy
