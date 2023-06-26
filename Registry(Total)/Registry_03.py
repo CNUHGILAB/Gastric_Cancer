@@ -5,11 +5,10 @@ class Registry03(BaseETL):
     def run(self):
 
         sql = '''
-            SELECT
-                DISTINCT
-                    원무접수ID AS CHKID,
-                    환자번호 AS `ID`,
-                    수술일자 AS OP_Date
+            SELECT DISTINCT
+                원무접수ID AS CHKID,
+                환자번호 AS `ID`,
+                수술일자 AS OP_Date
             FROM
                 raw_data_total.operation
             WHERE(

@@ -69,16 +69,15 @@ class RegistryMerge09(BaseETL):
                 PNI,
                 pProxMargin,
                 pDistMargin,
-                pSafeMargin,
-                WashCytology,
-                WC_Result
+                pSafeMargin
             FROM
-                registry_merge_08 st0
-                LEFT JOIN registry_19 st1 ON (
+                registry_merge_07 st0
+                LEFT JOIN registry_18 st1 ON (
                     st0.ID = st1.ID
-                    AND st0.OP_Date = st1.OP_Date
-                    AND st0.CHKID = st1.CHKID
+                    AND st0.OP_Date <= st1.Test_Date
                 )
+            GROUP BY ID, Op_Date
+            HAVING COUNT(st0.OP_Date <= st1.Test_Date) > 1
         '''
         
         df = self.df_from_sql(db_name = "registry_total", sql = sql) 

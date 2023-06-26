@@ -7,28 +7,22 @@ class Registry36(BaseETL):
         
         sql= '''
             SELECT
-                a.ID,
-                원무접수ID AS CHKID,
-                OP_Date,
-                검사코드,
-                검사시행일_DATE,
-                검사시행일_TIME,
-                `Seg.Neutro(P)`
-            FROM
-                registry_03 a
-                LEFT JOIN registry_35 b ON a.ID = b.환자번호
-            WHERE(
-                검사시행일_DATE BETWEEN DATE_ADD(OP_Date, INTERVAL 1 DAY)
-                AND DATE_ADD(OP_Date, INTERVAL 30 DAY)
+                DISTINCT
+                    st0.ID,
+                    Op_Date,
+                    입원일
+            FROM registry_01 st0
+                LEFT JOIN registry_35 st1 ON (
+                st0.ID = st1.환자번호
             )
-            /*
-            GROUP BY
-                ID, OP_Date
-            */
+            WHERE (
+                OP_ADM != 입원일
+            )
         '''
             
         df = self.df_from_sql(db_name = "registry_total", sql = sql)
         #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_26.xlsx')
+        #print(df)
         
         self.insert(df, db_name = "registry_total", tb_name = "registry_36")
 

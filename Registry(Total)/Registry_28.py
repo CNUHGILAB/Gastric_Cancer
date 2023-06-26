@@ -6,25 +6,11 @@ class Registry28(BaseETL):
     def run(self):
         
         sql= '''
-            SELECT
-                DISTINCT
-                    a.ID,
-                    원무접수ID AS CHKID,
-                    OP_Date,
-                    검사시행일_DATE,
-                    검사시행일_TIME,
-                    PA
-            FROM
-                registry_03 a
-                LEFT JOIN registry_27 b ON a.ID = b.환자번호
-            WHERE(
-                검사시행일_DATE BETWEEN DATE_ADD(OP_Date, INTERVAL 1 DAY)
-                AND DATE_ADD(OP_Date, INTERVAL 30 DAY)
-            )
-            /*
-            GROUP BY
-                ID, OP_Date
-            */
+            SELECT DISTINCT
+                원무접수ID,
+                환자번호,
+                DATE_FORMAT(검사시행일, '%%Y-%%m-%%d') AS 검사시행일
+            FROM raw_data_total.endoscope
         '''
             
         df = self.df_from_sql(db_name = "registry_total", sql = sql)

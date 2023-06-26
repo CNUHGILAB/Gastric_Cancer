@@ -7,23 +7,14 @@ class Registry30(BaseETL):
         
         sql= '''
             SELECT
-                a.ID,
-                원무접수ID AS CHKID,
-                OP_Date,
-                검사시행일_DATE,
-                검사시행일_TIME,
-                TA
-            FROM
-                registry_03 a
-                LEFT JOIN registry_29 b ON a.ID = b.환자번호
-            WHERE(
-                검사시행일_DATE BETWEEN DATE_ADD(OP_Date, INTERVAL 1 DAY)
-                AND DATE_ADD(OP_Date, INTERVAL 30 DAY)
-            )
-            /*
-            GROUP BY
-                ID, OP_Date
-            */
+                CHKID,
+                ID,
+                CASE
+                    WHEN 검사시행일 BETWEEN DATE_ADD(Op_Date, INTERVAL 1 DAY) AND OP_DISC IS NOT NULL
+                    THEN 'Y'
+                    ELSE 'N'
+                END AS `Cx(Ⅲa) Endoscope 검사여부`
+            FROM registry_29
         '''
             
         df = self.df_from_sql(db_name = "registry_total", sql = sql)

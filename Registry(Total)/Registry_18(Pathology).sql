@@ -1,6 +1,6 @@
 SELECT
     환자번호 AS `ID`,
-    원무접수ID AS CheckIn,
+    원무접수ID AS CHKID,
     Test_Date,
     TumorLesion,
     TumorLocation,

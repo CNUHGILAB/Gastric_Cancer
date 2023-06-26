@@ -7,36 +7,17 @@ class Registry29(BaseETL):
         
         sql= '''
             SELECT
-                DISTINCT
-                    CAST(환자번호 AS CHAR) AS 환자번호,
-                    원무접수ID,
-                    TA,
-                    검사시행일_DATE,
-                    검사시행일_TIME
-            FROM(
-                SELECT
-                    환자번호,
-                    원무접수ID,
-                    CASE
-                        WHEN 검사코드 = 'B2610E' AND REGEXP_INSTR(검사결과, '<|>|=|(|)') = 0
-                        THEN 검사결과
-                        WHEN 검사코드 = 'B2610E' AND REGEXP_INSTR(검사결과, '<|>|=|(|)') != 0
-                        THEN `검사결과-수치값`
-                    END AS TA,
-                    STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') AS 검사시행일_DATE,
-                    DATE_FORMAT(검사시행일, '%%T') AS 검사시행일_TIME
-                FROM
-                    raw_data_total.blood_test
-                WHERE(
-                    원무접수ID IN (
-                        SELECT
-                            DISTINCT 원무접수ID
-                        FROM raw_data_total.operation_record
-                    )
+                a.CHKID,
+                a.ID,
+                OP_ADM,
+                OP_DISC,
+                Op_Date,
+                검사시행일
+            FROM registry_27 a
+                LEFT JOIN registry_28 b ON (
+                    a.CHKID = b.원무접수ID
+                    AND a.ID = b.환자번호
                 )
-            ) b
-            WHERE
-                TA IS NOT NULL
         '''
             
         df = self.df_from_sql(db_name = "registry_total", sql = sql)

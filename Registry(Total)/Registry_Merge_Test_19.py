@@ -1,6 +1,6 @@
 from Base_ETL import BaseETL
 
-class RegistryMerge14(BaseETL):
+class RegistryMerge19(BaseETL):
 
     def run(self):
         
@@ -31,6 +31,8 @@ class RegistryMerge14(BaseETL):
                     OP_ADM,
                     OP_DISC,
                     st0.OP_Date,
+                    재원일수,
+                    재입원여부,
                     OP_OPRT,
                     OP_TROC,
                     OP_RESC,
@@ -74,12 +76,12 @@ class RegistryMerge14(BaseETL):
                     pSafeMargin,
                     WashCytology,
                     WC_Result,
-                    ASA
-            FROM
-                registry_merge_13 st0
-                LEFT JOIN registry_26 st1 ON (
-                    st0.ID = st1.ID
-                    AND st0.OP_Date = st1.OP_DATE_1
+                    ASA,
+                    `검사시행여부(PCD/PTBD/PTGBD)`
+            FROM registry_merge_18 st0
+                LEFT JOIN registry_40 st1 ON (
+                    st0.CHKID = st1.CHKID
+                    AND st0.ID = st1.ID
                 )
         '''
         
@@ -87,9 +89,9 @@ class RegistryMerge14(BaseETL):
         #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_Test.xlsx')
         #print(df)
         
-        self.insert(df, db_name = "registry_total", tb_name = "registry_merge_14")
+        self.insert(df, db_name = "registry_total", tb_name = "registry_merge_19")
 
     
 if __name__ == "__main__":
-    obj = RegistryMerge14()
+    obj = RegistryMerge19()
     obj.run()
