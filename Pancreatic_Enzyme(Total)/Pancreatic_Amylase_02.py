@@ -10,7 +10,7 @@ class PancreaticAmylase02(BaseETL):
                 pa0.원무접수ID,
                 pa0.환자번호,
                 pa0.검사시행일,
-                REPLACE(PA, '.0', '') AS PA,
+                PA,
                 비고내용
             FROM pancreatic_amylase_00 pa0
                 LEFT JOIN pancreatic_amylase_01 pa1 ON (

@@ -15,6 +15,8 @@ FROM(
             THEN 검사시행일_수정
             WHEN 검사시행일 IS NOT NULL AND 검사시행일_수정 IS NULL
             THEN 검사시행일
+            WHEN 검사시행일 IS NULL AND 검사시행일_수정 IS NOT NULL
+            THEN 검사시행일_수정
             ELSE NULL
         END AS 검사시행일,
         검사시행시간,

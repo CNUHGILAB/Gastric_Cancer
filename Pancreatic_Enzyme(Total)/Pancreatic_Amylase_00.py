@@ -6,7 +6,7 @@ class PancreaticAmylase00(BaseETL):
     def run(self):
         
         sql= '''
-            SELECT
+            SELECT DISTINCT
                 원무접수ID,
                 CAST(환자번호 AS CHAR) AS 환자번호,
                 PA,
@@ -17,9 +17,9 @@ class PancreaticAmylase00(BaseETL):
                     원무접수ID,
                     CASE
                         WHEN 검사코드 = 'B2610' AND REGEXP_INSTR(검사결과, '<|>|=|(|)') = 0
-                        THEN 검사결과
+                        THEN REPLACE(검사결과, '.0', '')
                         WHEN 검사코드 = 'B2610' AND REGEXP_INSTR(검사결과, '<|>|=|(|)') != 0
-                        THEN `검사결과-수치값`
+                        THEN REPLACE(`검사결과-수치값`, '.0', '')
                     END AS PA,
                     검사시행일
                 FROM

@@ -5,20 +5,44 @@ SELECT
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 1
         THEN SNP1
+        WHEN DATEDIFF(DATE2, Op_Date) = 1
+        THEN SNP2
+        WHEN DATEDIFF(DATE3, Op_Date) = 1
+        THEN SNP3
+        WHEN DATEDIFF(DATE4, Op_Date) = 1
+        THEN SNP4
         ELSE NULL
     END AS `Seg.Neutro.P POD1`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 2
+        THEN SNP1
+        WHEN DATEDIFF(DATE2, Op_Date) = 2
         THEN SNP2
+        WHEN DATEDIFF(DATE3, Op_Date) = 2
+        THEN SNP3
+        WHEN DATEDIFF(DATE4, Op_Date) = 2
+        THEN SNP4
         ELSE NULL
     END AS `Seg.Neutro.P POD2`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 3
+        THEN SNP1
+        WHEN DATEDIFF(DATE2, Op_Date) = 3
+        THEN SNP2
+        WHEN DATEDIFF(DATE3, Op_Date) = 3
         THEN SNP3
+        WHEN DATEDIFF(DATE4, Op_Date) = 3
+        THEN SNP4
         ELSE NULL
     END AS `Seg.Neutro.P POD3`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 4
+        THEN SNP1
+        WHEN DATEDIFF(DATE2, Op_Date) = 4
+        THEN SNP2
+        WHEN DATEDIFF(DATE3, Op_Date) = 4
+        THEN SNP3
+        WHEN DATEDIFF(DATE4, Op_Date) = 4
         THEN SNP4
         ELSE NULL
     END AS `Seg.Neutro.P POD4`
@@ -65,4 +89,4 @@ FROM(
             ELSE NULL
         END AS SNP4
     FROM seg_neutro_p_13
-) segneutrop
+) snp

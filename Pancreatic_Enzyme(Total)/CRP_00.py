@@ -20,9 +20,9 @@ class CRP00(BaseETL):
                     검사코드,
                     CASE
                         WHEN (검사코드 = 'B4621' OR 검사코드 = 'B46211') AND REGEXP_INSTR(검사결과, '<|>|=|(|)') = 0
-                        THEN 검사결과
+                        THEN REPLACE(검사결과, '.0', '')
                         WHEN (검사코드 = 'B4621' OR 검사코드 = 'B46211') AND REGEXP_INSTR(검사결과, '<|>|=|(|)') != 0
-                        THEN `검사결과-수치값`
+                        THEN REPLACE(`검사결과-수치값`, '.0', '')
                     END AS CRP,
                     STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') AS 검사시행일_DATE,
                     DATE_FORMAT(검사시행일, '%%T') AS 검사시행일_TIME

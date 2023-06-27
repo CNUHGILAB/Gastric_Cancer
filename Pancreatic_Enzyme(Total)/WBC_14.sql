@@ -5,20 +5,44 @@ SELECT
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 1
         THEN WBC1
+        WHEN DATEDIFF(DATE2, Op_Date) = 1
+        THEN WBC2
+        WHEN DATEDIFF(DATE3, Op_Date) = 1
+        THEN WBC3
+        WHEN DATEDIFF(DATE4, Op_Date) = 1
+        THEN WBC4
         ELSE NULL
     END AS `WBC POD1`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 2
+        THEN WBC1
+        WHEN DATEDIFF(DATE2, Op_Date) = 2
         THEN WBC2
+        WHEN DATEDIFF(DATE3, Op_Date) = 2
+        THEN WBC3
+        WHEN DATEDIFF(DATE4, Op_Date) = 2
+        THEN WBC4
         ELSE NULL
     END AS `WBC POD2`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 3
+        THEN WBC1
+        WHEN DATEDIFF(DATE2, Op_Date) = 3
+        THEN WBC2
+        WHEN DATEDIFF(DATE3, Op_Date) = 3
         THEN WBC3
+        WHEN DATEDIFF(DATE4, Op_Date) = 3
+        THEN WBC4
         ELSE NULL
     END AS `WBC POD3`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 4
+        THEN WBC1
+        WHEN DATEDIFF(DATE2, Op_Date) = 4
+        THEN WBC2
+        WHEN DATEDIFF(DATE3, Op_Date) = 4
+        THEN WBC3
+        WHEN DATEDIFF(DATE4, Op_Date) = 4
         THEN WBC4
         ELSE NULL
     END AS `WBC POD4`

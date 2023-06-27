@@ -5,20 +5,44 @@ SELECT
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 1
         THEN PA1
+        WHEN DATEDIFF(DATE2, Op_Date) = 1
+        THEN PA2
+        WHEN DATEDIFF(DATE3, Op_Date) = 1
+        THEN PA3
+        WHEN DATEDIFF(DATE4, Op_Date) = 1
+        THEN PA4
         ELSE NULL
     END AS `P.Amylase POD1`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 2
+        THEN PA1
+        WHEN DATEDIFF(DATE2, Op_Date) = 2
         THEN PA2
+        WHEN DATEDIFF(DATE3, Op_Date) = 2
+        THEN PA3
+        WHEN DATEDIFF(DATE4, Op_Date) = 2
+        THEN PA4
         ELSE NULL
     END AS `P.Amylase POD2`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 3
+        THEN PA1
+        WHEN DATEDIFF(DATE2, Op_Date) = 3
+        THEN PA2
+        WHEN DATEDIFF(DATE3, Op_Date) = 3
         THEN PA3
+        WHEN DATEDIFF(DATE4, Op_Date) = 3
+        THEN PA4
         ELSE NULL
     END AS `P.Amylase POD3`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 4
+        THEN PA1
+        WHEN DATEDIFF(DATE2, Op_Date) = 4
+        THEN PA2
+        WHEN DATEDIFF(DATE3, Op_Date) = 4
+        THEN PA3
+        WHEN DATEDIFF(DATE4, Op_Date) = 4
         THEN PA4
         ELSE NULL
     END AS `P.Amylase POD4`

@@ -5,20 +5,44 @@ SELECT
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 1
         THEN Lipase1
+        WHEN DATEDIFF(DATE2, Op_Date) = 1
+        THEN Lipase2
+        WHEN DATEDIFF(DATE3, Op_Date) = 1
+        THEN Lipase3
+        WHEN DATEDIFF(DATE4, Op_Date) = 1
+        THEN Lipase4
         ELSE NULL
     END AS `Lipase POD1`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 2
+        THEN Lipase1
+        WHEN DATEDIFF(DATE2, Op_Date) = 2
         THEN Lipase2
+        WHEN DATEDIFF(DATE3, Op_Date) = 2
+        THEN Lipase3
+        WHEN DATEDIFF(DATE4, Op_Date) = 2
+        THEN Lipase4
         ELSE NULL
     END AS `Lipase POD2`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 3
+        THEN Lipase1
+        WHEN DATEDIFF(DATE2, Op_Date) = 3
+        THEN Lipase2
+        WHEN DATEDIFF(DATE3, Op_Date) = 3
         THEN Lipase3
+        WHEN DATEDIFF(DATE4, Op_Date) = 3
+        THEN Lipase4
         ELSE NULL
     END AS `Lipase POD3`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 4
+        THEN Lipase1
+        WHEN DATEDIFF(DATE2, Op_Date) = 4
+        THEN Lipase2
+        WHEN DATEDIFF(DATE3, Op_Date) = 4
+        THEN Lipase3
+        WHEN DATEDIFF(DATE4, Op_Date) = 4
         THEN Lipase4
         ELSE NULL
     END AS `Lipase POD4`

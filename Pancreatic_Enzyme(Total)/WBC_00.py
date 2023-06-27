@@ -21,9 +21,9 @@ class WBC00(BaseETL):
                     검사코드,
                     CASE
                         WHEN (검사코드 = 'B1050' OR 검사코드 = 'B004114E' OR 검사코드 = 'B1050E') AND REGEXP_INSTR(검사결과, '<|>|=|(|)') = 0
-                        THEN 검사결과
+                        THEN REPLACe(검사결과, '.0', '')
                         WHEN (검사코드 = 'B1050' OR 검사코드 = 'B004114E' OR 검사코드 = 'B1050E') AND REGEXP_INSTR(검사결과, '<|>|=|(|)') != 0
-                        THEN `검사결과-수치값`
+                        THEN REPLACE(`검사결과-수치값`, '.0', '')
                     END AS WBC,
                     STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') AS 검사시행일,
                     DATE_FORMAT(검사시행일, '%%T') AS 검사시행시간

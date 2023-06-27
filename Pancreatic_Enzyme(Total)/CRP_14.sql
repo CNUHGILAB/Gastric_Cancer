@@ -5,20 +5,44 @@ SELECT
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 1
         THEN CRP1
+        WHEN DATEDIFF(DATE2, Op_Date) = 1
+        THEN CRP2
+        WHEN DATEDIFF(DATE3, Op_Date) = 1
+        THEN CRP3
+        WHEN DATEDIFF(DATE4, Op_Date) = 1
+        THEN CRP4
         ELSE NULL
     END AS `CRP POD1`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 2
+        THEN CRP1
+        WHEN DATEDIFF(DATE2, Op_Date) = 2
         THEN CRP2
+        WHEN DATEDIFF(DATE3, Op_Date) = 2
+        THEN CRP3
+        WHEN DATEDIFF(DATE4, Op_Date) = 2
+        THEN CRP4
         ELSE NULL
     END AS `CRP POD2`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 3
+        THEN CRP1
+        WHEN DATEDIFF(DATE2, Op_Date) = 3
+        THEN CRP2
+        WHEN DATEDIFF(DATE3, Op_Date) = 3
         THEN CRP3
+        WHEN DATEDIFF(DATE4, Op_Date) = 3
+        THEN CRP4
         ELSE NULL
     END AS `CRP POD3`,
     CASE 
         WHEN DATEDIFF(DATE1, Op_Date) = 4
+        THEN CRP1
+        WHEN DATEDIFF(DATE2, Op_Date) = 4
+        THEN CRP2
+        WHEN DATEDIFF(DATE3, Op_Date) = 4
+        THEN CRP3
+        WHEN DATEDIFF(DATE4, Op_Date) = 4
         THEN CRP4
         ELSE NULL
     END AS `CRP POD4`
