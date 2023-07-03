@@ -2,69 +2,79 @@ SELECT
     원무접수ID,
     환자번호,
     검사시행일,
-    `SUBSTR(Ki-67)`
+    `SUBSTR(Ki67)_2`
 FROM(
     SELECT *,
         CASE 
-            WHEN NULLIF(`REPLACE(Ki-67)`, '') IS NOT NULL
-            THEN REGEXP_SUBSTR(
-                SUBSTR(`REPLACE(Ki-67)`, INSTR(`REPLACE(Ki-67)`, 'Ki-67')), '[^\n]+', 1, 1
-            )
+            WHEN NULLIF(`SUBSTR(Ki67)_1`, '') IS NOT NULL
+            THEN REGEXP_SUBSTR(`SUBSTR(Ki67)_1`, '[^\n]+', 1, 1)
             ELSE NULL
-        END AS `SUBSTR(Ki-67)`
+        END AS `SUBSTR(Ki67)_2`
     FROM(
         SELECT *,
             CASE 
-                WHEN NULLIF(`SELECT(Ki-67)`, '') IS NOT NULL
-                THEN REGEXP_REPLACE(
-                    REGEXP_REPLACE(
-                        REGEXP_REPLACE(
+                WHEN NULLIF(`REPLACE(Ki67)_2`, '') IS NOT NULL
+                THEN SUBSTR(`REPLACE(Ki67)_2`, INSTR(`REPLACE(Ki67)_2`, 'ki-67'))
+                ELSE NULL
+            END AS `SUBSTR(Ki67)_1`
+        FROM(
+            SELECT *,
+                CASE 
+                    WHEN NULLIF(`REPLACE(Ki67)_1`, '') IS NOT NULL
+                    THEN REPLACE(
+                        REPLACE(
+                            REGEXP_REPLACE(
+                                REGEXP_REPLACE(
+                                    REPLACE(
+                                        REPLACE(
+                                            REPLACE(
+                                                REPLACE(
+                                                    REPLACE(
+                                                        `REPLACE(Ki67)_1`, 'positive', '(+)'
+                                                    ), 'negative', '(-)'
+                                                ), '3+', '(+++)'
+                                            ), '2+', '(++)'
+                                        ), '1+', '(+)'
+                                    ), '[(]{2,}', '('
+                                ), '[)]{2,}', ')'
+                            ), '( ', '('
+                        ), ' )', ')'
+                    )
+                    ELSE NULL
+                END AS `REPLACE(Ki67)_2`
+            FROM(
+                SELECT *,
+                    CASE 
+                        WHEN NULLIF(`SELECT(Ki67)`, '') IS NOT NULL
+                        THEN REGEXP_REPLACE(
                             REGEXP_REPLACE(
                                 REPLACE(
                                     REPLACE(
                                         REPLACE(
                                             REPLACE(
                                                 REPLACE(
-                                                    REPLACE(
-                                                        REPLACE(
-                                                            REPLACE(
-                                                                REPLACE(
-                                                                    REPLACE(
-                                                                        REPLACE(
-                                                                            REPLACE(
-                                                                                REPLACE(
-                                                                                    REPLACE(
-                                                                                        REPLACE(
-                                                                                            `SELECT(Ki-67)`, `SELECT(Ki-67)`, LOWER(`SELECT(Ki-67)`)
-                                                                                        ), SUBSTR(`SELECT(Ki-67)`, INSTR(`SELECT(Ki-67)`, '◈')), ''
-                                                                                    ), 'ki-67', 'Ki-67'
-                                                                                ), 'labelling', 'labeling'
-                                                                            ), '.', ','
-                                                                        ), '),', ')'
-                                                                    ), ';', ':'
-                                                                ), 'less than ', '<'
-                                                            ), 'positive', '(+)'
-                                                        ), 'negative', '(-)'
-                                                    ), '3+', '+++'
-                                                ), '2+', '++'
-                                            ), '1+', '+'
-                                        ), '3-', '---'
-                                    ), '2-', '--'
-                                ), '1-', '-'
+                                                    REGEXP_REPLACE(
+                                                        `SELECT(Ki67)`, ' {2,}', ' '
+                                                    ), 'ki-67 (', 'ki-67: ('
+                                                ), 'ki-67 : ', 'ki-67: '
+                                            ), 'less than ', '<'
+                                        ), '.', ','
+                                    ), ';', ':'
+                                ), ':{2,}', ':'
                             ), ' {2,}', ' '
-                        ), '[(]{2,}', '('
-                    ), '[)]{2,}', ')'
-                )
-                ELSE NULL
-            END AS `REPLACE(Ki-67)`
-        FROM(
-            SELECT *,
-                CASE
-                    WHEN INSTR(병리진단, 'Ki-67') != 0
-                    THEN 병리진단
-                    ELSE NULL
-                END AS `SELECT(Ki-67)`
-            FROM genetic_01
+                        )
+                        ELSE NULL
+                    END AS `REPLACE(Ki67)_1`
+                FROM(
+                    SELECT *,
+                        CASE
+                            WHEN INSTR(LOWER(병리진단_Ki67), 'ki-67') != 0
+                            THEN LOWER(병리진단_Ki67)
+                            ELSE NULL
+                        END AS `SELECT(Ki67)`
+                    FROM genetic_05_00
+                ) a
+            ) a
         ) a
     ) a
 ) a

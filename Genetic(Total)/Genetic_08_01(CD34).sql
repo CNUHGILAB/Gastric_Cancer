@@ -31,11 +31,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         REPLACE(
-                                                                            REPLACE(
-                                                                                REPLACE(
-                                                                                    `SELECT(CD34)`, `SELECT(CD34)`, LOWER(`SELECT(CD34)`)
-                                                                                ), SUBSTR(`SELECT(CD34)`, INSTR(`SELECT(CD34)`, '◈')), ''
-                                                                            ), '.', ','
+                                                                            SUBSTR(`SELECT(CD34)`, INSTR(`SELECT(CD34)`, 'cd34')), '.', ','
                                                                         ), '),', ')'
                                                                     ), ';', ':'
                                                                 ), 'less than ', '<'
@@ -56,11 +52,11 @@ FROM(
         FROM(
             SELECT *,
                 CASE
-                    WHEN INSTR(BINARY LOWER(병리진단), 'cd34') != 0
-                    THEN 병리진단
+                    WHEN 병리진단_CD34 IS NOT NULL
+                    THEN LOWER(병리진단_CD34)
                     ELSE NULL
                 END AS `SELECT(CD34)`
-            FROM genetic_01
+            FROM genetic_08_00
         ) a
     ) a
 ) a

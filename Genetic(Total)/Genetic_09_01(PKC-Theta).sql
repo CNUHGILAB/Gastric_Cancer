@@ -31,11 +31,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         REPLACE(
-                                                                            REPLACE(
-                                                                                REPLACE(
-                                                                                    `SELECT(PKC-Theta)`, `SELECT(PKC-Theta)`, LOWER(`SELECT(PKC-Theta)`)
-                                                                                ), SUBSTR(`SELECT(PKC-Theta)`, INSTR(`SELECT(PKC-Theta)`, '◈')), ''
-                                                                            ), '.', ','
+                                                                            SUBSTR(`SELECT(PKC-Theta)`, INSTR(`SELECT(PKC-Theta)`, 'pkc-theta')), '.', ','
                                                                         ), '),', ')'
                                                                     ), ';', ':'
                                                                 ), 'less than ', '<'
@@ -56,11 +52,11 @@ FROM(
         FROM(
             SELECT *,
                 CASE
-                    WHEN INSTR(BINARY LOWER(병리진단), 'pkc-theta') != 0
-                    THEN 병리진단
+                    WHEN 병리진단_PKCTHETA IS NOT NULL
+                    THEN LOWER(병리진단_PKCTHETA)
                     ELSE NULL
                 END AS `SELECT(PKC-Theta)`
-            FROM genetic_01
+            FROM genetic_09_00
         ) a
     ) a
 ) a

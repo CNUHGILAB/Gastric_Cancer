@@ -31,11 +31,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         REPLACE(
-                                                                            REPLACE(
-                                                                                REPLACE(
-                                                                                    `SELECT(C-Kit)`, `SELECT(C-Kit)`, LOWER(`SELECT(C-Kit)`)
-                                                                                ), SUBSTR(`SELECT(C-Kit)`, INSTR(`SELECT(C-Kit)`, '◈')), ''
-                                                                            ), '.', ','
+                                                                            SUBSTR(`SELECT(C-Kit)`, INSTR(`SELECT(C-Kit)`, 'c-kit')), '.', ','
                                                                         ), '),', ')'
                                                                     ), ';', ':'
                                                                 ), 'less than ', '<'
@@ -56,11 +52,11 @@ FROM(
         FROM(
             SELECT *,
                 CASE
-                    WHEN INSTR(BINARY LOWER(병리진단), 'c-kit') != 0
-                    THEN 병리진단
+                    WHEN 병리진단_CKIT IS NOT NULL
+                    THEN LOWER(병리진단_CKIT)
                     ELSE NULL
                 END AS `SELECT(C-Kit)`
-            FROM genetic_01
+            FROM genetic_07_00
         ) a
     ) a
 ) a

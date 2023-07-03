@@ -8,7 +8,7 @@ FROM(
         CASE 
             WHEN NULLIF(`REPLACE(EBV)`, '') IS NOT NULL
             THEN REGEXP_SUBSTR(
-                SUBSTR(`REPLACE(EBV)`, INSTR(`REPLACE(EBV)`, 'EBV')), '[^\n]+', 1, 1
+                SUBSTR(`REPLACE(EBV)`, INSTR(`REPLACE(EBV)`, 'ebv')), '[^\n]+', 1, 1
             )
             ELSE NULL
         END AS `SUBSTR(EBV)`
@@ -31,11 +31,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         REPLACE(
-                                                                            REPLACE(
-                                                                                REPLACE(
-                                                                                    `SELECT(EBV)`, `SELECT(EBV)`, LOWER(`SELECT(EBV)`)
-                                                                                ), SUBSTR(`SELECT(EBV)`, INSTR(`SELECT(EBV)`, '◈')), ''
-                                                                            ), '.', ','
+                                                                            SUBSTR(`SELECT(EBV)`, INSTR(`SELECT(EBV)`, 'ebv')), '.', ','
                                                                         ), '),', ')'
                                                                     ), ';', ':'
                                                                 ), 'less than ', '<'
@@ -56,11 +52,11 @@ FROM(
         FROM(
             SELECT *,
                 CASE
-                    WHEN INSTR(병리진단, 'EBV') != 0
-                    THEN 병리진단
+                    WHEN 병리진단_EBV IS NOT NULL
+                    THEN LOWER(병리진단_EBV)
                     ELSE NULL
                 END AS `SELECT(EBV)`
-            FROM genetic_01
+            FROM genetic_14_00
         ) a
     ) a
 ) a

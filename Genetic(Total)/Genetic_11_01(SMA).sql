@@ -8,7 +8,7 @@ FROM(
         CASE 
             WHEN NULLIF(`REPLACE(SMA)`, '') IS NOT NULL
             THEN REGEXP_SUBSTR(
-                SUBSTR(`REPLACE(SMA)`, INSTR(`REPLACE(SMA)`, 'SMA')), '[^\n]+', 1, 1
+                SUBSTR(`REPLACE(SMA)`, INSTR(`REPLACE(SMA)`, 'alpha-sma')), '[^\n]+', 1, 1
             )
             ELSE NULL
         END AS `SUBSTR(SMA)`
@@ -31,9 +31,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         REPLACE(
-                                                                            REPLACE(
-                                                                                `SELECT(SMA)`, SUBSTR(`SELECT(SMA)`, INSTR(`SELECT(SMA)`, '◈')), ''
-                                                                            ), '.', ','
+                                                                            SUBSTR(`SELECT(SMA)`, INSTR(`SELECT(SMA)`, 'alpha-sma')), '.', ','
                                                                         ), '),', ')'
                                                                     ), ';', ':'
                                                                 ), 'less than ', '<'
@@ -54,11 +52,19 @@ FROM(
         FROM(
             SELECT *,
                 CASE
-                    WHEN INSTR(BINARY 병리진단, 'SMA') != 0
-                    THEN 병리진단
+                    WHEN 병리진단_SMA IS NOT NULL
+                    THEN REPLACE(
+                        REPLACE(
+                            REPLACE(
+                                REPLACE(
+                                    LOWER(병리진단_SMA), 'smooth muscle actin', 'sma'
+                                ), 'sma', 'alpha-sma'
+                            ), 'alpha-alpha-sma', 'alpha-sma'
+                        ), 'alpha-small', 'small'
+                    )
                     ELSE NULL
                 END AS `SELECT(SMA)`
-            FROM genetic_01
+            FROM genetic_11_00
         ) a
     ) a
 ) a

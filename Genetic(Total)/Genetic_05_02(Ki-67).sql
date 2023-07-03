@@ -3,198 +3,126 @@ SELECT
     환자번호,
     검사시행일,
     `Ki-67`,
-    `Ki-67 Percent`,
-    `ELSE(Ki-67)`
+    `Ki-67 Percent`
 FROM(
-    SELECT *,
-        CASE 
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '^ [0-9]+') != 0
-            THEN REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2)
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '^ [(][0-9]+') != 0
-            THEN REPLACE(
-                REPLACE(
-                    REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2),
-                    '(', ''
-                ), ')', ''
-            )
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '[,] [0-9]+') != 0
-            THEN REPLACE(
-                REGEXP_SUBSTR(`Ki-67_1`, '[^,]+', 1, 2),
-                ')', ''
-            )
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_2`, '[^:]+', 1, 2), ' [(][0-9]+') != 0
-            THEN REPLACE(
-                REGEXP_SUBSTR(`Ki-67_2`, '[^(]+', 1, 2),
-                ')', ''
-            )
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_3`, '[^:]+', 1, 2), ' [(][0-9]+') != 0
-            THEN REPLACE(
-                REGEXP_SUBSTR(`Ki-67_3`, '[^(]+', 1, 2),
-                ')', ''
-            )
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_3`, '[^:]+', 1, 2), '[,][0-9]+') != 0 OR REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_3`, '[^:]+', 1, 2), '[,] [0-9]+') != 0
-            THEN REPLACE(
-                REGEXP_SUBSTR(`Ki-67_3`, '[^,]+', 1, 2),
-                ')', ''
-            )
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), ' [(][0-9]+') != 0
-            THEN REPLACE(
-                REGEXP_SUBSTR(`Ki-67_5`, '[^(]+', 1, 2),
-                ')', ''
-            )
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '^ .[0-9]+') != 0 OR REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '^ [0-9]+') != 0
-            THEN REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2)
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '[,][0-9]+') != 0 OR REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '[,] [0-9]+') != 0
-            THEN REPLACE(
-                REGEXP_SUBSTR(`Ki-67_5`, '[^,]+', 1, 2),
-                ')', ''
-            )
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '^ [<|>][0-9]+') != 0 OR REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '^ [0-9]+') != 0
-            THEN REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2)
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '[A-z]+ [0-9]+') != 0
-            THEN SUBSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), ' [0-9]+'))
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '^ [(][0-9]+') != 0
-            THEN REPLACE(
-                REGEXP_SUBSTR(`Ki-67_6`, '[^(]+', 1, 2),
-                SUBSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), ')')),
-                ''
-            )
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '[)] [<|>][0-9]+') != 0
-            THEN SUBSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '[<|>][0-9]+'))
-            WHEN REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '[)] [(][0-9]+') != 0
-            THEN REPLACE(
-                REPLACE(
-                    SUBSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), REGEXP_INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), ' [(][0-9]+')),
-                    '(', ''
-                ), ')', ''
-            )
-            WHEN REGEXP_INSTR(`Ki-67_7`, ' [(].[0-9]+') != 0 OR REGEXP_INSTR(`Ki-67_7`, ' [(][0-9]+') != 0
-            THEN REPLACE(
-                REGEXP_SUBSTR(`Ki-67_7`, '[^(]+', 1, 2),
-                ')', ''
-            )
-            ELSE NULL
-        END AS `Ki-67 Percent`
+    SELECT *
     FROM(
         SELECT *
         FROM(
             SELECT *,
                 CASE 
-                    WHEN NULLIF(`Ki-67(1)`, '') IS NOT NULL
-                    THEN `Ki-67(1)`
-                    WHEN NULLIF(`Ki-67(2)`, '') IS NOT NULL
-                    THEN `Ki-67(2)`
-                    WHEN NULLIF(`Ki-67(3)`, '') IS NOT NULL
-                    THEN `Ki-67(3)`
+                    WHEN KI67_P2 IS NOT NULL
+                    THEN KI67_P2
+                    WHEN KI67_P3 IS NOT NULL
+                    THEN KI67_P3
                     ELSE NULL
-                END AS `Ki-67`
+                END AS `Ki-67 Percent`
             FROM(
                 SELECT *,
                     CASE 
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(+)') != 0 OR INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(+,') != 0
-                        THEN '+'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(-)') != 0 OR INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(-,') != 0
-                        THEN '-'
-                        WHEN INSTR(`Ki-67_3`, '(+)') != 0 OR INSTR(`Ki-67_3`, '(+,') != 0 OR INSTR(`Ki-67_3`, '(+ ') != 0
-                        THEN '+'
-                        WHEN INSTR(`Ki-67_3`, '(-)') != 0 OR INSTR(`Ki-67_3`, '(-,') != 0 OR INSTR(`Ki-67_3`, '(- ') != 0
-                        THEN '-'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '(+,') != 0
-                        THEN '+'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '(-,') != 0
-                        THEN '-'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '(+)') != 0
-                        THEN '+'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '(-)') != 0
-                        THEN '-'
+                        WHEN REGEXP_INSTR(ELSE_KI67_P2, ' [(][<|>][0-9]+| [(][0-9]+') != 0
+                        THEN REPLACE(
+                            REPLACE(
+                                SUBSTR(ELSE_KI67_P2, INSTR(ELSE_KI67_P2, ' (')),
+                                SUBSTR(SUBSTR(ELSE_KI67_P2, INSTR(ELSE_KI67_P2, ' (')), INSTR(SUBSTR(ELSE_KI67_P2, INSTR(ELSE_KI67_P2, ' (')), ')')),
+                                ''
+                            ), ' (', ''
+                        )
                         ELSE NULL
-                    END AS `Ki-67(1)`,
-                    CASE 
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(++)') != 0 OR INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(++,') != 0
-                        THEN '++'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(--)') != 0 OR INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(--,') != 0
-                        THEN '--'
-                        WHEN INSTR(`Ki-67_3`, '(++)') != 0 OR INSTR(`Ki-67_3`, '(++,') != 0 OR INSTR(`Ki-67_3`, '(++ ') != 0
-                        THEN '++'
-                        WHEN INSTR(`Ki-67_3`, '(--)') != 0 OR INSTR(`Ki-67_3`, '(--,') != 0 OR INSTR(`Ki-67_3`, '(-- ') != 0
-                        THEN '--'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '(++,') != 0
-                        THEN '++'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '(--,') != 0
-                        THEN '--'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '(++)') != 0
-                        THEN '++'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '(--)') != 0
-                        THEN '--'
-                        ELSE NULL
-                    END AS `Ki-67(2)`,
-                    CASE 
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(+++)') != 0 OR INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(+++,') != 0
-                        THEN '+++'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(---)') != 0 OR INSTR(REGEXP_SUBSTR(`Ki-67_1`, '[^:]+', 1, 2), '(---,') != 0
-                        THEN '---'
-                        WHEN INSTR(`Ki-67_3`, '(+++)') != 0 OR INSTR(`Ki-67_3`, '(+++,') != 0 OR INSTR(`Ki-67_3`, '(+++ ') != 0
-                        THEN '+++'
-                        WHEN INSTR(`Ki-67_3`, '(---)') != 0 OR INSTR(`Ki-67_3`, '(---,') != 0 OR INSTR(`Ki-67_3`, '(--- ') != 0
-                        THEN '---'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '(+++,') != 0
-                        THEN '+++'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_5`, '[^:]+', 1, 2), '(---,') != 0
-                        THEN '---'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '(+++)') != 0
-                        THEN '+++'
-                        WHEN INSTR(REGEXP_SUBSTR(`Ki-67_6`, '[^:]+', 1, 2), '(---)') != 0
-                        THEN '---'
-                        ELSE NULL
-                    END AS `Ki-67(3)`
+                    END AS KI67_P3
                 FROM(
                     SELECT *,
                         CASE 
-                            WHEN (NULLIF(`SUBSTR(Ki-67)`, '') IS NOT NULL AND NULLIF(`Ki-67_1`, '') IS NULL AND NULLIF(`Ki-67_2`, '') IS NULL AND NULLIF(`Ki-67_3`, '') IS NULL AND NULLIF(`Ki-67_4`, '') IS NULL AND NULLIF(`Ki-67_5`, '') IS NULL AND NULLIF(`Ki-67_6`, '') IS NULL AND NULLIF(`Ki-67_7`, '') IS NULL)
-                            THEN `SUBSTR(Ki-67)`
+                            WHEN KI67_P1 IS NOT NULL AND KI67_P2 IS NULL
+                            THEN KI67_P1
+                            WHEN ELSE_KI67_P1 IS NOT NULL AND KI67_P2 IS NULL
+                            THEN ELSE_KI67_P1
                             ELSE NULL
-                        END AS `ELSE(Ki-67)`
+                        END AS ELSE_KI67_P2
                     FROM(
                         SELECT *,
                             CASE 
-                                WHEN INSTR(`SUBSTR(Ki-67)`, 'Ki-67 labeling index') != 0 AND INSTR(`SUBSTR(Ki-67)`, ':') != 0
-                                THEN `SUBSTR(Ki-67)`
+                                WHEN REGEXP_INSTR(KI67_P1, '^[(][<|>][0-9]+|^[(][0-9]+') != 0
+                                THEN REGEXP_REPLACE(
+                                    REPLACE(
+                                        KI67_P1, SUBSTR(KI67_P1, INSTR(KI67_P1, ')')), ''
+                                    ), '^[(]', ''
+                                )
+                                WHEN REGEXP_INSTR(KI67_P1, '^[0-9]+|^[<|>][0-9]+') != 0
+                                THEN REPLACE(
+                                    KI67_P1, SUBSTR(KI67_P1, INSTR(KI67_P1, ',')), ''
+                                )
+                                WHEN REGEXP_INSTR(KI67_P1, '^[(][+|-]+[,]') != 0
+                                THEN REGEXP_REPLACE(
+                                    REPLACE(
+                                        REPLACE(
+                                            SUBSTR(KI67_P1, INSTR(KI67_P1, ',')), SUBSTR(SUBSTR(KI67_P1, INSTR(KI67_P1, ',')), INSTR(SUBSTR(KI67_P1, INSTR(KI67_P1, ',')), ')')), ''
+                                        ), ' ', ''
+                                    ), '^[,]', ''
+                                )
+                                WHEN REGEXP_INSTR(ELSE_KI67_P1, ' [(][0-9]+| [(][<|>][0-9]+') != 0
+                                THEN REPLACE(
+                                    REPLACE(
+                                        SUBSTR(ELSE_KI67_P1, INSTR(ELSE_KI67_P1, ' (')),
+                                        SUBSTR(SUBSTR(ELSE_KI67_P1, INSTR(ELSE_KI67_P1, ' (')), INSTR(SUBSTR(ELSE_KI67_P1, INSTR(ELSE_KI67_P1, ' (')), ')')),
+                                        ''
+                                    ), ' (', ''
+                                )
+                                WHEN REGEXP_INSTR(ELSE_KI67_P1, '[(][+|-]+[,]') != 0
+                                THEN REPLACE(
+                                    REPLACE(
+                                        SUBSTR(ELSE_KI67_P1, INSTR(ELSE_KI67_P1, ',')),
+                                        SUBSTR(SUBSTR(ELSE_KI67_P1, INSTR(ELSE_KI67_P1, ',')), INSTR(SUBSTR(ELSE_KI67_P1, INSTR(ELSE_KI67_P1, ',')), ')')),
+                                        ''
+                                    ), ',', ''
+                                )
                                 ELSE NULL
-                            END AS `Ki-67_1`,
-                            CASE 
-                                WHEN INSTR(`SUBSTR(Ki-67)`, 'Ki-67 labeling index') != 0 AND INSTR(`SUBSTR(Ki-67)`, ':') = 0
-                                THEN `SUBSTR(Ki-67)`
-                                ELSE NULL
-                            END AS `Ki-67_2`,
-                            CASE 
-                                WHEN (INSTR(`SUBSTR(Ki-67)`, 'Ki-67 (') != 0 AND INSTR(`SUBSTR(Ki-67)`, ':') = 0)
-                                THEN `SUBSTR(Ki-67)`
-                                ELSE NULL
-                            END AS `Ki-67_3`,
-                            CASE 
-                                WHEN (INSTR(`SUBSTR(Ki-67)`, 'Ki-67 (') != 0 AND INSTR(`SUBSTR(Ki-67)`, ':') != 0)
-                                THEN `SUBSTR(Ki-67)`
-                                ELSE NULL
-                            END AS `Ki-67_4`,
-                            CASE 
-                                WHEN INSTR(`SUBSTR(Ki-67)`, 'Ki-67: ') != 0 OR INSTR(`SUBSTR(Ki-67)`, 'Ki-67 : ') != 0
-                                THEN `SUBSTR(Ki-67)`
-                                ELSE NULL
-                            END AS `Ki-67_5`,
-                            CASE 
-                                WHEN INSTR(`SUBSTR(Ki-67)`, 'Ki-67 index') != 0 AND INSTR(`SUBSTR(Ki-67)`, ':') != 0
-                                THEN `SUBSTR(Ki-67)`
-                                ELSE NULL
-                            END AS `Ki-67_6`,
-                            CASE 
-                                WHEN INSTR(`SUBSTR(Ki-67)`, 'Ki-67 index') != 0 AND INSTR(`SUBSTR(Ki-67)`, ':') = 0
-                                THEN `SUBSTR(Ki-67)`
-                                ELSE NULL
-                            END AS `Ki-67_7`
-                        FROM genetic_05_01
+                            END AS KI67_P2
+                        FROM(
+                            SELECT *,
+                                CASE 
+                                    WHEN `SUBSTR(Ki67)_2` IS NOT NULL AND KI67_P1 IS NULL
+                                    THEN `SUBSTR(Ki67)_2`
+                                    ELSE NULL
+                                END AS ELSE_KI67_P1
+                            FROM(
+                                SELECT *,
+                                    CASE
+                                        WHEN REGEXP_SUBSTR(`SUBSTR(Ki67)_2`, '[^:]+', 1, 2) IS NOT NULL
+                                        THEN REGEXP_REPLACE(
+                                            REGEXP_SUBSTR(`SUBSTR(Ki67)_2`, '[^:]+', 1, 2), '^ ', ''
+                                        )
+                                        ELSE NULL
+                                    END AS KI67_P1
+                                FROM(
+                                    SELECT *,
+                                        CASE 
+                                            WHEN INSTR(`SUBSTR(Ki67)_2`, '(+)') != 0 OR INSTR(`SUBSTR(Ki67)_2`, '(+,') != 0
+                                            THEN '+'
+                                            WHEN INSTR(`SUBSTR(Ki67)_2`, '(-)') != 0 OR INSTR(`SUBSTR(Ki67)_2`, '(-,') != 0
+                                            THEN '-'
+                                            WHEN INSTR(`SUBSTR(Ki67)_2`, '(++)') != 0 OR INSTR(`SUBSTR(Ki67)_2`, '(++,') != 0
+                                            THEN '++'
+                                            WHEN INSTR(`SUBSTR(Ki67)_2`, '(--)') != 0 OR INSTR(`SUBSTR(Ki67)_2`, '(--,') != 0
+                                            THEN '--'
+                                            WHEN INSTR(`SUBSTR(Ki67)_2`, '(+++)') != 0 OR INSTR(`SUBSTR(Ki67)_2`, '(+++,') != 0
+                                            THEN '+++'
+                                            WHEN INSTR(`SUBSTR(Ki67)_2`, '(---)') != 0 OR INSTR(`SUBSTR(Ki67)_2`, '(---,') != 0
+                                            THEN '---'
+                                            ELSE NULL
+                                        END AS `Ki-67`
+                                    FROM genetic_05_01
+                                ) a
+                            ) a
+                        ) a
                     ) a
                 ) a
             ) a
         ) a
     ) a
 ) a
+/*
+WHERE (
+    Ki67 IS NOT NULL OR `Ki67 Percent` IS NOT NULL
+)
+*/

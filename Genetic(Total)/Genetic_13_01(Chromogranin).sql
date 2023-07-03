@@ -31,11 +31,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         REPLACE(
-                                                                            REPLACE(
-                                                                                REPLACE(
-                                                                                    `SELECT(Chromogranin)`, `SELECT(Chromogranin)`, LOWER(`SELECT(Chromogranin)`)
-                                                                                ), SUBSTR(`SELECT(Chromogranin)`, INSTR(`SELECT(Chromogranin)`, '◈')), ''
-                                                                            ), '.', ','
+                                                                            SUBSTR(`SELECT(Chromogranin)`, INSTR(`SELECT(Chromogranin)`, 'chromogranin')), '.', ','
                                                                         ), '),', ')'
                                                                     ), ';', ':'
                                                                 ), 'less than ', '<'
@@ -56,11 +52,13 @@ FROM(
         FROM(
             SELECT *,
                 CASE
-                    WHEN INSTR(BINARY LOWER(병리진단), 'chromogranin') != 0
-                    THEN 병리진단
+                    WHEN 병리진단_Chromogranin IS NOT NULL
+                    THEN REPLACE(
+                        LOWER(병리진단_Chromogranin), 'chrmogranin', 'chromogranin'
+                    )
                     ELSE NULL
                 END AS `SELECT(Chromogranin)`
-            FROM genetic_01
+            FROM genetic_13_00
         ) a
     ) a
 ) a

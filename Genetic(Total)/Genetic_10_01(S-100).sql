@@ -31,11 +31,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         REPLACE(
-                                                                            REPLACE(
-                                                                                REPLACE(
-                                                                                    `SELECT(S-100)`, `SELECT(S-100)`, LOWER(`SELECT(S-100)`)
-                                                                                ), SUBSTR(`SELECT(S-100)`, INSTR(`SELECT(S-100)`, '◈')), ''
-                                                                            ), '.', ','
+                                                                            SUBSTR(`SELECT(S-100)`, INSTR(`SELECT(S-100)`, 's-100')), '.', ','
                                                                         ), '),', ')'
                                                                     ), ';', ':'
                                                                 ), 'less than ', '<'
@@ -56,11 +52,13 @@ FROM(
         FROM(
             SELECT *,
                 CASE
-                    WHEN INSTR(BINARY LOWER(병리진단), 's-100') != 0
-                    THEN 병리진단
+                    WHEN 병리진단_S100 IS NOT NULL
+                    THEN REPLACE(
+                        LOWER(병리진단_S100), 's100', 's-100'
+                    )
                     ELSE NULL
                 END AS `SELECT(S-100)`
-            FROM genetic_01
+            FROM genetic_10_00
         ) a
     ) a
 ) a

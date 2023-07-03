@@ -14,8 +14,7 @@ class GeneticMerge02(BaseETL):
                 `E-Cadherin`,
                 `E-Cadherin Comment`,
                 p53,
-                p53_Comment,
-                p53_Percent
+                `p53 Percent`
             FROM
                 genetic_merge_01 st0
                 LEFT JOIN genetic_04_02 st1 ON (

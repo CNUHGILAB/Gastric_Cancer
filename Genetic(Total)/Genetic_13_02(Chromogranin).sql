@@ -6,9 +6,11 @@ SELECT
 FROM(
     SELECT *,
         CASE 
-            WHEN INSTR(`SUBSTR(Chromogranin)`, '(+)') != 0 OR INSTR(`SUBSTR(Chromogranin)`, '(+,') != 0 OR INSTR(`SUBSTR(Chromogranin)`, '(+ ') != 0 OR INSTR(`SUBSTR(Chromogranin)`, ' +)') != 0
+            WHEN INSTR(`SUBSTR(Chromogranin)`, 'chromogranin (+)') != 0 OR INSTR(`SUBSTR(Chromogranin)`, 'chromogranin (+,') != 0
+                OR REGEXP_INSTR(REGEXP_SUBSTR(`SUBSTR(Chromogranin)`, '[^:]+', 1, 2), '^ [(][+][)]') != 0 OR INSTR(REGEXP_SUBSTR(`SUBSTR(Chromogranin)`, '[^:]+', 1, 2), 'focal (+)') != 0
             THEN '+'
-            WHEN INSTR(`SUBSTR(Chromogranin)`, '(-)') != 0 OR INSTR(`SUBSTR(Chromogranin)`, '(-,') != 0 OR INSTR(`SUBSTR(Chromogranin)`, '(- ') != 0 OR INSTR(`SUBSTR(Chromogranin)`, ' -)') != 0
+            WHEN INSTR(`SUBSTR(Chromogranin)`, 'chromogranin (-)') != 0 OR INSTR(`SUBSTR(Chromogranin)`, 'chromogranin (-,') != 0
+                OR REGEXP_INSTR(REGEXP_SUBSTR(`SUBSTR(Chromogranin)`, '[^:]+', 1, 2), '^ [(][-][)]') != 0 OR INSTR(REGEXP_SUBSTR(`SUBSTR(Chromogranin)`, '[^:]+', 1, 2), 'focal (-)') != 0
             THEN '-'
             ELSE NULL
         END AS Chromogranin

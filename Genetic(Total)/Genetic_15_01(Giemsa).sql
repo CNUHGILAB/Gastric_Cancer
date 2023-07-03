@@ -31,11 +31,7 @@ FROM(
                                                                 REPLACE(
                                                                     REPLACE(
                                                                         REPLACE(
-                                                                            REPLACE(
-                                                                                REPLACE(
-                                                                                    `SELECT(Giemsa)`, `SELECT(Giemsa)`, LOWER(`SELECT(Giemsa)`)
-                                                                                ), SUBSTR(`SELECT(Giemsa)`, INSTR(`SELECT(Giemsa)`, '◈')), ''
-                                                                            ), '.', ','
+                                                                            SUBSTR(`SELECT(Giemsa)`, INSTR(`SELECT(Giemsa)`, 'giemsa')), '.', ','
                                                                         ), '),', ')'
                                                                     ), ';', ':'
                                                                 ), 'less than ', '<'
@@ -56,11 +52,11 @@ FROM(
         FROM(
             SELECT *,
                 CASE
-                    WHEN INSTR(BINARY LOWER(병리진단), 'giemsa') != 0
-                    THEN 병리진단
+                    WHEN 병리진단_Giemsa IS NOT NULL
+                    THEN LOWER(병리진단_Giemsa)
                     ELSE NULL
                 END AS `SELECT(Giemsa)`
-            FROM genetic_01
+            FROM genetic_15_00
         ) a
     ) a
 ) a
