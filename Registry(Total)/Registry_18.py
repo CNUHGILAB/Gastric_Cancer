@@ -1,27 +1,21 @@
 from Base_ETL import BaseETL
+import pandas as pd
 
 class Registry18(BaseETL):
 
     def run(self):
         
-        f = open("Registry(Total)/Registry_18(Pathology).sql", 'rt', encoding = 'UTF8')
-        
-        sql= ''
-        
-        while True:
-            line = f.readline()
+        sql= '''
+            SELECT
+                CHKID,
+                ID,
+                DATEDIFF(OP_DISC, OP_ADM) AS 재원일수,
+                OP_DATE
+            FROM registry_01_04
+        '''
             
-            if not line:
-                break
-            
-            a = str(line)
-            
-            sql  = sql + a  
-            
-        f.close()
-        
-        df = self.df_from_sql(db_name = "pathology_total", sql = sql)
-        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_18.xlsx')
+        df = self.df_from_sql(db_name = "registry_total", sql = sql)
+        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_26.xlsx')
         #print(df)
         
         self.insert(df, db_name = "registry_total", tb_name = "registry_18")

@@ -4,36 +4,24 @@ class Registry08(BaseETL):
 
     def run(self):
         
-        sql = '''
-            SELECT
-                CAST(환자번호 AS CHAR) AS 환자번호,
-                원무접수ID,
-                CEA,
-                검사시행일
-            FROM(
-                SELECT
-                    환자번호,
-                    원무접수ID,
-                    CASE
-                        WHEN (검사코드 = 'B5210' OR 검사코드 = 'D1618')
-                        THEN 검사결과
-                    END AS CEA,
-                    STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') AS 검사시행일
-                FROM raw_data_total.blood_test
-                WHERE(
-                    원무접수ID IN (
-                        SELECT
-                            DISTINCT 원무접수ID
-                        FROM raw_data_total.operation_record
-                    )
-                )
-            ) c
-            WHERE
-                CEA IS NOT NULL
-        '''
+        f = open("Registry(Total)/Registry_08(OperationRecord).sql", 'rt', encoding = 'UTF8')
+        
+        sql= ''
+        
+        while True:
+            line = f.readline()
+            
+            if not line:
+                break
+            
+            a = str(line)
+            
+            sql  = sql + a  
+            
+        f.close()
         
         df = self.df_from_sql(db_name = "registry_total", sql = sql)
-        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_08.xlsx')
+        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_14.xlsx')
         #print(df)
         
         self.insert(df, db_name = "registry_total", tb_name = "registry_08")

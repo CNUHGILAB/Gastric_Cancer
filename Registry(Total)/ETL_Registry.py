@@ -68,7 +68,7 @@ class ETLRegistry():
         self,
     ):
         Registry01().run()            #환자정보
-        #Registry02().run()            #Comorbidity
+        Registry02().run()            #Comorbidity
         #RegistryMerge01().run()       #환자정보 + Comorbidity
         Registry03().run()            #수술 기록지와 수술기록의 원무접수ID가 같은 환자목록
         Registry04().run()            #Alb

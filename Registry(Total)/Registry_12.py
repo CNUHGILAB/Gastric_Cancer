@@ -5,35 +5,51 @@ class Registry12(BaseETL):
     def run(self):
         
         sql = '''
-            SELECT
-                CAST(환자번호 AS CHAR) AS 환자번호,
-                원무접수ID,
-                AFP,
-                검사시행일
-            FROM(
-                SELECT
-                    환자번호,
-                    원무접수ID,
+            SELECT * FROM(
+                SELECT *,
+                    COUNT(*) AS cnt
+                FROM(
+                    SELECT
+                        ID,
+                        CHKID,
+                        OP_Date AS OP_DATE,
+                        검사시행일,
+                        CASE
+                            WHEN ID IS NOT NULL
+                            THEN 'YES'
+                        END AS WashCytology,
+                        CASE
+                            WHEN GENERAL_CATEGORIZATION_2 = 'Positive'
+                            THEN 'Pos'
+                            WHEN GENERAL_CATEGORIZATION_2 = 'Negative'
+                            THEN 'Neg'
+                            WHEN GENERAL_CATEGORIZATION_1 = 'Atypical cells'
+                            THEN 'Atypical cells'
+                            WHEN GENERAL_CATEGORIZATION_1 = 'Benign cellular changes'
+                            THEN 'Pos'
+                            WHEN GENERAL_CATEGORIZATION_2 IS NULL
+                            THEN 'Unsatisfactory'
+                        END AS WC_Result
+                    FROM gc_database_total.washcytology
+                ) c
+                GROUP BY ID, CHKID, OP_Date, WC_Result
+                ORDER BY ID, (
                     CASE
-                        WHEN (검사코드 = 'B5202' OR 검사코드 = 'D1617')
-                        THEN 검사결과
-                    END AS AFP,
-                    STR_TO_DATE(검사시행일, '%%Y-%%m-%%d') AS 검사시행일
-                FROM raw_data_total.blood_test
-                WHERE(
-                    원무접수ID IN (
-                        SELECT
-                            DISTINCT 원무접수ID
-                        FROM raw_data_total.operation_record
-                    )
-                )
-            ) c
-            WHERE
-                AFP IS NOT NULL
+                        WHEN WC_Result = 'Pos'
+                        THEN 1
+                        WHEN WC_Result = 'Atypical cells'
+                        THEN 2
+                        WHEN WC_Result = 'Neg'
+                        THEN 3
+                        ELSE 4
+                    END
+                ) ASC
+            ) AS x
+            GROUP BY ID, OP_Date
         '''
         
         df = self.df_from_sql(db_name = "registry_total", sql = sql)
-        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_12.xlsx')
+        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_19.xlsx')
         #print(df)
         
         self.insert(df, db_name = "registry_total", tb_name = "registry_12")

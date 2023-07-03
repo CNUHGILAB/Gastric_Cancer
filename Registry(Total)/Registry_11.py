@@ -4,26 +4,24 @@ class Registry11(BaseETL):
 
     def run(self):
         
-        sql = '''
-            SELECT
-                DISTINCT
-                    a.ID,
-                    OP_Date,
-                    CA199,
-                    MAX(검사시행일) AS Test_Date
-            FROM
-                registry_03 a
-                LEFT JOIN registry_10 b ON a.ID = b.환자번호
-            WHERE(
-                검사시행일 BETWEEN DATE_SUB(OP_Date, INTERVAL 60 DAY)
-                AND DATE_SUB(OP_Date, INTERVAL 1 DAY)
-            )
-            GROUP BY
-                ID, OP_Date
-        '''
+        f = open("Registry(Total)/Registry_11(Pathology).sql", 'rt', encoding = 'UTF8')
         
-        df = self.df_from_sql(db_name = "registry_total", sql = sql)
-        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_11.xlsx')
+        sql= ''
+        
+        while True:
+            line = f.readline()
+            
+            if not line:
+                break
+            
+            a = str(line)
+            
+            sql  = sql + a  
+            
+        f.close()
+        
+        df = self.df_from_sql(db_name = "pathology_total", sql = sql)
+        #df.to_excel('D:/Gastric_Cancer_xlsx/Registry(2012-2022)/Registry_18.xlsx')
         #print(df)
         
         self.insert(df, db_name = "registry_total", tb_name = "registry_11")

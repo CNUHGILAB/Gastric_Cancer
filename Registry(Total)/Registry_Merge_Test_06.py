@@ -15,7 +15,6 @@ class RegistryMerge06(BaseETL):
                 BMI,
                 ADR_1,
                 ADR_2,
-                FP,
                 CASE
                     WHEN PRE_ESD IS NULL
                     THEN 'No'
@@ -28,11 +27,11 @@ class RegistryMerge06(BaseETL):
                 AFP,
                 OP_ADM,
                 OP_DISC,
-                st0.OP_Date
+                st0.OP_DATE
             FROM
                 registry_merge_05 st0
-                LEFT JOIN registry_23 st1 ON (st0.ID = st1.ID
-                AND st0.OP_Date = st1.OP_Date
+                LEFT JOIN registry_14_01 st1 ON (st0.ID = st1.ID
+                AND st0.OP_DATE = st1.OP_DATE
                 )
         '''
         

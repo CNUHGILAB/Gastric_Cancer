@@ -15,12 +15,7 @@ class RegistryMerge12(BaseETL):
                 BMI,
                 ADR_1,
                 ADR_2,
-                FP,
-                CASE
-                    WHEN PRE_ESD IS NULL
-                    THEN 'No'
-                    ELSE PRE_ESD
-                END AS PRE_ESD,
+                PRE_ESD,
                 Alb,
                 Hb,
                 CEA,
@@ -28,7 +23,7 @@ class RegistryMerge12(BaseETL):
                 AFP,
                 OP_ADM,
                 OP_DISC,
-                st0.OP_Date,
+                st0.OP_DATE,
                 OP_OPRT,
                 OP_TROC,
                 OP_RESC,
@@ -74,9 +69,9 @@ class RegistryMerge12(BaseETL):
                 WC_Result
             FROM
                 registry_merge_11 st0
-                LEFT JOIN registry_19 st1 ON (
+                LEFT JOIN registry_12 st1 ON (
                     st0.ID = st1.ID
-                    AND st0.OP_Date = st1.OP_Date
+                    AND st0.OP_DATE = st1.OP_DATE
                     AND st0.CHKID = st1.CHKID
                 )
         '''

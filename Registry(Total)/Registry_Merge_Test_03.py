@@ -15,17 +15,16 @@ class RegistryMerge03(BaseETL):
                 BMI,
                 ADR_1,
                 ADR_2,
-                FP,
                 Alb,
                 Hb,
                 CEA,
                 OP_ADM,
                 OP_DISC,
-                st0.OP_Date
+                st0.OP_DATE
             FROM
                 registry_merge_02 st0
-                LEFT JOIN registry_09 st1 ON (st0.ID = st1.ID
-                AND st0.OP_Date = st1.OP_Date
+                LEFT JOIN registry_05_01 st1 ON (st0.ID = st1.ID
+                AND st0.OP_DATE = st1.OP_DATE
                 )
         '''
         

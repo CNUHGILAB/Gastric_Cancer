@@ -15,12 +15,7 @@ class RegistryMerge15(BaseETL):
                 BMI,
                 ADR_1,
                 ADR_2,
-                FP,
-                CASE
-                    WHEN PRE_ESD IS NULL
-                    THEN 'No'
-                    ELSE PRE_ESD
-                END AS PRE_ESD,
+                PRE_ESD,
                 PRE_ENDO,
                 Alb,
                 Hb,
@@ -29,7 +24,7 @@ class RegistryMerge15(BaseETL):
                 AFP,
                 OP_ADM,
                 OP_DISC,
-                st0.OP_Date,
+                st0.OP_DATE,
                 OP_OPRT,
                 OP_TROC,
                 OP_RESC,
@@ -73,11 +68,11 @@ class RegistryMerge15(BaseETL):
                 pSafeMargin,
                 WashCytology,
                 WC_Result,
-                ASA,
+                #ASA,
                 `Cx(Ⅲa) Endoscope 검사여부`
             FROM
                 registry_merge_14 st0
-                LEFT JOIN registry_30 st1 ON (
+                LEFT JOIN registry_16_02 st1 ON (
                     st0.CHKID = st1.CHKID
                     AND st0.ID = st1.ID
                 )
