@@ -10,9 +10,17 @@ class Patient10(BaseETL) :
                 CHKID,
                 성별 AS Sex,
                 Age AS OP_Age,
-                Height AS HT,
-                Weight AS WT,
-                BMI,
+                CASE
+                    WHEN Height IS NULL
+                    THEN 0
+                    ELSE Height
+                END AS HT,
+                CASE
+                    WHEN Weight IS NULL
+                    THEN 0
+                    ELSE Weight
+                END AS WT,
+                #ROUND((Weight / ((Height * 0.01) * (Height * 0.01))), 1) AS BMI,
                 `주소(시,도)` AS ADR_1,
                 `주소(시,군,구)` AS ADR_2,
                 # 날짜 차이

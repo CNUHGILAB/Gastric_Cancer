@@ -9,6 +9,7 @@ from Patient_08 import Patient08
 from Patient_09 import Patient09
 from Patient_10 import Patient10
 from Patient_11 import Patient11
+from Patient_12 import Patient12
 
 class ETLPatient():
     '''
@@ -17,15 +18,16 @@ class ETLPatient():
     def run(self):
         Patient01().run()                         # 환자번호, 원무접수ID, 성별, 나이, 입원일, 퇴원일, 주소
         Patient02().run()                         # 위암 수술 일자(원무접수ID, 환자번호, 수술일)
-        Patient03().run()                         # Patient information during gastric cancer surgery
-        Patient04().run()                         # 몸무게(Weight)
-        Patient05().run()                         # 키(Height)
+        Patient03().run()                         # Merge patient_01, patient_02 → Patient information during gastric cancer surgery
+        Patient04().run()                         # 체중(Weight)
+        Patient05().run()                         # 신장(Height)
         Patient06().run()                         # Merge patient_04, patient_05 
-        Patient07().run()                         # Merge patient_03, patient_06 + BMI
+        Patient07().run()                         # Merge patient_03, patient_06
         Patient08().run()                         # 가장 최근 수진(진료)일 
         Patient09().run()                         # 첫 진단일
-        Patient10().run()                         # Merge
-        Patient11().run()                         # Final
+        Patient10().run()                         # Merge patient_07, patient_08, patient_09
+        Patient11().run()                         # 체중(Weight), 신장(Height) DataType 변경
+        Patient12().run()                         # Final + BMI
 
 
 if __name__ == "__main__":

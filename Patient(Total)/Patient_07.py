@@ -25,7 +25,7 @@ class Patient07(BaseETL):
                     ELSE Height
                 END AS Height,
                 # BMI 반올림
-                ROUND((Weight / ((Height * 0.01) * (Height * 0.01))), 1) AS BMI,
+                #ROUND((Weight / ((Height * 0.01) * (Height * 0.01))), 1) AS BMI,
                 입원일,
                 퇴원일,
                 `주소(시,도)`,

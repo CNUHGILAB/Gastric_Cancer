@@ -5,8 +5,8 @@ class Patient02(BaseETL):
     def run(self):
         
         sql= '''
-            SELECT
-                DISTINCT 원무접수ID,
+            SELECT DISTINCT
+                원무접수ID,
                 환자번호,
                 수술일자 AS OP_Date
             # Raw Data 중 operation 항목에서 원무접수ID, 환자번호, 수술일자(OP_DATE) 추출
@@ -17,7 +17,7 @@ class Patient02(BaseETL):
                     SELECT
                         DISTINCT 원무접수ID
                     FROM operation_record
-                ) AND `수술 진료과코드` = 'GS'
+                ) AND `수술 진료과코드` = 'GS' AND INSTR(수술명, 'gastrectomy') != 0
             )
             ORDER BY 환자번호
         '''
